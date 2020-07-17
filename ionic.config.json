@@ -1,0 +1,7 @@
+{
+  "name": "AppShow",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

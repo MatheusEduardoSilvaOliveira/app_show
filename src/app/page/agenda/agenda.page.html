@@ -23,14 +23,6 @@
   <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)"></ion-searchbar>
 </div>
 
-<!--
-<div *ngFor="let json_cantor_nome of cantores">
-  <div>
-    <h1>{{json_cantor_nome.cantor_nome}}</h1> <h1>{{json_cantor_nome.cantor_data}}</h1>
-  </div>
-</div>
--->
-
 <div *ngIf="segment == 1">
   <div *ngIf="vlr_digitado == ''">
     <div *ngFor="let data of data1">
@@ -43,7 +35,7 @@
 
           <ion-card-content>
             <div *ngFor="let json of cantores">
-              <div *ngIf="json.cantor_data == data">
+              <div *ngIf="json.cantor_data == data && json.cantor_palco == segment">
                 <h1>{{json.cantor_nome}}</h1>
               </div>
             </div>
@@ -62,12 +54,12 @@
   <div *ngIf="vlr_digitado != ''">
     <div *ngFor="let json of cantores">
       <div *ngFor="let data of data1">
-        <div *ngIf="data == json.cantor_data">
+        <div *ngIf="data == json.cantor_data && json.cantor_palco == segment">
           <ion-card>
 
             <ion-card-header>
               <ion-card-title>{{ data | date:'dd/MM/yyyy'}}</ion-card-title>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
             </ion-card-header>
 
             <ion-card-content>
@@ -99,7 +91,7 @@
 
           <ion-card-content>
             <div *ngFor="let json of cantores">
-              <div *ngIf="json.cantor_data == data">
+              <div *ngIf="json.cantor_data == data && json.cantor_palco == segment">
                 <h1>{{json.cantor_nome}}</h1>
               </div>
             </div>
@@ -118,12 +110,12 @@
   <div *ngIf="vlr_digitado != ''">
     <div *ngFor="let json of cantores">
       <div *ngFor="let data of data2">
-        <div *ngIf="data == json.cantor_data">
+        <div *ngIf="data == json.cantor_data && json.cantor_palco == segment">
           <ion-card>
 
             <ion-card-header>
               <ion-card-title>{{ data | date:'dd/MM/yyyy'}}</ion-card-title>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
             </ion-card-header>
 
             <ion-card-content>
@@ -143,117 +135,4 @@
   </div>
 </div>
 
-
-
-
-<!--
-<div *ngIf="vlr_digitado == ''">
-  <div *ngIf="segment == 1">
-    <div *ngFor="let data of data1">
-      <ion-card color="Light">
-        <ion-card-header>
-          <ion-card-subtitle>
-            <ion-item>
-              <ion-label>DATA: {{data | date:'dd/MM/yyyy'}}</ion-label>
-              <ion-button color="danger" (click)="detalhado_principal(data)">
-                <ion-icon name="information-circle-outline"></ion-icon>
-              </ion-button>
-            </ion-item>
-
-          </ion-card-subtitle>
-          <ion-card-title>
-            <div *ngFor="let json of palco1">
-              <div *ngIf="json.cantor_data == data">
-                <h2>{{json.cantor_nome}}</h2>
-              </div>
-            </div>
-          </ion-card-title>
-        </ion-card-header>
-      </ion-card>
-    </div>
-  </div>
-</div>
-
-
-
-
-    <div *ngFor="let json_cantor_nome of cantores">
-      <div *ngFor="let json_palco of palco1">
-        <div *ngIf="(json_palco.cantor_nome == json_cantor_nome)">
-
-          <ion-card>
-
-            <ion-card-header>
-              <ion-card-title>{{ json_palco.cantor_data | date:'dd/MM/yyyy'}}</ion-card-title>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            </ion-card-header>
-
-            <ion-card-content>
-              <div *ngFor="let json_palco1 of palco1">
-                <div *ngIf="json_palco.cantor_data == json_palco1.cantor_data">
-                  <h1>{{json_palco1.cantor_nome}}</h1>
-                </div>
-              </div>
-            </ion-card-content>
-
-          </ion-card>
-      </div>
-    </div>
-  </div>
-</div>
--->
-
-<!--
-    <div *ngIf="segment == 1">
-     <ion-searchbar animated placeholder="Artista" (ionChange)="buscar($event)"></ion-searchbar>
-      <div *ngFor="let data of data1">
-      <ion-card color="Light">
-        <ion-card-header>
-          <ion-card-subtitle>
-            <ion-item>
-              <ion-label>DATA: {{data | date:'dd/MM/yyyy'}}</ion-label>
-              <ion-button color="danger" (click)="detalhado_principal(data)">
-                <ion-icon name="information-circle-outline"></ion-icon>
-              </ion-button>
-            </ion-item>
-
-          </ion-card-subtitle>
-          <ion-card-title>
-            <div *ngFor="let json of palco1">
-              <div *ngIf="json.cantor_data == data">
-                <h2>{{json.cantor_nome}}</h2>
-              </div>
-            </div>
-          </ion-card-title>
-        </ion-card-header>
-      </ion-card>
-    </div>
-  </div>
-
-
-    <div *ngIf="segment == 2">
-      <div *ngFor="let data of data2">
-      <ion-card color="Light">
-        <ion-card-header>
-          <ion-card-subtitle>
-            <ion-item>
-              <ion-label>DATA: {{data | date:'dd/MM/yyyy'}}</ion-label>
-              <ion-button color="danger" (click)="detalhado_secundario(data)">
-                <ion-icon name="information-circle-outline"></ion-icon>
-              </ion-button>
-            </ion-item>
-
-          </ion-card-subtitle>
-          <ion-card-title>
-            <div *ngFor="let json of palco2">
-              <div *ngIf="json.cantor_data == data">
-                <h2>{{json.cantor_nome}}</h2>
-              </div>
-            </div>
-          </ion-card-title>
-        </ion-card-header>
-      </ion-card>
-    </div>
-  </div>
-  -->
 </ion-content>

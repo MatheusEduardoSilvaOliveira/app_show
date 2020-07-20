@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click) = "agenda()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">ARTISTAS DO DIA</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+
+  <div *ngFor="let json of resultado">
+
+      <ion-card color="Light">
+        <div *ngIf="json.cantor_img == null">
+          <ion-img src="http://www.sedsoft.com.br/app/undefined.jpg"></ion-img>
+        </div>
+        <div *ngIf="json.cantor_img != undefined">
+          <ion-img src="data:image/jpeg;base64,{{json.cantor_img}}"></ion-img>
+        </div>
+        <ion-card-header>
+          <ion-card-subtitle>Data de apresentação: {{json.cantor_data | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+          <ion-card-title>
+            <h2>{{json.cantor_nome}}
+                <div *ngIf="json.cantor_palco == 1">
+                  Princiapal
+                </div>
+                <div *ngIf="json.cantor_palco == 2">
+                  Secundario
+                </div>
+            </h2>
+          </ion-card-title>
+        </ion-card-header>
+         <ion-card-content>{{json.comunicado_texto}}</ion-card-content>
+      </ion-card>
+
+  </div>
+
+</ion-content>

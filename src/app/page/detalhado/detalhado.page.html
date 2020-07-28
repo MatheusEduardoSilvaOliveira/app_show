@@ -20,10 +20,10 @@
           <ion-img src="http://www.sedsoft.com.br/app/undefined.jpg"></ion-img>
         </div>
         <div *ngIf="json.cantor_img != undefined">
-          <ion-img src="data:image/jpeg;base64,{{json.cantor_img}}"></ion-img>
+          <ion-img src="{{json.cantor_img}}"></ion-img>
         </div>
         <ion-card-header>
-          <ion-card-subtitle>Data de apresentação: {{json.cantor_data | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+          <ion-card-subtitle>Data de apresentação: {{json.cantor_data | date:'EEEE, MMMM d, y'}}</ion-card-subtitle>
           <ion-card-title>
             <h2>{{json.cantor_nome}}
                 <div *ngIf="json.cantor_palco == 1">

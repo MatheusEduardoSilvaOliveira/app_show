@@ -10,32 +10,30 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment [(ngModel)] = "segment">
-    <ion-segment-button value="1">
-      <ion-label>Principal</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="2">
-      <ion-label>Segundário</ion-label>
-    </ion-segment-button>
-  </ion-segment>
 
-<div>
-  <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)"></ion-searchbar>
-</div>
+  <div>
+    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)"></ion-searchbar>
+  </div>
 
-<div *ngIf="segment == 1">
+  <ion-item>
+    <ion-label>Palco</ion-label>
+    <ion-select [(ngModel)]="palco" (ionChange)="agruparDataDeShow()" placeholder="Selecione um...">
+      <ion-select-option *ngFor="let palco of palcos" [value]="palco.palco_id">{{palco.palco_nome}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
   <div *ngIf="vlr_digitado == ''">
-    <div *ngFor="let data of data1">
+    <div *ngFor="let data of data_show">
         <ion-card>
 
           <ion-card-header>
-            <ion-card-title>{{ data | date:'dd/MM/yyyy'}}</ion-card-title>
+            <ion-card-title>{{ data | date:'EEEE, MMMM d, y'}}</ion-card-title>
             <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
           </ion-card-header>
 
           <ion-card-content>
-            <div *ngFor="let json of cantores">
-              <div *ngIf="json.cantor_data == data && json.cantor_palco == segment">
+            <div *ngFor="let json of cantores_consulta">
+              <div *ngIf="json.cantor_data == data && json.palco_id == palco">
                 <h1>{{json.cantor_nome}}</h1>
               </div>
             </div>
@@ -52,13 +50,13 @@
   </div>
 
   <div *ngIf="vlr_digitado != ''">
-    <div *ngFor="let json of cantores">
-      <div *ngFor="let data of data1">
-        <div *ngIf="data == json.cantor_data && json.cantor_palco == segment">
+    <div *ngFor="let json of cantores_consulta">
+      <div *ngFor="let data of data_show">
+        <div *ngIf="data == json.cantor_data && json.palco_id == palco">
           <ion-card>
 
             <ion-card-header>
-              <ion-card-title>{{ data | date:'dd/MM/yyyy'}}</ion-card-title>
+              <ion-card-title>{{ data | date:'EEEE, MMMM d, y'}}</ion-card-title>
               <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
             </ion-card-header>
 
@@ -77,62 +75,5 @@
       </div>
     </div>
   </div>
-</div>
-  <!-- ARTISTAS DO SEGUNDO PALCO-->
-<div *ngIf="segment == 2">
-  <div *ngIf="vlr_digitado == ''">
-    <div *ngFor="let data of data2">
-        <ion-card>
-
-          <ion-card-header>
-            <ion-card-title>{{ data | date:'dd/MM/yyyy'}}</ion-card-title>
-            <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-          </ion-card-header>
-
-          <ion-card-content>
-            <div *ngFor="let json of cantores">
-              <div *ngIf="json.cantor_data == data && json.cantor_palco == segment">
-                <h1>{{json.cantor_nome}}</h1>
-              </div>
-            </div>
-
-            <br>
-
-              <ion-button expand="block" (click)="detalhado(data)">
-                <ion-icon name="information-circle-outline"></ion-icon>
-              </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-    </div>
-  </div>
-
-  <div *ngIf="vlr_digitado != ''">
-    <div *ngFor="let json of cantores">
-      <div *ngFor="let data of data2">
-        <div *ngIf="data == json.cantor_data && json.cantor_palco == segment">
-          <ion-card>
-
-            <ion-card-header>
-              <ion-card-title>{{ data | date:'dd/MM/yyyy'}}</ion-card-title>
-              <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-            </ion-card-header>
-
-            <ion-card-content>
-              <h1>{{json.cantor_nome}}</h1>
-
-              <br>
-
-              <ion-button expand="block" (click)="detalhado(data)">
-                <ion-icon name="information-circle-outline"></ion-icon>
-              </ion-button>
-            </ion-card-content>
-
-          </ion-card>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 </ion-content>

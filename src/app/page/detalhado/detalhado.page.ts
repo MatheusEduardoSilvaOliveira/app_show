@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/services/post';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadComponent } from 'src/app/components/load/load.component';
 
 @Component({
   selector: 'app-detalhado',
@@ -12,14 +12,15 @@ export class DetalhadoPage implements OnInit {
 
   resultado = []
 
-  constructor(private provider: Post, private router: Router, public loadingController: LoadingController) { }
+  constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
 
   agenda() {
     this.router.navigate(["/agenda"]);
   }
 
   //realizar consulta das informações do cantor
-  carregar_cantor() {
+  carregarCantor() {
+    this.load.present();
     return new Promise(resolve => {
       this.resultado = [];
       let dados = {
@@ -36,29 +37,18 @@ export class DetalhadoPage implements OnInit {
           for (let i of data['result']) {
             this.resultado.push(i);
           }
+          this.load.dismiss();
           console.log(this.resultado);
         }
+        this.load.dismiss();
         resolve(true);
       });
     });
 
   }
 
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Conectando...',
-      duration: 1000
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
-  }
-
   ngOnInit() {
-    this.presentLoading();
-    this.carregar_cantor();
+    this.carregarCantor();
   }
 
 }

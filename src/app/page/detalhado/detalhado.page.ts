@@ -10,6 +10,8 @@ import { LoadComponent } from 'src/app/components/load/load.component';
 })
 export class DetalhadoPage implements OnInit {
 
+  data = localStorage.getItem('data').toUpperCase();
+
   resultado = []
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent) { }

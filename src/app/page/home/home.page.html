@@ -1,58 +1,64 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="ion-text-center">DIVULGAÇÕES</ion-title>
+    <ion-title>DIVULGAÇÕES</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <br>
-  <ion-button color="warning" expand="block" (click)="agenda()">SÃO JOÃO</ion-button>
+    <ion-button color="warning" expand="block" (click)="agenda()">SÃO JOÃO</ion-button>
+  <br>
+
+  <div *ngIf="cantores.length != 0">
+    <ion-slides #mySlider pager="true" (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+      <ion-slide *ngFor="let json of cantores">
+        <ion-card>
+            <div *ngIf="json.cantor_img == '' || json.cantor_url_img == ''">
+              <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
+            </div>
+            <div *ngIf="json.cantor_img != '' && json.cantor_url_img != ''">
+              <ion-img src="{{json.cantor_img}}"></ion-img>
+            </div>
+            <ion-card-header>
+              <div *ngIf="json.cantor_url_img != ''">
+                <ion-card-subtitle>URL Imagem: {{json.cantor_url_img}}</ion-card-subtitle>
+              </div>
+              <div *ngIf="cantor_data != ''">
+                <ion-card-subtitle>Data de apresentação: {{json.cantor_data | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+              </div>
+              <ion-card-title>
+                <h2>{{json.cantor_nome}}<br>{{json.palco_nome}}</h2>
+              </ion-card-title>
+            </ion-card-header>
+          </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
   <br>
 
   <ion-card color="Light">
-    <ion-img src="http://www.sedsoft.com.br/app/undefined.jpg"></ion-img>
-  <ion-card-header>
+    <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
 
-    <ion-card-subtitle>
-      <ion-icon name="pin-outline"></ion-icon>Rua Josefina Marcone, nº 108, Catolé<br>
-      <ion-icon name="call-outline"></ion-icon>(83) 3322-6666 / <ion-icon name="logo-whatsapp"></ion-icon>(83) 9999-6666<br>
-      <ion-icon name="time-outline"></ion-icon>8-12h / 14-18h
-    </ion-card-subtitle>
-
-      <ion-card-title>
-        Nome do couver, shows ou título para algum evento
-      </ion-card-title>
-
-  </ion-card-header>
-    <ion-card-content>Legenda opcional caso precise</ion-card-content>
-  </ion-card>
-
-  <br>
-
-    <ion-card color="Light">
-    <ion-img src="http://www.sedsoft.com.br/app/undefined.jpg"></ion-img>
-  <ion-card-header>
-
-    <ion-card-subtitle>
-      <ion-icon name="pin-outline"></ion-icon>Rua Josefina Marcone, nº 108, Catolé<br>
-      <ion-icon name="call-outline"></ion-icon>(83) 3322-6666 / <ion-icon name="logo-whatsapp"></ion-icon>(83) 9999-6666<br>
-      <ion-icon name="time-outline"></ion-icon>8-12h / 14-18h
-    </ion-card-subtitle>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-icon name="pin-outline"></ion-icon>Rua Josefina Marcone, nº 108, Catolé<br>
+        <ion-icon name="call-outline"></ion-icon>(83) 3322-6666 / <ion-icon name="logo-whatsapp"></ion-icon>(83) 9999-6666<br>
+        <ion-icon name="time-outline"></ion-icon>8-12h / 14-18h
+      </ion-card-subtitle>
 
       <ion-card-title>
         Nome do couver, shows ou título para algum evento
       </ion-card-title>
+    </ion-card-header>
 
-  </ion-card-header>
     <ion-card-content>Legenda opcional caso precise</ion-card-content>
   </ion-card>
-
-
 
   <ion-footer>
   <ion-toolbar>
-    <ion-title></ion-title>
+    <ion-title>RODAPE</ion-title>
   </ion-toolbar>
 </ion-footer>
 

@@ -4,38 +4,37 @@
       <ion-button (click) = "agenda()">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
+      <ion-title>ARTISTAS DO DIA</ion-title>
     </ion-buttons>
-    <ion-title class="ion-text-center">ARTISTAS DO DIA</ion-title>
   </ion-toolbar>
 
 </ion-header>
 
 <ion-content>
 
+  <ion-text class="ion-text-center">
+    <h1>{{data | date:'EEEE, d MMMM, y' | uppercase}}</h1>
+  </ion-text>
+
 
   <div *ngFor="let json of resultado">
 
       <ion-card color="Light">
-        <div *ngIf="json.cantor_img == null">
-          <ion-img src="http://www.sedsoft.com.br/app/undefined.jpg"></ion-img>
+        <div *ngIf="json.cantor_img == '' || json.cantor_url_img == ''">
+          <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
         </div>
-        <div *ngIf="json.cantor_img != undefined">
+        <div *ngIf="json.cantor_img != '' && json.cantor_url_img != ''">
           <ion-img src="{{json.cantor_img}}"></ion-img>
         </div>
         <ion-card-header>
-          <ion-card-subtitle>Data de apresentação: {{json.cantor_data | date:'EEEE, MMMM d, y'}}</ion-card-subtitle>
+          <ion-card-subtitle>Endereço: {{json.cantor_url_img}}</ion-card-subtitle>
           <ion-card-title>
-            <h2>{{json.cantor_nome}}
-                <div *ngIf="json.cantor_palco == 1">
-                  Princiapal
-                </div>
-                <div *ngIf="json.cantor_palco == 2">
-                  Secundario
-                </div>
+            <h2>{{json.cantor_nome}}<br>
+              {{json.palco_nome}}
             </h2>
           </ion-card-title>
         </ion-card-header>
-         <ion-card-content>{{json.comunicado_texto}}</ion-card-content>
+         <ion-card-content></ion-card-content>
       </ion-card>
 
   </div>

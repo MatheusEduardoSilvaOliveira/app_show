@@ -19,11 +19,11 @@
 
   <div *ngFor="let json of resultado">
 
-      <ion-card color="Light">
-        <div *ngIf="json.cantor_img == '' || json.cantor_url_img == ''">
+      <ion-card color="light">
+        <div *ngIf="json.cantor_img == null || json.cantor_url_img == null">
           <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
         </div>
-        <div *ngIf="json.cantor_img != '' && json.cantor_url_img != ''">
+        <div *ngIf="json.cantor_img != null && json.cantor_url_img != null">
           <ion-img src="{{json.cantor_img}}"></ion-img>
         </div>
         <ion-card-header>

@@ -1,30 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>DIVULGAÇÕES</ion-title>
+    <ion-title>HOME</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <br>
-    <ion-button color="warning" expand="block" (click)="agenda()">SÃO JOÃO</ion-button>
-  <br>
 
+  <!-- Será exebida quando tiver shows no dia (exibido slide)-->
   <div *ngIf="cantores.length != 0">
+    <ion-text>
+      <h1>Bem vindo!<br>Separamos os shows de hoje para você!</h1>
+    </ion-text>
+
     <ion-slides #mySlider pager="true" (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
       <ion-slide *ngFor="let json of cantores">
         <ion-card>
-            <div *ngIf="json.cantor_img == '' || json.cantor_url_img == ''">
+            <div *ngIf="json.cantor_img == null || json.cantor_url_img == null">
               <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
             </div>
-            <div *ngIf="json.cantor_img != '' && json.cantor_url_img != ''">
+            <div *ngIf="json.cantor_img != null && json.cantor_url_img != null">
               <ion-img src="{{json.cantor_img}}"></ion-img>
             </div>
             <ion-card-header>
-              <div *ngIf="json.cantor_url_img != ''">
+              <div *ngIf="json.cantor_url_img != null">
                 <ion-card-subtitle>URL Imagem: {{json.cantor_url_img}}</ion-card-subtitle>
               </div>
-              <div *ngIf="cantor_data != ''">
+              <div *ngIf="cantor_data != null">
                 <ion-card-subtitle>Data de apresentação: {{json.cantor_data | date:'dd/MM/yyyy'}}</ion-card-subtitle>
               </div>
               <ion-card-title>
@@ -34,18 +36,33 @@
           </ion-card>
       </ion-slide>
     </ion-slides>
+
+    <ion-text>
+      <h2>Toda programação:</h2>
+    </ion-text>
+    <ion-button color="primary" expand="block" (click)="agenda()">SÃO JOÃO</ion-button>
   </div>
 
+  <!--Será exibida quando não tiver shows no dia (sem slide)-->
+  <div *ngIf="cantores.length == 0">
+    <ion-text>
+      <h1>Bem vindo!<br>Confira toda a programação:</h1>
+    </ion-text>
+    <ion-button color="primary" expand="block" (click)="agenda()">SÃO JOÃO</ion-button>
+  </div>
+
+<!-- shows,couver, apresentações durante o ano-->
   <br>
 
-  <ion-card color="Light">
+  <ion-card color="light">
     <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
 
     <ion-card-header>
       <ion-card-subtitle>
-        <ion-icon name="pin-outline"></ion-icon>Rua Josefina Marcone, nº 108, Catolé<br>
-        <ion-icon name="call-outline"></ion-icon>(83) 3322-6666 / <ion-icon name="logo-whatsapp"></ion-icon>(83) 9999-6666<br>
+        <ion-icon name="pin-outline"></ion-icon>Rua Endereço Demonstrativo, nº 108, Catolé<br>
+        <ion-icon name="call-outline"></ion-icon>(83) 3333-3333 / <ion-icon name="logo-whatsapp"></ion-icon>(83) 3333-3333<br>
         <ion-icon name="time-outline"></ion-icon>8-12h / 14-18h
+        <ion-button href="https://www.google.com.br/maps/dir//R.+Vig.+Virgínio,+503+-+Santo+Antônio,+Campina+Grande+-+PB">MAPS</ion-button>
       </ion-card-subtitle>
 
       <ion-card-title>

@@ -1,0 +1,9 @@
+:host ::ng-deep ion-content{
+    --background: #F5F3F4 no-repeat center center / cover;
+}
+
+:host ::ng-deep ion-toolbar{
+  --background: #F5F3F4 no-repeat center center / cover;
+  --color: #3E3E3E;
+  --border-color: #F5F3F4;
+}

@@ -10,9 +10,14 @@ import { Post } from 'src/app/services/post';
 })
 export class HomePage {
   @ViewChild('mySlider') slider: IonSlides;
+  sliderConfig = {
+    centeredSlides: true,
+    slidesPerView: 1.6
+  }
 
   data_atual;
   cantores = []
+  couverts = []
 
   constructor(private router: Router, private provider: Post) { }
 
@@ -49,7 +54,7 @@ export class HomePage {
     return new Promise(resolve => {
       this.cantores = [];
       let dados = {
-        requisicao: 'cantores_do_dia',
+        requisicao: 'cantores_info',
         data: this.data_atual
       };
 
@@ -69,8 +74,34 @@ export class HomePage {
 
   }
 
+  carregarCouvertDoDia() {
+    this.capturarDataHora();
+    return new Promise(resolve => {
+      this.cantores = [];
+      let dados = {
+        requisicao: 'couvert_info',
+        data: this.data_atual
+      };
+
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.couverts.push(i);
+          }
+          console.log(this.couverts);
+        }
+        resolve(true);
+      });
+    });
+
+  }
+
   ngOnInit() {
     this.carregarCantoresDoDia();
+    this.carregarCouvertDoDia();
   }
 
 }

@@ -26,7 +26,7 @@ export class DetalhadoPage implements OnInit {
     return new Promise(resolve => {
       this.resultado = [];
       let dados = {
-        requisicao: 'cantor_detalhado',
+        requisicao: 'cantores_detalhados',
         data: localStorage.getItem('data'),
         palco: localStorage.getItem('palco')
       };

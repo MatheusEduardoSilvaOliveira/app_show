@@ -18,7 +18,7 @@ export class AgendaPage implements OnInit {
 
   cantores_consulta = [] //nome cantores
 
-  data_show = [] //datas do palco 1
+  data_show = [] //datas do palco
 
   cantores = []
   palcos = []
@@ -55,7 +55,7 @@ export class AgendaPage implements OnInit {
     return new Promise(resolve => {
       this.cantores = [];
       let dados = {
-        requisicao: 'cantor',
+        requisicao: 'cantores',
       };
 
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
@@ -82,7 +82,7 @@ export class AgendaPage implements OnInit {
     return new Promise(resolve => {
       this.palcos = [];
       let dados = {
-        requisicao: 'palco_read',
+        requisicao: 'palcos',
       };
 
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
@@ -105,7 +105,7 @@ export class AgendaPage implements OnInit {
     const aux_data = []
     for (let i = 0; i < this.cantores.length; i++) {
       if (this.cantores[i]["palco_id"] == this.palco) {
-        aux_data.push(this.cantores[i]["cantor_data"]);
+        aux_data.push(this.cantores[i]["evento_data"]);
       }
     }
     this.data_show = [...new Set(aux_data)];

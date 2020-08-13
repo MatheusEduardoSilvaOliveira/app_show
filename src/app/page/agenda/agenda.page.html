@@ -16,8 +16,8 @@
   </div>
 
   <ion-item>
-    <ion-label>Palco</ion-label>
-    <ion-select [(ngModel)]="palco" (ionChange)="agruparDataDeShow()" placeholder="Selecione um...">
+    <ion-label position="floating">Palco</ion-label>
+    <ion-select [(ngModel)]="palco" (ionChange)="agruparDataDeShow()">
       <ion-select-option *ngFor="let palco of palcos" [value]="palco.palco_id">{{palco.palco_nome}}</ion-select-option>
     </ion-select>
   </ion-item>
@@ -33,7 +33,7 @@
 
           <ion-card-content>
             <div *ngFor="let json of cantores_consulta">
-              <div *ngIf="json.cantor_data == data && json.palco_id == palco">
+              <div *ngIf="json.evento_data == data && json.palco_id == palco">
                 <h1>{{json.cantor_nome}}</h1>
               </div>
             </div>
@@ -52,7 +52,7 @@
   <div *ngIf="vlr_digitado != ''">
     <div *ngFor="let json of cantores_consulta">
       <div *ngFor="let data of data_show">
-        <div *ngIf="data == json.cantor_data && json.palco_id == palco">
+        <div *ngIf="json.evento_data == data && json.palco_id == palco">
           <ion-card>
 
             <ion-card-header>

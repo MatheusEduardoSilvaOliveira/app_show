@@ -4,8 +4,8 @@ import 'rxjs/add/operator/map'; //npm install rxjs-compat
 
 @Injectable()
 export class Post {
-  //server: string = 'http://localhost:8080/api_teste/';
-  server: string = 'http://www.sedsoft.com.br/app/con/';
+  server: string = 'http://localhost:80/api_show/';
+  //server: string = 'http://www.sedsoft.com.br/app/con/';
 
   constructor(private http: HttpClient) {
 

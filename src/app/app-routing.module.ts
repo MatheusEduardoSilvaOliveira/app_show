@@ -12,13 +12,14 @@ const routes: Routes = [
     loadChildren: () => import('./page/home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'agenda',
-    loadChildren: () => import('./page/agenda/agenda.module').then(m => m.AgendaPageModule)
+    path: 'detalhado-evento',
+    loadChildren: () => import('./page/detalhado/detalhado-evento/detalhado-evento.module').then( m => m.DetalhadoEventoPageModule)
   },
   {
-    path: 'detalhado',
-    loadChildren: () => import('./page/detalhado/detalhado.module').then(m => m.DetalhadoPageModule)
+    path: 'detalhado-couvert',
+    loadChildren: () => import('./page/detalhado/detalhado-couvert/detalhado-couvert.module').then( m => m.DetalhadoCouvertPageModule)
   }
+
 ];
 
 @NgModule({

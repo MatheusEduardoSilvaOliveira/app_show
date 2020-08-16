@@ -1,0 +1,22 @@
+.item ion-thumbnail {
+    min-width: 6rem;    
+    min-height: 6rem;
+    img {
+        max-width: 6rem;    
+        min-width: 6rem;
+        border-radius: 20%;
+        border: 1px solid #3E3E3E;
+    }
+}
+
+h1.title {
+    margin: 10px 10px 0px 10px;
+    color: #3E3E3E;
+    font-size: 20px;
+}
+
+ion-item ion-label {
+    margin: 10px 10px 0px 10px;
+    color: #3E3E3E;
+    font-size: 15px;
+}

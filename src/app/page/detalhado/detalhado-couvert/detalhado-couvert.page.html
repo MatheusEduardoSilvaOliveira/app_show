@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>COUVERT</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card color="light">
+    <div *ngFor="let array_estabe of estabe_dados">
+      <ion-img src="{{array_estabe.estabe_img}}"></ion-img>
+
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-icon name="pin-outline"></ion-icon>{{array_estabe.estabe_logradouro}}, {{array_estabe.estabe_numero}}, {{array_estabe.estabe_bairro}}, {{array_estabe.estabe_cidade}}-{{array_estabe.estabe_estado}}<br>
+          <div *ngIf="array_estabe.estabe_email != null">
+            <ion-icon name="mail-outline"></ion-icon> {{array_estabe.estabe_email}}<br>
+          </div>
+          <div *ngIf="array_estabe.estabe_tel != null">
+            <ion-icon name="call-outline"></ion-icon> {{array_estabe.estabe_tel}}<br>
+          </div>
+          <div *ngIf="array_estabe.estabe_cel != null">
+            <ion-icon name="logo-whatsapp"></ion-icon> {{array_estabe.estabe_cel}}<br>
+          </div>
+          <div *ngIf="array_estabe.estabe_insta != null">
+            <ion-icon name="logo-instagram"></ion-icon> {{array_estabe.estabe_insta}}<br>
+          </div>
+        </ion-card-subtitle>
+      </ion-card-header>  
+    </div>
+  </ion-card>
+
+
+  <div *ngFor="let array_data of data_couvert">
+    <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+      <div *ngFor="let array_couvert of couvert_consulta">
+      
+        <ion-item>
+          
+          <ion-thumbnail slot="start">
+            <img *ngIf="array_couvert.cantor_img != null" src="{{array_couvert.cantor_img}}">
+            <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+          </ion-thumbnail>
+          
+          <ion-label>
+            <h2><strong>{{array_couvert.cantor_nome}}</strong></h2><br>
+            <div *ngIf="array_couvert.couvert_hora_ini != null">
+              <strong>Hora Inicial: </strong>{{array_couvert.couvert_hora_ini}}<br>
+            </div>
+            <div *ngIf="array_couvert.couvert_hora_fin != null">
+              <strong>Hora Final: </strong>{{array_couvert.couvert_hora_fin}}<br>
+            </div>
+            <div *ngIf="array_couvert.couvert_valor != null">
+              <strong>Valor R$: </strong>{{array_couvert.couvert_valor | number:'1.2-2'}}<br>
+            </div> 
+          </ion-label>
+
+        </ion-item>
+    </div>
+  </div>
+
+</ion-content>

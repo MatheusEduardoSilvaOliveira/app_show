@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>DETALHADO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)"></ion-searchbar>
+  </div>
+
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="0">
+      <ion-label>DISPONÍVEIS</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="1">
+      <ion-label>ENCERRADOS</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <!--SHOWS DISPONÍVEIS-->
+  <div *ngIf="segment == 0">
+    <div *ngIf="vlr_digitado == ''">
+      <div *ngFor="let array_data of data_show">
+        <div *ngIf="array_data >= data_atual">
+          <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+          <div *ngFor="let array_cantores of cantores_consulta">
+            <div *ngIf="array_data == array_cantores.evento_data">
+              <ion-item>
+                
+                <ion-thumbnail slot="start">
+                  <img *ngIf="array_cantores.cantor_img != null" src="{{array_cantores.cantor_img}}">
+                  <img *ngIf="array_cantores.cantor_img == null" src="../../../../assets/img/undefined.jpg">  
+                </ion-thumbnail>
+                <ion-label>{{array_cantores.cantor_nome}}</ion-label>
+
+              </ion-item>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  
+    <div *ngIf="vlr_digitado != ''">
+      <div *ngFor="let array_cantores of cantores_consulta">
+        <div *ngFor="let array_data of data_show">
+          <div *ngIf="array_data >= data_atual">
+            <div *ngIf="array_data == array_cantores.evento_data">
+            <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+          
+            <ion-item>
+              
+              <ion-thumbnail slot="start">
+                <img *ngIf="array_cantores.cantor_img != null" src="{{array_cantores.cantor_img}}">
+                <img *ngIf="array_cantores.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+              </ion-thumbnail>
+              <ion-label>{{array_cantores.cantor_nome}}</ion-label>
+
+            </ion-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--SHOWS ENCERRADOS-->
+  <div *ngIf="segment == 1">
+    <div *ngIf="vlr_digitado == ''">
+      <div *ngFor="let array_data of data_show">
+        <div *ngIf="array_data < data_atual">
+          <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+          <div *ngFor="let array_cantores of cantores_consulta">
+            <div *ngIf="array_data == array_cantores.evento_data">
+              <ion-item>
+                
+                <ion-thumbnail slot="start">
+                  <img *ngIf="array_cantores.cantor_img != null" src="{{array_cantores.cantor_img}}">
+                  <img *ngIf="array_cantores.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+                </ion-thumbnail>
+                <ion-label>{{array_cantores.cantor_nome}}</ion-label>
+
+              </ion-item>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  
+    <div *ngIf="vlr_digitado != ''">
+      <div *ngFor="let array_cantores of cantores_consulta">
+        <div *ngFor="let array_data of data_show">
+          <div *ngIf="array_data < data_atual">
+            <div *ngIf="array_data == array_cantores.evento_data">
+            <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+          
+            <ion-item>
+              
+              <ion-thumbnail slot="start">
+                <img *ngIf="array_cantores.cantor_img != null" src="{{array_cantores.cantor_img}}">
+                <img *ngIf="array_cantores.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+              </ion-thumbnail>
+              <ion-label>{{array_cantores.cantor_nome}}</ion-label>
+
+            </ion-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

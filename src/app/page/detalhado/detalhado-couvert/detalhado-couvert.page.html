@@ -32,18 +32,19 @@
 
 
   <div *ngFor="let array_data of data_couvert">
+    <ion-card>
     <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
       <div *ngFor="let array_couvert of couvert_consulta">
       
         <ion-item>
-          
           <ion-thumbnail slot="start">
             <img *ngIf="array_couvert.cantor_img != null" src="{{array_couvert.cantor_img}}">
             <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
           </ion-thumbnail>
           
-          <ion-label>
-            <h2><strong>{{array_couvert.cantor_nome}}</strong></h2><br>
+          <ion-label class="info_cantor">
+            <strong>{{array_couvert.cantor_nome}}<br></strong>
+
             <div *ngIf="array_couvert.couvert_hora_ini != null">
               <strong>Hora Inicial: </strong>{{array_couvert.couvert_hora_ini}}<br>
             </div>
@@ -52,11 +53,12 @@
             </div>
             <div *ngIf="array_couvert.couvert_valor != null">
               <strong>Valor R$: </strong>{{array_couvert.couvert_valor | number:'1.2-2'}}<br>
-            </div> 
-          </ion-label>
-
+            </div>
+          </ion-label>  
         </ion-item>
     </div>
+    <br>
+    </ion-card>
   </div>
 
 </ion-content>

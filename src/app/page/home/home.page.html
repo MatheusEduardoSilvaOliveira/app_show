@@ -6,66 +6,118 @@
 
 <ion-content>
 
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="0">
+      <ion-label>COUVERT</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="1">
+      <ion-label>SHOW</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
+  <h1>Bem vindo!</h1>
+  <div *ngIf="segment == 0">
+    <!-- couverts do dia-->
+    <div *ngIf="couverts_dia.length != 0">
+      <h1>Hoje tem <strong>couvert</strong> em:</h1>
+      <ion-card>
+        <ion-text>
+        </ion-text>
+        <ion-slides [options]="sliderConfigCouvert" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+          <ion-slide *ngFor="let array_couvert of couverts_dia">
+            <ion-card (click)="couvertDetalhado(array_couvert.fk_estabe)">
+                <ion-img src="{{array_couvert.estabe_img}}"></ion-img>
+  
+                <ion-card-header>
+                  <ion-card-title><h3><strong>{{array_couvert.estabe_nome}}</strong></h3></ion-card-title>
+                </ion-card-header>
+              </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-card>
+    </div>
+  
+
+
+  <div *ngIf="couverts.length != 0">
+  <h1>Confira <strong>toda</strong> a programação:</h1>
+  
+    <div *ngFor="let array_estabe of couverts">
+      <ion-card color="light" (click)="couvertDetalhado(array_estabe.estabe_id)">
+      <ion-img src="{{array_estabe.estabe_img}}"></ion-img>
+
+      <ion-card-header>
+        <ion-card-subtitle>
+          <ion-icon name="pin-outline"></ion-icon>{{array_estabe.estabe_logradouro}}, {{array_estabe.estabe_numero}}, {{array_estabe.estabe_bairro}}, {{array_estabe.estabe_cidade}}-{{array_estabe.estabe_estado}}<br>
+          <div *ngIf="array_estabe.estabe_email != null">
+            <ion-icon name="mail-outline"></ion-icon> {{array_estabe.estabe_email}}<br>
+          </div>
+          <div *ngIf="array_estabe.estabe_tel != null">
+            <ion-icon name="call-outline"></ion-icon> {{array_estabe.estabe_tel}}<br>
+          </div>
+          <div *ngIf="array_estabe.estabe_cel != null">
+            <ion-icon name="logo-whatsapp"></ion-icon> {{array_estabe.estabe_cel}}<br>
+          </div>
+          <div *ngIf="array_estabe.estabe_insta != null">
+            <ion-icon name="logo-instagram"></ion-icon> {{array_estabe.estabe_insta}}<br>
+          </div>
+        </ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>  
+    </div>
+  </div>
+</div>
+  
+
+
+  <div *ngIf="segment == 1">
   <!-- Será exebida quando tiver shows no dia (exibido slide)-->
   <div *ngIf="cantores.length != 0">
 
     <ion-text>
-      <h1>Bem vindo!<br>Separamos o(s) show(s) de hoje para você!</h1>
+      <h1>Separamos o(s) show(s) de <strong>hoje</strong> para você!</h1>
     </ion-text>
-    
-    <br>
   
     <div *ngFor="let array_palco_dia of palco_dia">
       <div [hidden]="cantoresPorPalco(array_palco_dia)"></div> <!-- atualizar lista de cantores de acordo com palco | OBS: Pois não é aceito condição dentro do slide-->
-      <div *ngFor="let array_palcos of palcos">
-        <div *ngIf="array_palco_dia == array_palcos.palco_id">
-          <h1><strong>{{array_palcos.palco_nome}}<br></strong>({{array_palcos.palco_cidade}}):</h1>
+      <ion-card>
+        <div *ngFor="let array_palcos of palcos">
+          <div *ngIf="array_palco_dia == array_palcos.palco_id">
+            <h1><strong>{{array_palcos.palco_nome}}<br></strong>({{array_palcos.palco_cidade}}):</h1>
+          </div>
         </div>
-      </div>
 
-      <ion-slides [options]="sliderConfigCantor" #mySlider>
-          
-        <ion-slide *ngFor="let array_cantor of cantores_consulta">
-          <ion-card (click)="eventoDetalhado(array_palco_dia)">
-              <div *ngIf="array_cantor.cantor_img == null">
-                <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
-              </div>
-              <div *ngIf="array_cantor.cantor_img != null">
-                <ion-img src="{{array_cantor.cantor_img}}"></ion-img>
-              </div>
-              <ion-card-header>
-              <!-- <div *ngIf="json.cantor_url_img != null">
-                  <ion-card-subtitle>URL Imagem: {{json.cantor_url_img}}</ion-card-subtitle>
+        <ion-slides [options]="sliderConfigCantor" #mySlider>
+            
+          <ion-slide *ngFor="let array_cantor of cantores_consulta">
+            <ion-card (click)="eventoDetalhado(array_palco_dia)">
+                <div *ngIf="array_cantor.cantor_img == null">
+                  <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
                 </div>
-                <div *ngIf="evento_data != null">
-                  <ion-card-subtitle>Data de apresentação: {{array_cantor.evento_data | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+                <div *ngIf="array_cantor.cantor_img != null">
+                  <ion-img src="{{array_cantor.cantor_img}}"></ion-img>
                 </div>
-                <ion-card-subtitle>{{array_cantor.palco_nome}}</ion-card-subtitle> -->
-                <ion-card-title>
-                  <h3><strong>{{array_cantor.cantor_nome}}</strong></h3>
-                </ion-card-title>
-              </ion-card-header>
-          </ion-card>
-        </ion-slide>
-      
-      </ion-slides>
-
-    <!--  
-      <ion-text>
-        <h2>Toda programação:</h2>
-      </ion-text>
-    
-      <div *ngFor="let array_palcos of palcos">
-        <div *ngIf="array_palco_dia == array_palcos.palco_id">
-          <ion-button color="primary" expand="full" (click)="eventoDetalhado(array_palco_dia)">{{array_palcos.palco_nome | uppercase}}</ion-button>
-        </div>
-      </div>
-    -->
-      <br>
-
+                <ion-card-header>
+                <!-- <div *ngIf="json.cantor_url_img != null">
+                    <ion-card-subtitle>URL Imagem: {{json.cantor_url_img}}</ion-card-subtitle>
+                  </div>
+                  <div *ngIf="evento_data != null">
+                    <ion-card-subtitle>Data de apresentação: {{array_cantor.evento_data | date:'dd/MM/yyyy'}}</ion-card-subtitle>
+                  </div>
+                  <ion-card-subtitle>{{array_cantor.palco_nome}}</ion-card-subtitle> -->
+                  <ion-card-title>
+                    <h3><strong>{{array_cantor.cantor_nome}}</strong></h3>
+                  </ion-card-title>
+                </ion-card-header>
+            </ion-card>
+          </ion-slide>
+        
+        </ion-slides>
+      </ion-card>
     </div> 
   </div>
+
+
 
   <div *ngIf="palcos.length != 0">
     <ion-text>
@@ -85,7 +137,7 @@
   </div>
 
   <!--</div>-->
-  <br>
+</div>
   <!--Será exibida quando não tiver shows no dia (sem slide)-->
 
 
@@ -102,23 +154,7 @@
 
 
 
-  <!-- couverts do dia-->
-  <div *ngIf="couverts.length != 0">
-    <ion-text>
-      <h1>Hoje tem <strong>couvert</strong> em:</h1>
-    </ion-text>
-    <ion-slides [options]="sliderConfigCouvert" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
-      <ion-slide *ngFor="let array_couvert of couverts">
-        <ion-card (click)="couvertDetalhado(array_couvert.fk_estabe)">
-            <ion-img src="{{array_couvert.estabe_img}}"></ion-img>
 
-            <ion-card-header>
-              <ion-card-title><h3><strong>{{array_couvert.estabe_nome}}</strong></h3></ion-card-title>
-            </ion-card-header>
-          </ion-card>
-      </ion-slide>
-    </ion-slides>
-  </div>
 
   <!-- shows,couver, apresentações durante o ano
   <br>

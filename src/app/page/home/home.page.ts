@@ -25,9 +25,12 @@ export class HomePage {
 
   data_atual;
   cantores = []
-  couverts = []
+  couverts_dia = []
   palcos = []
   cantores_consulta = []
+  couverts = []
+
+  segment = '0'
 
   constructor(private router: Router, private provider: Post) { }
 
@@ -42,7 +45,7 @@ export class HomePage {
   }
 
   slidesDidLoad(slides: IonSlides) {
-    if (this.couverts.length != 0) {
+    if (this.couverts_dia.length != 0) {
       slides.startAutoplay();
     }
   }
@@ -90,9 +93,33 @@ export class HomePage {
   carregarCouvertDoDia() { //couvert do dia para carregar preview (cards)
     this.capturarDataHora();
     return new Promise(resolve => {
-      this.cantores = [];
+      this.couverts_dia = [];
       let dados = {
         requisicao: 'couvert_info',
+        data: this.data_atual
+      };
+
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.couverts_dia.push(i);
+          }
+          console.log(this.couverts_dia);
+        }
+        resolve(true);
+      });
+    });
+  }
+
+  carregarCouvert() { //couver com para proximos dias
+    this.capturarDataHora();
+    return new Promise(resolve => {
+      this.couverts = [];
+      let dados = {
+        requisicao: 'couverts',
         data: this.data_atual
       };
 
@@ -164,6 +191,7 @@ export class HomePage {
     this.carregarCantoresDoDia();
     this.carregarPalco();
     this.carregarCouvertDoDia();
+    this.carregarCouvert()
   }
 
 }

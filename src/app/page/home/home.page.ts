@@ -13,7 +13,7 @@ export class HomePage {
 
   sliderConfigCantor= {
     centeredSlides: false,
-    slidesPerView: 1.6
+    slidesPerView: 1.6,
   }
 
   sliderConfigCouvert= {

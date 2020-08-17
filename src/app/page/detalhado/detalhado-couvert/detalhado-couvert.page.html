@@ -6,7 +6,7 @@
 
 <ion-content>
 
-  <ion-card color="light">
+  <ion-card>
     <div *ngFor="let array_estabe of estabe_dados">
       <ion-img src="{{array_estabe.estabe_img}}"></ion-img>
 
@@ -33,7 +33,12 @@
 
   <div *ngFor="let array_data of data_couvert">
     <ion-card>
-    <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+      <div *ngIf="array_data == data_atual">
+        <h1 class="title"><strong>Hoje</strong></h1>
+      </div>
+      <div *ngIf="array_data != data_atual">
+        <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+      </div>
       <div *ngFor="let array_couvert of couvert_consulta">
       
         <ion-item>

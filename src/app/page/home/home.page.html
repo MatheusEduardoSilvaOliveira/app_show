@@ -20,7 +20,7 @@
     <!-- couverts do dia-->
     <div *ngIf="couverts_dia.length != 0">
       <h1>Hoje tem <strong>couvert</strong> em:</h1>
-      <ion-card>
+      <ion-card color="light">
         <ion-text>
         </ion-text>
         <ion-slides [options]="sliderConfigCouvert" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
@@ -43,7 +43,7 @@
   <h1>Confira <strong>toda</strong> a programação:</h1>
   
     <div *ngFor="let array_estabe of couverts">
-      <ion-card color="light" (click)="couvertDetalhado(array_estabe.estabe_id)">
+      <ion-card (click)="couvertDetalhado(array_estabe.estabe_id)">
       <ion-img src="{{array_estabe.estabe_img}}"></ion-img>
 
       <ion-card-header>
@@ -80,7 +80,7 @@
   
     <div *ngFor="let array_palco_dia of palco_dia">
       <div [hidden]="cantoresPorPalco(array_palco_dia)"></div> <!-- atualizar lista de cantores de acordo com palco | OBS: Pois não é aceito condição dentro do slide-->
-      <ion-card>
+      <ion-card color="light">
         <div *ngFor="let array_palcos of palcos">
           <div *ngIf="array_palco_dia == array_palcos.palco_id">
             <h1><strong>{{array_palcos.palco_nome}}<br></strong>({{array_palcos.palco_cidade}}):</h1>
@@ -98,13 +98,7 @@
                   <ion-img src="{{array_cantor.cantor_img}}"></ion-img>
                 </div>
                 <ion-card-header>
-                <!-- <div *ngIf="json.cantor_url_img != null">
-                    <ion-card-subtitle>URL Imagem: {{json.cantor_url_img}}</ion-card-subtitle>
-                  </div>
-                  <div *ngIf="evento_data != null">
-                    <ion-card-subtitle>Data de apresentação: {{array_cantor.evento_data | date:'dd/MM/yyyy'}}</ion-card-subtitle>
-                  </div>
-                  <ion-card-subtitle>{{array_cantor.palco_nome}}</ion-card-subtitle> -->
+
                   <ion-card-title>
                     <h3><strong>{{array_cantor.cantor_nome}}</strong></h3>
                   </ion-card-title>
@@ -136,48 +130,8 @@
     </ion-card>
   </div>
 
-  <!--</div>-->
 </div>
-  <!--Será exibida quando não tiver shows no dia (sem slide)-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- shows,couver, apresentações durante o ano
-  <br>
-
-  <ion-card color="light">
-    <ion-img src="../../../assets/img/undefined.jpg"></ion-img>
-
-    <ion-card-header>
-      <ion-card-subtitle>
-        <ion-icon name="pin-outline"></ion-icon>Rua Endereço Demonstrativo, nº 108, Catolé<br>
-        <ion-icon name="call-outline"></ion-icon>(83) 3333-3333 / <ion-icon name="logo-whatsapp"></ion-icon>(83) 3333-3333<br>
-        <ion-icon name="time-outline"></ion-icon>8-12h / 14-18h
-        <ion-button href="https://www.google.com.br/maps/dir//R.+Vig.+Virgínio,+503+-+Santo+Antônio,+Campina+Grande+-+PB">MAPS</ion-button>
-      </ion-card-subtitle>
-
-      <ion-card-title>
-        Nome do couver, shows ou título para algum evento
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>Legenda opcional caso precise</ion-card-content>
-  </ion-card>
--->
 </ion-content>
 
 <ion-footer>

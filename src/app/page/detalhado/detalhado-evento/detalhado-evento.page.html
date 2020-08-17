@@ -24,8 +24,13 @@
     <div *ngIf="vlr_digitado == ''">
       <div *ngFor="let array_data of data_show">
         <div *ngIf="array_data >= data_atual">
-          <ion-card>  
-            <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+          <ion-card>
+            <div *ngIf="array_data == data_atual">
+              <h1 class="title"><strong>HOJE</strong></h1>
+            </div>
+            <div *ngIf="array_data != data_atual">
+              <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+            </div>
             <div *ngFor="let array_cantores of cantores_consulta">
               <div *ngIf="array_data == array_cantores.evento_data">
                 <ion-item>

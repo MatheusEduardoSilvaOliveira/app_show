@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Post } from 'src/app/services/post';
+import { LoadComponent } from 'src/app/components/load/load.component';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,7 @@ export class HomePage {
 
   segment = '0'
 
-  constructor(private router: Router, private provider: Post) { }
+  constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
   eventoDetalhado(palco) {
     localStorage.setItem("palco", palco);
@@ -187,11 +188,15 @@ export class HomePage {
 
   }
 
-  ngOnInit() {
+  carregarArrays(){ //carregar arrays (results da api)
+    this.carregarCouvertDoDia();
+    this.carregarCouvert();
     this.carregarCantoresDoDia();
     this.carregarPalco();
-    this.carregarCouvertDoDia();
-    this.carregarCouvert()
+  }
+
+  ngOnInit() {
+    this.carregarArrays();
   }
 
 }

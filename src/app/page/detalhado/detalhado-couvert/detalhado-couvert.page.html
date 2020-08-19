@@ -34,7 +34,7 @@
   <div *ngFor="let array_data of data_couvert">
     <ion-card>
       <div *ngIf="array_data == data_atual">
-        <h1 class="title"><strong>Hoje</strong></h1>
+        <h1 class="title"><strong>HOJE</strong></h1>
       </div>
       <div *ngIf="array_data != data_atual">
         <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>

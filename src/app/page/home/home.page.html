@@ -20,7 +20,7 @@
     <!-- couverts do dia-->
     <div *ngIf="couverts_dia.length != 0">
       <h1>Hoje tem <strong>couvert</strong> em:</h1>
-      <ion-card color="light">
+
         <ion-text>
         </ion-text>
         <ion-slides [options]="sliderConfigCouvert" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
@@ -34,7 +34,7 @@
               </ion-card>
           </ion-slide>
         </ion-slides>
-      </ion-card>
+     
     </div>
   
 
@@ -80,7 +80,7 @@
   
     <div *ngFor="let array_palco_dia of palco_dia">
       <div [hidden]="cantoresPorPalco(array_palco_dia)"></div> <!-- atualizar lista de cantores de acordo com palco | OBS: Pois não é aceito condição dentro do slide-->
-      <ion-card color="light">
+      
         <div *ngFor="let array_palcos of palcos">
           <div *ngIf="array_palco_dia == array_palcos.palco_id">
             <h1><strong>{{array_palcos.palco_nome}}<br></strong>({{array_palcos.palco_cidade}}):</h1>
@@ -107,7 +107,7 @@
           </ion-slide>
         
         </ion-slides>
-      </ion-card>
+      
     </div> 
   </div>
 

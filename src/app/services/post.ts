@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map'; //npm install rxjs-compat
 @Injectable()
 export class Post {
   //server: string = 'http://localhost:80/api_show/';
-  server: string = 'http://www.sedsoft.com.br/app/con/';
+  server: string = 'http://www.sedsoft.com.br/app_music/api/';
 
   constructor(private http: HttpClient) {
 

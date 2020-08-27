@@ -13,45 +13,48 @@ export class HomePage {
   @ViewChild('mySlider') slider: IonSlides;
 
   sliderConfigCantor= {
+    spaceBetween: -10,
     centeredSlides: false,
-    slidesPerView: 1.6,
+    slidesPerView: 1.6
   }
 
   sliderConfigCouvert= {
-    centeredSlides: true,
-    slidesPerView: 1.6
+    spaceBetween: -10,
+    centeredSlides: false,
+    slidesPerView: 1.2
   }
 
   palco_dia = [] //palcos com apresentação do dia
 
   data_atual;
   cantores = []
-  couverts_dia = []
+  //couverts_dia = []
   palcos = []
   cantores_consulta = []
   couverts = []
-
+  couvert_info_dia = []
+  estabe_cods = []
   segment = '0'
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
-  eventoDetalhado(palco) {
+  eventoDetalhado(palco) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
     localStorage.setItem("palco", palco);
     this.router.navigate(['/detalhado-evento']);
   }
 
-  couvertDetalhado(estabe_id) {
+  couvertDetalhado(estabe_id) { // clicar sobre o cantor do ion-card COUVERT e abrir programação
     localStorage.setItem("estabe_id", estabe_id);
     this.router.navigate(['/detalhado-couvert']);
   }
 
-  slidesDidLoad(slides: IonSlides) {
-    if (this.couverts_dia.length != 0) {
+  slidesDidLoad(slides: IonSlides) { // iniciar o play automatico do slide apenas quando preenchida tabela
+    if (this.couvert_info_dia.length != 0) {
       slides.startAutoplay();
     }
   }
 
-  capturarDataHora() {
+  capturarDataHora() { //capturar data do celular do usuário
     var data = new Date();
     var dia = data.getDate();
     var mes = data.getMonth() + 1;
@@ -64,8 +67,35 @@ export class HomePage {
     console.log("data_cell" + data_servidor)
   }
 
+  carregarCouvertDoDiaInfo() { //COUVERTS do dia para carregar preview (cards)
+    this.capturarDataHora();
+    this.estabeComApres();
+    return new Promise(resolve => {
+      this.couvert_info_dia = [];
+      let dados = {
+        requisicao: 'couvert_info_dia',
+        data: this.data_atual
+      };
 
-  carregarCantoresDoDia() { //cantores do dia para carregar preview (cards)
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.couvert_info_dia.push(i);
+          }
+          console.log(this.couvert_info_dia);
+        }
+        this.estabeComApres();
+        resolve(true);
+      });
+    });
+
+  }
+
+
+  carregarCantoresDoDia() { //CANTORES do dia para carregar preview (cards)
     this.capturarDataHora();
     return new Promise(resolve => {
       this.cantores = [];
@@ -91,31 +121,7 @@ export class HomePage {
 
   }
 
-  carregarCouvertDoDia() { //couvert do dia para carregar preview (cards)
-    this.capturarDataHora();
-    return new Promise(resolve => {
-      this.couverts_dia = [];
-      let dados = {
-        requisicao: 'couvert_info',
-        data: this.data_atual
-      };
-
-      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
-
-        if (data['result'] == '0') {
-          console.log("Array retornou vazio");
-        } else {
-          for (let i of data['result']) {
-            this.couverts_dia.push(i);
-          }
-          console.log(this.couverts_dia);
-        }
-        resolve(true);
-      });
-    });
-  }
-
-  carregarCouvert() { //couver com para proximos dias
+  carregarCouvert() { //COUVERTS com datas futuras
     this.capturarDataHora();
     return new Promise(resolve => {
       this.couverts = [];
@@ -139,7 +145,7 @@ export class HomePage {
     });
   }
 
-  carregarPalco() {
+  carregarPalco() { // palcos que terá shows (maior que a data atual)
     return new Promise(resolve => {
       this.palcos = [];
       let dados = {
@@ -160,6 +166,18 @@ export class HomePage {
         resolve(true);
       });
     });
+  }
+
+  estabeComApres(){ //palcos com apresentação do dia
+    var aux = []
+    for (let i = 0; i < this.couvert_info_dia.length; i++) {
+      const element = this.couvert_info_dia[i]["estabe_id"]
+      aux.push(element)
+    }
+
+    this.estabe_cods = [ ...new Set( aux ) ];
+    console.log("EstabeComApres " + this.estabe_cods);
+
   }
 
   palcosComApres(){ //palcos com apresentação do dia
@@ -185,11 +203,11 @@ export class HomePage {
     }
     this.cantores_consulta = aux;
     console.log("cantores_con " + this.cantores_consulta);
-
   }
 
+
   carregarArrays(){ //carregar arrays (results da api)
-    this.carregarCouvertDoDia();
+    this.carregarCouvertDoDiaInfo();
     this.carregarCouvert();
     this.carregarCantoresDoDia();
     this.carregarPalco();

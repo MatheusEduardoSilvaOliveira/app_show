@@ -56,7 +56,12 @@
           <div *ngIf="array_data >= data_atual">
             <div *ngIf="array_data == array_cantores.evento_data">
               <ion-card>
-                <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+                <div *ngIf="array_data == data_atual">
+              <h1 class="title"><strong>HOJE</strong></h1>
+            </div>
+            <div *ngIf="array_data != data_atual">
+              <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+            </div>
               
                 <ion-item>
                   

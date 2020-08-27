@@ -8,7 +8,7 @@
 
   <ion-card>
     <div *ngFor="let array_estabe of estabe_dados">
-      <ion-img src="{{array_estabe.estabe_img}}"></ion-img>
+      <img src="{{array_estabe.estabe_img}}">
 
       <ion-card-header>
         <ion-card-subtitle>
@@ -51,13 +51,13 @@
             <strong>{{array_couvert.cantor_nome}}<br></strong>
 
             <div *ngIf="array_couvert.couvert_hora_ini != null">
-              <strong>Hora Inicial: </strong>{{array_couvert.couvert_hora_ini}}<br>
+              <strong>inícia ás: </strong>{{array_couvert.couvert_hora_ini}}<br>
             </div>
             <div *ngIf="array_couvert.couvert_hora_fin != null">
-              <strong>Hora Final: </strong>{{array_couvert.couvert_hora_fin}}<br>
+              <strong>Encerrasse ás: </strong>{{array_couvert.couvert_hora_fin}}<br>
             </div>
             <div *ngIf="array_couvert.couvert_valor != null">
-              <strong>Valor R$: </strong>{{array_couvert.couvert_valor | number:'1.2-2'}}<br>
+              <strong>Valor: </strong>R$ {{array_couvert.couvert_valor | number:'1.2-2'}}<br>
             </div>
           </ion-label>  
         </ion-item>

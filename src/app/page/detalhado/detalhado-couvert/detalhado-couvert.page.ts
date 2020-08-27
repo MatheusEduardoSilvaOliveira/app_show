@@ -37,8 +37,7 @@ export class DetalhadoCouvertPage implements OnInit {
 
   //realizar consulta das informações do couvert
   carregarCouvert() {
-    this.carregarDadosEstabe();
-    //this.load.present();
+    this.load.present();
     return new Promise(resolve => {
       this.couvert = [];
       let dados = {
@@ -55,11 +54,11 @@ export class DetalhadoCouvertPage implements OnInit {
           for (let i of data['result']) {
             this.couvert.push(i);
           }
-          //this.load.dismiss();
           console.log(this.couvert);
           this.agruparDataDeCouvert();
-          //this.nomeCantoresCadastrados();
           this.couvert_consulta = this.couvert;
+          this.load.dismiss();
+       
         }
         resolve(true);
       });
@@ -68,7 +67,7 @@ export class DetalhadoCouvertPage implements OnInit {
   }
 
   carregarDadosEstabe() {
-    //this.load.present();
+    this.carregarCouvert();
     return new Promise(resolve => {
       this.estabe_dados = [];
       let dados = {
@@ -84,7 +83,6 @@ export class DetalhadoCouvertPage implements OnInit {
           for (let i of data['result']) {
             this.estabe_dados.push(i);
           }
-         //this.load.dismiss();
         }
         console.log(this.estabe_dados)
         resolve(true);
@@ -104,7 +102,7 @@ export class DetalhadoCouvertPage implements OnInit {
   }
 
   ngOnInit() {
-    this.carregarCouvert();
+    this.carregarDadosEstabe();
   }
 
 }

@@ -19,3 +19,29 @@ ion-card-subtitle{
   color: #3E3E3E;
   font-size: 12px;
 }
+
+ion-item{
+  --border-color: #FFFFFF;
+}
+
+.item ion-thumbnail {
+  min-width: 60px;    
+  min-height: 70px;
+  img {
+      max-width: 70px;    
+      min-height: 70px;
+      border-radius: 20%;
+  }
+}
+
+h1.title {
+  margin: 10px 10px 10px 20px;
+  color: #3E3E3E;
+  font-size: 20px;
+}
+
+ion-item ion-label.info_cantor {
+  margin: 10px 10px 10px 0px;
+  color: #3E3E3E;
+  font-size: 16px;
+}

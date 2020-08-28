@@ -36,6 +36,9 @@ export class HomePage {
   estabe_cods = []
   segment = '0'
 
+  sit_couvert = '0' //validar se a imagem de "NENHUM RESULTADO ENCONTRADO" será exibida
+  sit_show = '0' //validar se a imagem de "NENHUM RESULTADO ENCONTRADO" será exibida
+
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
   eventoDetalhado(palco) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
@@ -70,6 +73,7 @@ export class HomePage {
   carregarCouvertDoDiaInfo() { //COUVERTS do dia para carregar preview (cards)
     this.capturarDataHora();
     this.estabeComApres();
+    //this.load.present();
     return new Promise(resolve => {
       this.couvert_info_dia = [];
       let dados = {
@@ -88,6 +92,7 @@ export class HomePage {
           console.log(this.couvert_info_dia);
         }
         this.estabeComApres();
+        //this.load.dismiss();
         resolve(true);
       });
     });
@@ -123,6 +128,7 @@ export class HomePage {
 
   carregarCouvert() { //COUVERTS com datas futuras
     this.capturarDataHora();
+    this.load.present();
     return new Promise(resolve => {
       this.couverts = [];
       let dados = {
@@ -133,6 +139,7 @@ export class HomePage {
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
 
         if (data['result'] == '0') {
+          this.sit_couvert = '1'
           console.log("Array retornou vazio");
         } else {
           for (let i of data['result']) {
@@ -140,6 +147,7 @@ export class HomePage {
           }
           console.log(this.couverts);
         }
+        this.load.dismiss();
         resolve(true);
       });
     });
@@ -156,6 +164,7 @@ export class HomePage {
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
 
         if (data['result'] == '0') {
+          this.sit_show = '1'
           console.log("Array retornou vazio");
         } else {
           for (let i of data['result']) {

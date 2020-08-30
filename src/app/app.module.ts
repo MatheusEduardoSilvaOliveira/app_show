@@ -11,10 +11,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Post } from './services/post';
 import { LoadComponent } from './components/load/load.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+
 registerLocaleData(ptBr)
 
 @NgModule({
@@ -27,6 +29,7 @@ registerLocaleData(ptBr)
     SplashScreen,
     Post,
     LoadComponent,
+    ToastComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

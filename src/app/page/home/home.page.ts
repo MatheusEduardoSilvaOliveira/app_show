@@ -57,6 +57,10 @@ export class HomePage {
     }
   }
 
+  suporte(){
+    this.router.navigate(['/suporte']);
+  }
+
   capturarDataHora() { //capturar data do celular do usuário
     var data = new Date();
     var dia = data.getDate();
@@ -71,8 +75,9 @@ export class HomePage {
   }
 
   carregarCouvertDoDiaInfo() { //COUVERTS do dia para carregar preview (cards)
+    //this.load.present();
     this.capturarDataHora();
-    this.estabeComApres();
+    //this.estabeComApres();
     //this.load.present();
     return new Promise(resolve => {
       this.couvert_info_dia = [];
@@ -92,7 +97,6 @@ export class HomePage {
           console.log(this.couvert_info_dia);
         }
         this.estabeComApres();
-        //this.load.dismiss();
         resolve(true);
       });
     });
@@ -172,6 +176,7 @@ export class HomePage {
           }
           console.log(this.palcos);
         }
+        //this.load.dismiss();
         resolve(true);
       });
     });

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>INFORMAÇÃO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment [(ngModel)]="segment">
+    <ion-segment-button value="0">
+      <ion-label>ATENDIMENTO</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="1">
+      <ion-label>SOBRE</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+
+  <div class="ion-padding">
+    <div *ngIf="segment == 0">
+      <h1 class="ion-text-center">Atendimento Campina Music</h1>
+
+      <ion-item>
+        <ion-label color="primary" position="floating">Nome e sobrenome*</ion-label>
+        <ion-input placeholder="Maria Santos" [(ngModel)] = "nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" position="floating">Telefone para contato*</ion-label>
+        <ion-input placeholder="83900000000" type="number" [(ngModel)] = "contato"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="primary" position="floating">Assunto*</ion-label>
+        <ion-textarea  maxlength="255" placeholder="Como faço para divulgar couverts do meu estabelecimento ?" [(ngModel)] = "desc"></ion-textarea>
+      </ion-item>
+
+      <ion-button expand="block" color="primary" (click)="validarCadastro()" [disabled]="nome == '' || contato == '' || desc == ''">
+        ENVIAR
+      </ion-button>
+      <br>
+      <h5 class="ion-text-center">Todas informações inseridas sobre o <strong>couvert</strong> são fornecidas diretamente pelo respectivo estabelecimento. Em caso de divergência com o aplicativo <strong>Campina Music</strong> entrar em contato conosco.</h5>
+    </div>
+
+
+    <div *ngIf="segment == 1">
+      <ion-item>
+        <ion-label><strong>Desenvolvido por:</strong> Campina Music</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><strong>E-mail:</strong> campinamusic@gmail.com</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><strong>Instagram:</strong> campina_music</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label><strong>Versão do Aplicativo:</strong> 1.0</ion-label>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

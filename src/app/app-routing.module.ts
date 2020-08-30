@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'detalhado-couvert',
     loadChildren: () => import('./page/detalhado/detalhado-couvert/detalhado-couvert.module').then( m => m.DetalhadoCouvertPageModule)
+  },  {
+    path: 'suporte',
+    loadChildren: () => import('./page/suporte/suporte.module').then( m => m.SuportePageModule)
   }
+
 
 ];
 

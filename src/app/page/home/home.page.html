@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>HOME</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button color="medium" (click)="suporte()">
+        <img src="../../../assets/img/suporte-tecnico.png">
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -100,7 +106,7 @@
   <div *ngIf="cantores.length != 0">
 
     <ion-text>
-      <h1>Separamos o(s) show(s) de <strong>hoje</strong> para você!</h1>
+      <h1>Hoje tem <strong>show(s)</strong> em:</h1>
     </ion-text>
   
     <div *ngFor="let array_palco_dia of palco_dia">

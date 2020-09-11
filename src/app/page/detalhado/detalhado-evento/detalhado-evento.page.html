@@ -22,11 +22,6 @@
     Show
   </h1>
 
-  
-  <div class="barra_consulta">
-    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)"></ion-searchbar>
-  </div>
-
   <div class="opcao">
     <ion-segment [(ngModel)]="segment">
       <ion-segment-button value="0">
@@ -36,6 +31,22 @@
         <ion-label>ENCERRADOS</ion-label>
       </ion-segment-button>
     </ion-segment>
+  </div>
+
+  <ion-card>
+    <div *ngFor="let array_palco of palco_dados">
+      <img src="{{array_palco.palco_img}}">
+      
+      <ion-card-content>
+        <ion-card-subtitle>{{array_palco.palco_cidade}}</ion-card-subtitle>
+        <ion-card-title><h3 class="palco_nome"><strong>{{array_palco.palco_nome}}</strong></h3></ion-card-title>
+      </ion-card-content>
+    </div>
+  </ion-card>
+
+  
+  <div class="barra_consulta">
+    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)"></ion-searchbar>
   </div>
 
   <!--SHOWS DISPONÍVEIS-->

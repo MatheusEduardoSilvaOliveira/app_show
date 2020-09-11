@@ -62,8 +62,8 @@ export class HomePage {
     this.segment = 1;
   }
 
-  eventoDetalhado(palco) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
-    localStorage.setItem("palco", palco);
+  eventoDetalhado(palco_id) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
+    localStorage.setItem("palco_id", palco_id);
     this.router.navigate(['/detalhado-evento']);
   }
 
@@ -96,7 +96,7 @@ export class HomePage {
   }
 
   carregarCouvertDoDiaInfo() { //COUVERTS do dia para carregar preview (cards)
-    //this.load.present();
+    this.load.present();
     this.capturarDataHora();
     //this.estabeComApres();
     //this.load.present();
@@ -153,7 +153,7 @@ export class HomePage {
 
   carregarCouvert() { //COUVERTS com datas futuras
     this.capturarDataHora();
-    this.load.present();
+    //this.load.present();
     return new Promise(resolve => {
       this.couverts = [];
       let dados = {
@@ -172,7 +172,7 @@ export class HomePage {
           }
           console.log(this.couverts);
         }
-        this.load.dismiss();
+        //this.load.dismiss();
         resolve(true);
       });
     });
@@ -197,7 +197,7 @@ export class HomePage {
           }
           console.log(this.palcos);
         }
-        //this.load.dismiss();
+        this.load.dismiss();
         resolve(true);
       });
     });

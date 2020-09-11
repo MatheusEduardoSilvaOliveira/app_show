@@ -11,7 +11,7 @@ import { LoadComponent } from 'src/app/components/load/load.component';
 export class DetalhadoEventoPage implements OnInit {
 
   vlr_digitado = ""
-  palco = localStorage.getItem('palco');
+  palco = localStorage.getItem('palco_id');
 
   cantores_consulta = [] //nome cantores
 
@@ -19,6 +19,8 @@ export class DetalhadoEventoPage implements OnInit {
   data_atual = localStorage.getItem('data_atual');
   cantores = []
   palcos = []
+
+  palco_dados = []
 
   maps;
 
@@ -46,7 +48,6 @@ export class DetalhadoEventoPage implements OnInit {
 
     //realizar consulta das informações do cantor
     carregarCantor() {
-      this.load.present();
       return new Promise(resolve => {
         this.cantores = [];
         let dados = {
@@ -63,7 +64,7 @@ export class DetalhadoEventoPage implements OnInit {
               this.cantores.push(i);
             }
             console.log(this.cantores);
-            this.maps = this.cantores[0]['palco_maps']
+            //this.maps = this.cantores[0]['palco_maps']
             this.agruparDataDeShow();
             //this.nomeCantoresCadastrados();
             this.cantores_consulta = this.cantores;
@@ -71,6 +72,34 @@ export class DetalhadoEventoPage implements OnInit {
           }
           resolve(true);
           this.load.dismiss();
+        });
+      });
+  
+    }
+
+    //carregar dados do PALCO
+    carregarDadosPalco() {
+      this.load.present();
+      this.carregarCantor();
+      return new Promise(resolve => {
+        this.palco_dados = [];
+        let dados = {
+          requisicao: 'palco_dados',
+          palco_id: this.palco,
+        };
+  
+        this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+  
+          if (data['result'] == '0') {
+            console.log("Array retornou vazio");
+          } else {
+            for (let i of data['result']) {
+              this.palco_dados.push(i);
+            }
+          }
+          console.log(this.palco_dados)
+          this.maps = this.palco_dados[0]["palco_maps"]
+          resolve(true);
         });
       });
   
@@ -89,7 +118,7 @@ export class DetalhadoEventoPage implements OnInit {
     }
 
   ngOnInit() {
-    this.carregarCantor()
+    this.carregarDadosPalco();
   }
 
 }

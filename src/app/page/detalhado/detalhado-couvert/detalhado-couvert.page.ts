@@ -42,7 +42,6 @@ export class DetalhadoCouvertPage implements OnInit {
 
   //realizar consulta das informações do couvert
   carregarCouvert() {
-    this.load.present();
     return new Promise(resolve => {
       this.couvert = [];
       let dados = {
@@ -73,6 +72,7 @@ export class DetalhadoCouvertPage implements OnInit {
   }
 
   carregarDadosEstabe() {
+    this.load.present();
     this.carregarCouvert();
     return new Promise(resolve => {
       this.estabe_dados = [];

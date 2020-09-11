@@ -4,6 +4,13 @@ import { IonSlides } from '@ionic/angular';
 import { Post } from 'src/app/services/post';
 import { LoadComponent } from 'src/app/components/load/load.component';
 
+import {
+  Plugins,
+  PushNotification,
+  PushNotificationToken,
+  PushNotificationActionPerformed } from '@capacitor/core';
+  const { PushNotifications } = Plugins;
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,6 +18,12 @@ import { LoadComponent } from 'src/app/components/load/load.component';
 })
 export class HomePage {
   @ViewChild('mySlider') slider: IonSlides;
+
+  sliderConfigCategoria= {
+    spaceBetween: -10,
+    centeredSlides: false,
+    slidesPerView: 1.2
+  }
 
   sliderConfigCantor= {
     spaceBetween: -10,
@@ -34,12 +47,20 @@ export class HomePage {
   couverts = []
   couvert_info_dia = []
   estabe_cods = []
-  segment = '0'
+  segment = 0
 
   sit_couvert = '0' //validar se a imagem de "NENHUM RESULTADO ENCONTRADO" será exibida
   sit_show = '0' //validar se a imagem de "NENHUM RESULTADO ENCONTRADO" será exibida
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
+
+  couvert(){
+    this.segment = 0;
+  }
+
+  show(){
+    this.segment = 1;
+  }
 
   eventoDetalhado(palco) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
     localStorage.setItem("palco", palco);
@@ -227,8 +248,59 @@ export class HomePage {
     this.carregarPalco();
   }
 
+
+  
+  
+
   ngOnInit() {
     this.carregarArrays();
+
+    //funções para o push notification
+
+    console.log('Initializing HomePage');
+    // Request permission to use push notifications
+    // iOS will prompt user and return if they granted permission or not
+    // Android will just grant without prompting
+    PushNotifications.requestPermission().then( result => {
+      if (result.granted) {
+        // Register with Apple / Google to receive push via APNS/FCM
+        PushNotifications.register();
+      } else {
+        // Show some error
+      }
+    });
+
+    // On success, we should be able to receive notifications
+    PushNotifications.addListener('registration',
+      (token: PushNotificationToken) => {
+        token.value
+        //alert('Push registration success, token: ' + token.value);
+      }
+    );
+
+    // Some issue with our setup and push will not work
+    PushNotifications.addListener('registrationError',
+      (error: any) => {
+        JSON.stringify(error)
+        //alert('Error on registration: ' + JSON.stringify(error));
+      }
+    );
+
+    // Show us the notification payload if the app is open on our device
+    PushNotifications.addListener('pushNotificationReceived',
+      (notification: PushNotification) => {
+        JSON.stringify(notification)
+        //alert('Push received: ' + JSON.stringify(notification));
+      }
+    );
+
+    // Method called when tapping on a notification
+    PushNotifications.addListener('pushNotificationActionPerformed',
+      (notification: PushNotificationActionPerformed) => {
+        JSON.stringify(notification)
+        //alert('Push action performed: ' + JSON.stringify(notification));
+      }
+    );
   }
 
 }

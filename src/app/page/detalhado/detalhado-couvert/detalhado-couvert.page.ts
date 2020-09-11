@@ -17,8 +17,13 @@ export class DetalhadoCouvertPage implements OnInit {
   data_atual = localStorage.getItem('data_atual');
 
   estabe_dados;
+  maps;
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
 
   
   buscar(ev: any) {
@@ -57,10 +62,11 @@ export class DetalhadoCouvertPage implements OnInit {
           console.log(this.couvert);
           this.agruparDataDeCouvert();
           this.couvert_consulta = this.couvert;
-          this.load.dismiss();
+          
        
         }
         resolve(true);
+        this.load.dismiss();
       });
     });
 
@@ -85,6 +91,7 @@ export class DetalhadoCouvertPage implements OnInit {
           }
         }
         console.log(this.estabe_dados)
+        this.maps = this.estabe_dados[0]["estabe_maps"]
         resolve(true);
       });
     });

@@ -1,3 +1,23 @@
+ion-button{
+    --color: #3E3E3E;
+}
+.title-bar {
+    margin: 0px 10px -10px 10px;
+    color: #3E3E3E;
+}
+
+h1.title {
+margin: 10px 10px 10px 20px;
+color: #3E3E3E;
+font-size: 36px;
+}
+
+h2.sub-title {
+    margin: 10px 10px 10px 20px;
+    color: #3E3E3E;
+    font-size: 20px;
+}
+
 .item ion-thumbnail {
     min-width: 5rem;    
     min-height: 5rem;
@@ -8,13 +28,7 @@
     }
 }
 
-h1.title {
-    margin: 10px 10px 10px 20px;
-    color: #3E3E3E;
-    font-size: 20px;
-}
-
-ion-item ion-label.info_cantor {
+ion-item ion-label {
     margin: 10px 10px 10px 0px;
     color: #3E3E3E;
     font-size: 16px;
@@ -24,7 +38,21 @@ ion-item{
     --border-color: #FFFFFF;//--border-color: #c9c9c9;
 }
 
-ion-card-subtitle{
-    color: #3E3E3E;
-    font-size: 12px;
+//
+
+div.barra_consulta{
+    margin: -10px 10px 0px 10px;
+}
+
+div.opcao{
+    margin: 10px 20px 10px 20px;
+}
+
+ion-card{
+    margin: 20px 20px 20px 20px;
   }
+
+ion-card-subtitle{
+color: #3E3E3E;
+font-size: 12px;
+}

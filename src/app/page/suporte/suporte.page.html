@@ -1,24 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>INFORMAÇÃO</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
-  <ion-segment [(ngModel)]="segment">
-    <ion-segment-button value="0">
-      <ion-label>ATENDIMENTO</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="1">
-      <ion-label>SOBRE</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  <div class="title-bar">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="home()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
 
+  <h1 class="title">
+    Informação
+  </h1>
 
-  <div class="ion-padding">
+  <div class="opcao">
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="0">
+        <ion-label>ATENDIMENTO</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        <ion-label>SOBRE</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
     <div *ngIf="segment == 0">
-      <h1 class="ion-text-center">Atendimento Campina Music</h1>
+      <h2 class="sub-title">
+        Contato:
+      </h2>
 
       <ion-item>
         <ion-label color="primary" position="floating">Nome e sobrenome*</ion-label>
@@ -26,7 +36,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label color="primary" position="floating">Telefone para contato*</ion-label>
+        <ion-label color="primary" position="floating">Telefone para contato(WhatsApp)*</ion-label>
         <ion-input placeholder="83900000000" type="number" [(ngModel)] = "contato"></ion-input>
       </ion-item>
 
@@ -35,7 +45,7 @@
         <ion-textarea  maxlength="255" placeholder="Como faço para divulgar couverts do meu estabelecimento ?" [(ngModel)] = "desc"></ion-textarea>
       </ion-item>
 
-      <ion-button expand="block" color="primary" (click)="validarCadastro()" [disabled]="nome == '' || contato == '' || desc == ''">
+      <ion-button class="btn_enviar" expand="block" color="primary" (click)="validarCadastro()" [disabled]="nome == '' || contato == '' || desc == ''">
         ENVIAR
       </ion-button>
       <br>
@@ -60,5 +70,5 @@
         <ion-label><strong>Versão do Aplicativo:</strong> 1.0</ion-label>
       </ion-item>
     </div>
-  </div>
+
 </ion-content>

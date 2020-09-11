@@ -20,9 +20,15 @@ export class DetalhadoEventoPage implements OnInit {
   cantores = []
   palcos = []
 
+  maps;
+
   segment = '0'
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
 
   buscar(ev: any) {
     this.cantores_consulta = this.cantores;
@@ -56,13 +62,15 @@ export class DetalhadoEventoPage implements OnInit {
             for (let i of data['result']) {
               this.cantores.push(i);
             }
-            this.load.dismiss();
             console.log(this.cantores);
+            this.maps = this.cantores[0]['palco_maps']
             this.agruparDataDeShow();
             //this.nomeCantoresCadastrados();
             this.cantores_consulta = this.cantores;
+            
           }
           resolve(true);
+          this.load.dismiss();
         });
       });
   

@@ -1,10 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>COUVERT</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+
+  <div class="title-bar">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="home()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <div *ngIf="maps != null">
+          <ion-button href="{{maps}}">
+            <ion-icon slot="icon-only" name="navigate-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <h1 class="title">
+    Couvert
+  </h1>
 
   <ion-card>
     <div *ngFor="let array_estabe of estabe_dados">
@@ -34,33 +49,35 @@
   <div *ngFor="let array_data of data_couvert">
     <ion-card>
       <div *ngIf="array_data == data_atual">
-        <h1 class="title"><strong>HOJE</strong></h1>
+        <h2 class="sub-title"><strong>HOJE</strong></h2>
       </div>
       <div *ngIf="array_data != data_atual">
-        <h1 class="title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h1>
+        <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
       </div>
       <div *ngFor="let array_couvert of couvert_consulta">
-      
-        <ion-item>
-          <ion-thumbnail slot="start">
-            <img *ngIf="array_couvert.cantor_img != null" src="{{array_couvert.cantor_img}}">
-            <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
-          </ion-thumbnail>
-          
-          <ion-label class="info_cantor">
-            <strong>{{array_couvert.cantor_nome}}<br></strong>
 
-            <div *ngIf="array_couvert.couvert_hora_ini != null">
-              <strong>Inícia ás: </strong>{{array_couvert.couvert_hora_ini}}<br>
-            </div>
-            <div *ngIf="array_couvert.couvert_hora_fin != null">
-              <strong>Encerrasse ás: </strong>{{array_couvert.couvert_hora_fin}}<br>
-            </div>
-            <div *ngIf="array_couvert.couvert_valor != null">
-              <strong>Valor: </strong>R$ {{array_couvert.couvert_valor | number:'1.2-2'}}<br>
-            </div>
-          </ion-label>  
-        </ion-item>
+        <div *ngIf="array_data == array_couvert.couvert_data">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img *ngIf="array_couvert.cantor_img != null" src="{{array_couvert.cantor_img}}">
+              <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+            </ion-thumbnail>
+            
+            <ion-label class="info_cantor">
+              <strong>{{array_couvert.cantor_nome}}<br></strong>
+
+              <div *ngIf="array_couvert.couvert_hora_ini != null">
+                <strong>Inícia ás: </strong>{{array_couvert.couvert_hora_ini}}<br>
+              </div>
+              <div *ngIf="array_couvert.couvert_hora_fin != null">
+                <strong>Encerrasse ás: </strong>{{array_couvert.couvert_hora_fin}}<br>
+              </div>
+              <div *ngIf="array_couvert.couvert_valor != null">
+                <strong>Valor: </strong>R$ {{array_couvert.couvert_valor | number:'1.2-2'}}<br>
+              </div>
+            </ion-label>  
+          </ion-item>
+      </div>
     </div>
     <br>
     </ion-card>

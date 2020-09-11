@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Campina Music</string>
     <string name="title_activity_main">Campina Music</string>
-    <string name="package_name">app.capimamusic</string>
-    <string name="custom_url_scheme">app.capimamusic</string>
+    <string name="package_name">app.capinamusic</string>
+    <string name="custom_url_scheme">app.capinamusic</string>
 </resources>

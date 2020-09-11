@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "505535459212",
+    "firebase_url": "https://campinamusic-65095.firebaseio.com",
+    "project_id": "campinamusic-65095",
+    "storage_bucket": "campinamusic-65095.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505535459212:android:a9d32e779d7f34c946f0a9",
+        "android_client_info": {
+          "package_name": "app.capinamusic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505535459212-9qbhr5rtr84hkick43u5a18tisasccvr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPeR6Mmh5iNq8Uy1izpyWk4fDMwuQpJhE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505535459212-9qbhr5rtr84hkick43u5a18tisasccvr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

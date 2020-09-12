@@ -2,6 +2,12 @@
   
   <div class="title-bar">
     <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button href="{{insta}}">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      
       <ion-buttons slot="end">
         <ion-button (click)="suporte()">
           <ion-icon slot="icon-only" name="information-outline"></ion-icon>
@@ -19,15 +25,29 @@
   </h2>
 
   <ion-slides [options]="sliderConfigCategoria" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
-    <ion-slide>
+    <ion-slide *ngIf="categoria_select == 0">
 
-      <ion-card (click)="couvert()">
-        <img class="couvert" src="../../../../assets/img/couvert.jpg">
+      <ion-card color="medium" (click)="couvert()">
+        <img src="../../../../assets/img/couvert.jpg">
         <ion-card-subtitle>COUVERT</ion-card-subtitle>
       </ion-card>
-      
+
       <ion-card (click)="show()">
-        <img class="couvert" src="../../../../assets/img/show.jpg">
+        <img src="../../../../assets/img/show.jpg">
+        <ion-card-subtitle>SHOW</ion-card-subtitle>
+      </ion-card>
+
+    </ion-slide>
+
+    <ion-slide *ngIf="categoria_select == 1">
+
+      <ion-card (click)="couvert()">
+        <img src="../../../../assets/img/couvert.jpg">
+        <ion-card-subtitle>COUVERT</ion-card-subtitle>
+      </ion-card>
+
+      <ion-card color="medium" (click)="show()">
+        <img src="../../../../assets/img/show.jpg">
         <ion-card-subtitle>SHOW</ion-card-subtitle>
       </ion-card>
 
@@ -91,18 +111,22 @@
           <ion-card-header>
             <ion-card-subtitle>
               <ion-icon name="pin-outline"></ion-icon>{{array_estabe.estabe_logradouro}}, {{array_estabe.estabe_numero}}, {{array_estabe.estabe_bairro}}, {{array_estabe.estabe_cidade}}-{{array_estabe.estabe_estado}}<br>
+              <!--
               <div *ngIf="array_estabe.estabe_email != null">
                 <ion-icon name="mail-outline"></ion-icon> {{array_estabe.estabe_email}}<br>
               </div>
+              -->
               <div *ngIf="array_estabe.estabe_tel != null">
                 <ion-icon name="call-outline"></ion-icon> {{array_estabe.estabe_tel}}<br>
               </div>
               <div *ngIf="array_estabe.estabe_cel != null">
                 <ion-icon name="logo-whatsapp"></ion-icon> {{array_estabe.estabe_cel}}<br>
               </div>
+              <!--
               <div *ngIf="array_estabe.estabe_insta != null">
                 <ion-icon name="logo-instagram"></ion-icon> {{array_estabe.estabe_insta}}<br>
               </div>
+              -->
             </ion-card-subtitle>
           </ion-card-header>
         </ion-card>  

@@ -28,18 +28,22 @@
       <ion-card-header>
         <ion-card-subtitle>
           <ion-icon name="pin-outline"></ion-icon>{{array_estabe.estabe_logradouro}}, {{array_estabe.estabe_numero}}, {{array_estabe.estabe_bairro}}, {{array_estabe.estabe_cidade}}-{{array_estabe.estabe_estado}}<br>
+          <!-- 
           <div *ngIf="array_estabe.estabe_email != null">
             <ion-icon name="mail-outline"></ion-icon> {{array_estabe.estabe_email}}<br>
           </div>
+          --> 
           <div *ngIf="array_estabe.estabe_tel != null">
             <ion-icon name="call-outline"></ion-icon> {{array_estabe.estabe_tel}}<br>
           </div>
           <div *ngIf="array_estabe.estabe_cel != null">
             <ion-icon name="logo-whatsapp"></ion-icon> {{array_estabe.estabe_cel}}<br>
           </div>
+          <!--
           <div *ngIf="array_estabe.estabe_insta != null">
             <ion-icon name="logo-instagram"></ion-icon> {{array_estabe.estabe_insta}}<br>
           </div>
+          -->
         </ion-card-subtitle>
       </ion-card-header>  
     </div>

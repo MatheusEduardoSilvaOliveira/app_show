@@ -22,7 +22,7 @@ export class HomePage {
   sliderConfigCategoria= {
     spaceBetween: -10,
     centeredSlides: false,
-    slidesPerView: 1.2
+    slidesPerView: 1.2,
   }
 
   sliderConfigCantor= {
@@ -49,38 +49,11 @@ export class HomePage {
   estabe_cods = []
   segment = 0
 
-  sit_couvert = '0' //validar se a imagem de "NENHUM RESULTADO ENCONTRADO" será exibida
-  sit_show = '0' //validar se a imagem de "NENHUM RESULTADO ENCONTRADO" será exibida
+  categoria_select = 0;
+
+  insta="https://www.instagram.com/campina_music/"
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
-
-  couvert(){
-    this.segment = 0;
-  }
-
-  show(){
-    this.segment = 1;
-  }
-
-  eventoDetalhado(palco_id) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
-    localStorage.setItem("palco_id", palco_id);
-    this.router.navigate(['/detalhado-evento']);
-  }
-
-  couvertDetalhado(estabe_id) { // clicar sobre o cantor do ion-card COUVERT e abrir programação
-    localStorage.setItem("estabe_id", estabe_id);
-    this.router.navigate(['/detalhado-couvert']);
-  }
-
-  slidesDidLoad(slides: IonSlides) { // iniciar o play automatico do slide apenas quando preenchida tabela
-    if (this.couvert_info_dia.length != 0) {
-      slides.startAutoplay();
-    }
-  }
-
-  suporte(){
-    this.router.navigate(['/suporte']);
-  }
 
   capturarDataHora() { //capturar data do celular do usuário
     var data = new Date();
@@ -94,6 +67,37 @@ export class HomePage {
     localStorage.setItem('data_atual', this.data_atual)
     console.log("data_cell" + data_servidor)
   }
+
+  slidesDidLoad(slides: IonSlides) { // iniciar o play automatico do slide apenas quando preenchida tabela
+    if (this.couvert_info_dia.length != 0) {
+      slides.startAutoplay();
+    }
+  }
+
+  suporte(){
+    this.router.navigate(['/suporte']);
+  }
+
+  couvert(){
+    this.segment = 0;
+    this.categoria_select = 0;
+  }
+
+  show(){
+    this.segment = 1;
+    this.categoria_select = 1;
+  }
+
+  eventoDetalhado(palco_id) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
+    localStorage.setItem("palco_id", palco_id);
+    this.router.navigate(['/detalhado-evento']);
+  }
+
+  couvertDetalhado(estabe_id) { // clicar sobre o cantor do ion-card COUVERT e abrir programação
+    localStorage.setItem("estabe_id", estabe_id);
+    this.router.navigate(['/detalhado-couvert']);
+  }
+
 
   carregarCouvertDoDiaInfo() { //COUVERTS do dia para carregar preview (cards)
     this.load.present();
@@ -164,7 +168,6 @@ export class HomePage {
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
 
         if (data['result'] == '0') {
-          this.sit_couvert = '1'
           console.log("Array retornou vazio");
         } else {
           for (let i of data['result']) {
@@ -189,7 +192,6 @@ export class HomePage {
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
 
         if (data['result'] == '0') {
-          this.sit_show = '1'
           console.log("Array retornou vazio");
         } else {
           for (let i of data['result']) {

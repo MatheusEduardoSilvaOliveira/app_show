@@ -51,8 +51,6 @@ export class HomePage {
 
   categoria_select = 0;
 
-  insta="https://www.instagram.com/campina_music/"
-
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
   capturarDataHora() { //capturar data do celular do usuário

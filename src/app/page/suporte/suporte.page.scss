@@ -2,42 +2,42 @@ ion-button{
     --color: #3E3E3E;
 }
 .title-bar {
-    margin: 0px 10px -10px 10px;
+    margin: 0rem 0.625rem -0.625rem 0.625rem;
     color: #3E3E3E;
 }
 
 h1.title {
-    margin: 10px 10px 10px 20px;
+    margin: 0.625rem 0.625rem 0.625rem 1.25rem;
     color: #3E3E3E;
-    font-size: 36px;
+    font-size: 2.25rem;
 }
 
 ion-item ion-label {
     color: #3E3E3E;
-    font-size: 14px;
+    font-size: 0.8rem;
 }
 
 div.opcao{
-    margin: 10px 20px 20px 20px;
+    margin: 0.625rem 1.25rem 1.25rem 1.25rem;
 }
 
 h2.sub-title {
-    margin: 10px 10px 10px 20px;
+    margin: 0.625rem 0.625rem 0.625rem 1.25rem;
     color: #3E3E3E;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 h5.ion-text-center{
     color: #3E3E3E;
-    font-size: 12px;
-    margin: 10px 20px 10px 20px
+    font-size: 0.75rem;
+    margin: 0.625rem 1.25rem 0.625rem 0.625rem
 }
 
 ion-item{
-    margin: 10px 20px 10px 20px;
+    margin: 0.625rem 1.25rem 0.625rem 1.25rem;
     --border-color: #FFFFFF;//--border-color: #c9c9c9;
 }
 
 .btn_enviar{
-    margin: 10px 20px 10px 20px
+    margin: 0.625rem 1.25rem 0.625rem 1.25rem
 }

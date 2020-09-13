@@ -18,6 +18,8 @@ export class SuportePage implements OnInit {
   desc = '';
   data = localStorage.getItem('data_atual');
 
+  insta="https://www.instagram.com/campina_music/"
+
   constructor(private router: Router, private provider: Post, private load: LoadComponent, private toast: ToastComponent) { }
 
   zerarVariveis(){

@@ -10,7 +10,7 @@
       <ion-buttons slot="end">
         <div *ngIf="maps != null">
           <ion-button href="{{maps}}">
-            <ion-icon slot="icon-only" name="navigate-outline"></ion-icon>
+            <ion-icon name="pin-outline"></ion-icon>
           </ion-button>
         </div>
       </ion-buttons>
@@ -21,7 +21,7 @@
     Couvert
   </h1>
 
-  <ion-card>
+  <ion-card class="ion-card-estabe">
     <div *ngFor="let array_estabe of estabe_dados">
       <img src="{{array_estabe.estabe_img}}">
 
@@ -66,7 +66,7 @@
               <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
             </ion-thumbnail>
             
-            <ion-label class="info_cantor">
+            <ion-label>
               <strong>{{array_couvert.cantor_nome}}<br></strong>
 
               <div *ngIf="array_couvert.couvert_hora_ini != null">

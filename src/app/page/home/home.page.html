@@ -2,12 +2,6 @@
   
   <div class="title-bar">
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-button href="{{insta}}">
-          <ion-icon name="logo-instagram"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-      
       <ion-buttons slot="end">
         <ion-button (click)="suporte()">
           <ion-icon slot="icon-only" name="information-outline"></ion-icon>
@@ -29,12 +23,12 @@
 
       <ion-card color="medium" (click)="couvert()">
         <img src="../../../../assets/img/couvert.jpg">
-        <ion-card-subtitle>COUVERT</ion-card-subtitle>
+        <ion-card-subtitle><strong>COUVERT</strong></ion-card-subtitle>
       </ion-card>
 
       <ion-card (click)="show()">
         <img src="../../../../assets/img/show.jpg">
-        <ion-card-subtitle>SHOW</ion-card-subtitle>
+        <ion-card-subtitle><strong>SHOW</strong></ion-card-subtitle>
       </ion-card>
 
     </ion-slide>
@@ -43,12 +37,12 @@
 
       <ion-card (click)="couvert()">
         <img src="../../../../assets/img/couvert.jpg">
-        <ion-card-subtitle>COUVERT</ion-card-subtitle>
+        <ion-card-subtitle><strong>COUVERT</strong></ion-card-subtitle>
       </ion-card>
 
       <ion-card color="medium" (click)="show()">
         <img src="../../../../assets/img/show.jpg">
-        <ion-card-subtitle>SHOW</ion-card-subtitle>
+        <ion-card-subtitle><strong>SHOW</strong></ion-card-subtitle>
       </ion-card>
 
     </ion-slide>
@@ -73,8 +67,6 @@
               </div>    
             </div>
 
-            <br>
-
             <div *ngFor="let array_couvert of couvert_info_dia">
               <div *ngIf="estabe_array == array_couvert.estabe_id">
                 <ion-item>
@@ -93,7 +85,6 @@
                 </ion-item>
               </div>
             </div>
-            <br>
           </ion-card>
         </ion-slide>
       </ion-slides>
@@ -105,7 +96,7 @@
       </h3>
       
       <div *ngFor="let array_estabe of couverts">
-        <ion-card (click)="couvertDetalhado(array_estabe.estabe_id)">
+        <ion-card class="ion-card-estabe" (click)="couvertDetalhado(array_estabe.estabe_id)">
           <img src="{{array_estabe.estabe_img}}">
 
           <ion-card-header>
@@ -180,7 +171,7 @@
     </div>
   
     <div *ngFor="let array_palcos of palcos">
-      <ion-card (click)="eventoDetalhado(array_palcos.palco_id)">
+      <ion-card class="ion-card-palco" (click)="eventoDetalhado(array_palcos.palco_id)">
         <img src="{{array_palcos.palco_img}}">
       
         <ion-card-content>

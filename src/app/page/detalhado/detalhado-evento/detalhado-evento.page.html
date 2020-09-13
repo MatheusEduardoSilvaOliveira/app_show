@@ -11,7 +11,7 @@
       <ion-buttons slot="end">
         <div *ngIf="maps != null">
           <ion-button href="{{maps}}">
-            <ion-icon slot="icon-only" name="navigate-outline"></ion-icon>
+            <ion-icon name="pin-outline"></ion-icon>
           </ion-button>
         </div>
       </ion-buttons>
@@ -22,7 +22,7 @@
     Show
   </h1>
 
-  <ion-card>
+  <ion-card class="ion-card-palco">
     <div *ngFor="let array_palco of palco_dados">
       <img src="{{array_palco.palco_img}}">
       

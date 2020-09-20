@@ -62,7 +62,7 @@
             </div>
             <div *ngFor="let array_cantores of cantores_consulta">
               <div *ngIf="array_data == array_cantores.evento_data">
-                <ion-item>
+                <ion-item lines="none">
                   
                   <ion-thumbnail slot="start">
                     <img *ngIf="array_cantores.cantor_img != null" src="{{array_cantores.cantor_img}}">
@@ -80,32 +80,31 @@
     </div>
   
     <div *ngIf="vlr_digitado != ''">
-      <div *ngFor="let array_cantores of cantores_consulta">
-        <div *ngFor="let array_data of data_show">
-          <div *ngIf="array_data >= data_atual">
-            <div *ngIf="array_data == array_cantores.evento_data">
-              <ion-card>
-                <div *ngIf="array_data == data_atual">
+      <div *ngFor="let array_data of data_show">
+        <div *ngIf="array_data >= data_atual">
+          <ion-card>
+            <div *ngIf="array_data == data_atual">
               <h2 class="sub-title"><strong>HOJE</strong></h2>
             </div>
             <div *ngIf="array_data != data_atual">
               <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
             </div>
-              
-                <ion-item>
+            <div *ngFor="let array_cantores of cantores_consulta">
+              <div *ngIf="array_data == array_cantores.evento_data">
+                <ion-item lines="none">
                   
                   <ion-thumbnail slot="start">
                     <img *ngIf="array_cantores.cantor_img != null" src="{{array_cantores.cantor_img}}">
-                    <img *ngIf="array_cantores.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+                    <img *ngIf="array_cantores.cantor_img == null" src="../../../../assets/img/undefined.jpg">  
                   </ion-thumbnail>
                   <ion-label><strong>{{array_cantores.cantor_nome}}</strong></ion-label>
 
                 </ion-item>
-                <br>
-              </ion-card>
+              </div>
             </div>
-          </div>
-        </div>
+            <br>
+          </ion-card>
+        </div>  
       </div>
     </div>
   </div>
@@ -119,7 +118,7 @@
             <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
             <div *ngFor="let array_cantores of cantores_consulta">
               <div *ngIf="array_data == array_cantores.evento_data">
-                <ion-item>
+                <ion-item lines="none">
                   
                   <ion-thumbnail slot="start">
                     <img *ngIf="array_cantores.cantor_img != null" src="{{array_cantores.cantor_img}}">
@@ -137,27 +136,31 @@
     </div>
   
     <div *ngIf="vlr_digitado != ''">
-      <div *ngFor="let array_cantores of cantores_consulta">
-        <div *ngFor="let array_data of data_show">
-          <div *ngIf="array_data < data_atual">
-            <div *ngIf="array_data == array_cantores.evento_data">
-              <ion-card>
-                <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
-              
-                <ion-item>
+      <div *ngFor="let array_data of data_show">
+        <div *ngIf="array_data < data_atual">
+          <ion-card>
+            <div *ngIf="array_data == data_atual">
+              <h2 class="sub-title"><strong>HOJE</strong></h2>
+            </div>
+            <div *ngIf="array_data != data_atual">
+              <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+            </div>
+            <div *ngFor="let array_cantores of cantores_consulta">
+              <div *ngIf="array_data == array_cantores.evento_data">
+                <ion-item lines="none">
                   
                   <ion-thumbnail slot="start">
                     <img *ngIf="array_cantores.cantor_img != null" src="{{array_cantores.cantor_img}}">
-                    <img *ngIf="array_cantores.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+                    <img *ngIf="array_cantores.cantor_img == null" src="../../../../assets/img/undefined.jpg">  
                   </ion-thumbnail>
                   <ion-label><strong>{{array_cantores.cantor_nome}}</strong></ion-label>
 
                 </ion-item>
-                <br>
-              </ion-card>
+              </div>
             </div>
-          </div>
-        </div>
+            <br>
+          </ion-card>
+        </div>  
       </div>
     </div>
   </div>

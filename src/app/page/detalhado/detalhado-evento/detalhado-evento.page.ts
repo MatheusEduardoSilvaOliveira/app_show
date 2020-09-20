@@ -33,16 +33,38 @@ export class DetalhadoEventoPage implements OnInit {
   }
 
   buscar(ev: any) {
+    this.agruparDataDeShow();
     this.cantores_consulta = this.cantores;
 
     const val = ev.target.value;
     console.log(val);
-    if (val && val.trim() != '') {
+    if (val.trim() != '') {
       this.cantores_consulta = this.cantores.filter((item) => {
         console.log("item" + item);
         return (item.cantor_nome.toString().toLowerCase().indexOf(val.toString().toLowerCase()) > -1);
         //return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+
+      const aux_data = []
+      for (let i = 0; i < this.cantores_consulta.length; i++) {
+        aux_data.push(this.cantores_consulta[i]["evento_data"]);
+      }
+      this.data_show = [...new Set(aux_data)];
+      console.log("data" + this.data_show)
+
+      const aux_cantor = []
+      for (let i = 0; i < this.data_show.length; i++) {
+        for(let y = 0; y < this.cantores.length; y++){
+          if(this.data_show[i] == this.cantores[y]["evento_data"]){
+            aux_cantor.push(this.cantores[y]);
+          }
+        }
+      }
+      console.log("aux_cantor" + aux_cantor)
+      this.cantores_consulta = aux_cantor;
+  
+      console.log("1 " + this.cantores_consulta[0])
+      
     }
   }
 

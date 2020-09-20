@@ -69,7 +69,7 @@
 
             <div *ngFor="let array_couvert of couvert_info_dia">
               <div *ngIf="estabe_array == array_couvert.estabe_id">
-                <ion-item>
+                <ion-item lines="none">
                   <ion-thumbnail slot="start">
                     <img *ngIf="array_couvert.cantor_img != null" src="{{array_couvert.cantor_img}}">
                     <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 

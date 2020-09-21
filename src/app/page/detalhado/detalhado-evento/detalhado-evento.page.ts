@@ -23,6 +23,7 @@ export class DetalhadoEventoPage implements OnInit {
   palco_dados = []
 
   maps;
+  img_cantores = null
 
   segment = '0'
 
@@ -99,9 +100,36 @@ export class DetalhadoEventoPage implements OnInit {
   
     }
 
+        //realizar consulta das imagens dos cantores
+        carregarImgCantor() {
+          return new Promise(resolve => {
+            this.img_cantores = [];
+            let dados = {
+              requisicao: 'cantores_detalhados_img',
+              palco: this.palco,
+            };
+      
+            this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+      
+              if (data['result'] == '0') {
+                console.log("Array retornou vazio");
+              } else {
+                for (let i of data['result']) {
+                  this.img_cantores.push(i);
+                }
+                console.log(this.img_cantores);
+                this.agruparDataDeShow(); 
+              }
+              resolve(true);
+            });
+          });
+      
+        }
+
     //carregar dados do PALCO
     carregarDadosPalco() {
       this.load.present();
+      this.carregarImgCantor();
       this.carregarCantor();
       return new Promise(resolve => {
         this.palco_dados = [];

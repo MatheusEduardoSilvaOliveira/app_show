@@ -67,12 +67,20 @@
       <div *ngFor="let array_couvert of couvert_consulta">
 
         <div *ngIf="array_data == array_couvert.couvert_data">
+
           <ion-item lines="none">
-            <ion-thumbnail slot="start">
-              <img *ngIf="array_couvert.cantor_img != null" src="{{array_couvert.cantor_img}}">
-              <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
-            </ion-thumbnail>
-            
+            <div *ngFor="let array_img of img_cantores">
+              <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_couvert.cantor_id">
+                <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
+                <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
+              </ion-thumbnail>
+            </div>  
+            <div *ngIf="img_cantores.length != couvert_consulta.length">
+              <ion-thumbnail slot="start">
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-thumbnail>
+            </div>
+
             <ion-label>
               <strong>{{array_couvert.cantor_nome}}<br></strong>
 

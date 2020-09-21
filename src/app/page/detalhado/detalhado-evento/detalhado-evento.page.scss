@@ -30,6 +30,10 @@ h2.sub-title {
     }
 }
 
+ion-skeleton-text{ //imagem em quanto carrega
+    border-radius: 20%;   
+}
+
 ion-item ion-label {
     margin: 0.625rem 0.625rem 0.625rem 0rem;
     color: #3E3E3E;

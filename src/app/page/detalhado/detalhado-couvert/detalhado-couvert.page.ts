@@ -19,6 +19,7 @@ export class DetalhadoCouvertPage implements OnInit {
   estabe_dados;
   maps;
   whats = null;
+  img_cantores = null;
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
 
@@ -72,7 +73,34 @@ export class DetalhadoCouvertPage implements OnInit {
 
   }
 
+  carregarImgCouvert() {
+    return new Promise(resolve => {
+      this.img_cantores = [];
+      let dados = {
+        requisicao: 'couvert_detalhado_img',
+        estabe_id: localStorage.getItem('estabe_id'),
+        data: this.data_atual,
+      };
+
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.img_cantores.push(i);
+          }
+          console.log(this.img_cantores);
+        }
+        resolve(true);
+
+      });
+    });
+
+  }
+
   carregarDadosEstabe() {
+    this.carregarImgCouvert();
     this.load.present();
     this.carregarCouvert();
     return new Promise(resolve => {

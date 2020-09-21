@@ -44,13 +44,10 @@
     </ion-segment>
   </div>
 
-  <div class="barra_consulta" *ngIf="img_cantores.length == cantores.length">
-    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)"></ion-searchbar>
+  <div class="barra_consulta">
+    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)" [disabled] = "img_cantores.length != cantores.length"></ion-searchbar>
   </div>
 
-  <div class="barra_consulta" *ngIf="img_cantores.length != cantores.length">
-    <ion-label><ion-skeleton-text animated></ion-skeleton-text></ion-label>
-  </div>
   <!--SHOWS DISPONÍVEIS-->
   <div *ngIf="segment == 0">
     <div *ngIf="vlr_digitado == ''">
@@ -109,6 +106,12 @@
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>
+
+                    <div *ngIf="img_cantores.length != cantores.length">
+                      <ion-thumbnail slot="start">
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                      </ion-thumbnail>
+                    </div>
                   </div>  
 
                   <ion-label><strong>{{array_cantores.cantor_nome}}</strong></ion-label>
@@ -178,7 +181,7 @@
                     </ion-thumbnail>
                   </div>  
 
-                  <div *ngIf="img_cantores == null">
+                  <div *ngIf="img_cantores.length != cantores.length">
                     <ion-thumbnail slot="start">
                       <ion-skeleton-text animated></ion-skeleton-text>
                     </ion-thumbnail>

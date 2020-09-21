@@ -8,6 +8,13 @@
         </ion-button>
       </ion-buttons>
       <ion-buttons slot="end">
+        <div *ngIf="whats != null">
+          <ion-button href="{{whats}}">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-buttons>
+      <ion-buttons slot="end">
         <div *ngIf="maps != null">
           <ion-button href="{{maps}}">
             <ion-icon name="pin-outline"></ion-icon>

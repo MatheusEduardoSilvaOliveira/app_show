@@ -100,8 +100,6 @@ export class HomePage {
   carregarCouvertDoDiaInfo() { //COUVERTS do dia para carregar preview (cards)
     this.load.present();
     this.capturarDataHora();
-    //this.estabeComApres();
-    //this.load.present();
     return new Promise(resolve => {
       this.couvert_info_dia = [];
       let dados = {
@@ -197,7 +195,7 @@ export class HomePage {
           }
           console.log(this.palcos);
         }
-        this.load.dismiss();
+        //this.load.dismiss();
         resolve(true);
       });
     });
@@ -212,7 +210,7 @@ export class HomePage {
 
     this.estabe_cods = [ ...new Set( aux ) ];
     console.log("EstabeComApres " + this.estabe_cods);
-
+    this.load.dismiss();
   }
 
   palcosComApres(){ //palcos com apresentação do dia

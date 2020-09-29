@@ -121,8 +121,10 @@ export class DetalhadoCouvertPage implements OnInit {
         }
         console.log(this.estabe_dados)
         this.maps = this.estabe_dados[0]["estabe_maps"]
-        this.whats = "https://api.whatsapp.com/send?1=pt_BR&phone=55" + this.estabe_dados[0]["estabe_cel"].replace(/[\s-()]/g, '');
-        console.log(this.whats)
+        if(this.estabe_dados[0]["estabe_cel"] != null){
+          this.whats = "https://api.whatsapp.com/send?1=pt_BR&phone=55" + this.estabe_dados[0]["estabe_cel"].replace(/[\s-()]/g, '');
+        }
+        //console.log(this.whats)
         resolve(true);
       });
     });

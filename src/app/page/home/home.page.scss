@@ -33,10 +33,12 @@ ion-card-subtitle{
   font-size: 0.87rem;
 }
 
+/*
 ion-thumbnail {
   width: 3.125rem;
   height: 3.5rem;
 }
+*/
 
 .item ion-thumbnail {
   margin: 0.625rem 1.25rem 0.625rem 0rem;
@@ -70,11 +72,22 @@ h3.palco_nome {
 }
 
 ion-card.ion-card-estabe{
-  max-width: 37.5rem;
+  //max-width: 37.5rem;
   margin: 0.625rem 1.25rem 1.25rem;
+  //margin-left: 1.25rem;
+  //margin-right: 1.25rem;
+  //margin-top: 0.625rem;
+}
+
+img.img_estabe{
+  width: 100%;
 }
 
 ion-card.ion-card-palco{
-  max-width: 37.5rem;
+  //max-width: 37.5rem;
   margin: 0.625rem 1.25rem 1.25rem;
+}
+
+img.img_palco{
+  width: 100%;
 }

@@ -46,6 +46,13 @@ div.barra_consulta{
     margin: 0.625rem 0.625rem -0.625rem 0.625rem;
 }
 
+ion-searchbar{
+    padding-left: unset;
+    padding-right: unset;
+    padding-inline-start: 0.625rem;
+    padding-inline-end: 0.625rem;
+}
+
 div.opcao{
     margin: 0.625rem 1.25rem 0.625rem 1.25rem;
 }
@@ -61,6 +68,10 @@ h3.palco_nome {
 }
 
 ion-card.ion-card-palco{
-    max-width: 37.5rem;
-    margin: 0.625rem 1.25rem 1.25rem;
+    //max-width: 37.5rem;
+    margin: 0.625rem 1.25rem 1.625rem;
+}
+
+img.img_palco{
+    width: 100%;
 }

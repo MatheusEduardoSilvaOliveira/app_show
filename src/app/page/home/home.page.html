@@ -97,7 +97,7 @@
       
       <div *ngFor="let array_estabe of couverts">
         <ion-card class="ion-card-estabe" (click)="couvertDetalhado(array_estabe.estabe_id)">
-          <img src="{{array_estabe.estabe_img}}">
+          <img class="img_estabe" src="{{array_estabe.estabe_img}}">
 
           <ion-card-header>
             <ion-card-subtitle>
@@ -172,7 +172,7 @@
   
     <div *ngFor="let array_palcos of palcos">
       <ion-card class="ion-card-palco" (click)="eventoDetalhado(array_palcos.palco_id)">
-        <img src="{{array_palcos.palco_img}}">
+        <img class="img_palco" src="{{array_palcos.palco_img}}">
       
         <ion-card-content>
           <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>

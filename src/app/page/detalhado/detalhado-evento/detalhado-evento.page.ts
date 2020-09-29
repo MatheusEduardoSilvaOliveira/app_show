@@ -94,37 +94,36 @@ export class DetalhadoEventoPage implements OnInit {
             
           }
           resolve(true);
-          this.load.dismiss();
         });
       });
   
     }
 
-        //realizar consulta das imagens dos cantores
-        carregarImgCantor() {
-          return new Promise(resolve => {
-            this.img_cantores = [];
-            let dados = {
-              requisicao: 'cantores_detalhados_img',
-              palco: this.palco,
-            };
-      
-            this.provider.dadosApi(dados, 'api.php').subscribe(data => {
-      
-              if (data['result'] == '0') {
-                console.log("Array retornou vazio");
-              } else {
-                for (let i of data['result']) {
-                  this.img_cantores.push(i);
-                }
-                console.log(this.img_cantores);
-                this.agruparDataDeShow(); 
-              }
-              resolve(true);
-            });
-          });
-      
-        }
+    //realizar consulta das imagens dos cantores
+    carregarImgCantor() {
+      return new Promise(resolve => {
+        this.img_cantores = [];
+        let dados = {
+          requisicao: 'cantores_detalhados_img',
+          palco: this.palco,
+        };
+  
+        this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+  
+          if (data['result'] == '0') {
+            console.log("Array retornou vazio");
+          } else {
+            for (let i of data['result']) {
+              this.img_cantores.push(i);
+            }
+            console.log(this.img_cantores);
+            this.agruparDataDeShow(); 
+          }
+          resolve(true);
+        });
+      });
+  
+    }
 
     //carregar dados do PALCO
     carregarDadosPalco() {
@@ -150,6 +149,7 @@ export class DetalhadoEventoPage implements OnInit {
           console.log(this.palco_dados)
           this.maps = this.palco_dados[0]["palco_maps"]
           resolve(true);
+          this.load.dismiss();
         });
       });
   

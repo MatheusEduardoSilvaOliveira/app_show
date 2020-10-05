@@ -67,7 +67,7 @@ export class DetalhadoCouvertPage implements OnInit {
        
         }
         resolve(true);
-        this.load.dismiss();
+        //this.load.dismiss();
       });
     });
 
@@ -93,7 +93,6 @@ export class DetalhadoCouvertPage implements OnInit {
           console.log(this.img_cantores);
         }
         resolve(true);
-
       });
     });
 
@@ -126,6 +125,7 @@ export class DetalhadoCouvertPage implements OnInit {
         }
         //console.log(this.whats)
         resolve(true);
+        this.load.dismiss();
       });
     });
 

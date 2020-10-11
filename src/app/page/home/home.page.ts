@@ -49,7 +49,7 @@ export class HomePage {
   estabe_cods = []
   segment = 0
 
-  categoria_select = 0;
+  //categoria_select = 0;
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
@@ -67,7 +67,7 @@ export class HomePage {
   }
 
   slidesDidLoad(slides: IonSlides) { // iniciar o play automatico do slide apenas quando preenchida tabela
-    if (this.couvert_info_dia.length != 0) {
+    if (this.couvert_info_dia.length > 1) {
       slides.startAutoplay();
     }
   }
@@ -78,12 +78,12 @@ export class HomePage {
 
   couvert(){
     this.segment = 0;
-    this.categoria_select = 0;
+    //this.categoria_select = 0;
   }
 
   show(){
     this.segment = 1;
-    this.categoria_select = 1;
+    //this.categoria_select = 1;
   }
 
   eventoDetalhado(palco_id) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
@@ -153,7 +153,6 @@ export class HomePage {
 
   carregarCouvert() { //COUVERTS com datas futuras
     this.capturarDataHora();
-    //this.load.present();
     return new Promise(resolve => {
       this.couverts = [];
       let dados = {
@@ -209,7 +208,6 @@ export class HomePage {
 
     this.estabe_cods = [ ...new Set( aux ) ];
     console.log("EstabeComApres " + this.estabe_cods);
-    //this.load.dismiss();
   }
 
   palcosComApres(){ //palcos com apresentação do dia

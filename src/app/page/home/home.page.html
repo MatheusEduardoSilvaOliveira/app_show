@@ -19,33 +19,20 @@
   </h2>
 
   <ion-slides [options]="sliderConfigCategoria" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
-    <ion-slide *ngIf="categoria_select == 0">
+    <ion-slide>
 
-      <ion-card color="medium" (click)="couvert()">
+      <ion-card [class.ion_card_select]="segment == 0" (click)="couvert()">
         <img src="../../../../assets/img/couvert.jpg">
         <ion-card-subtitle><strong>COUVERT</strong></ion-card-subtitle>
       </ion-card>
 
-      <ion-card (click)="show()">
+      <ion-card [class.ion_card_select]="segment == 1" (click)="show()">
         <img src="../../../../assets/img/show.jpg">
         <ion-card-subtitle><strong>SHOW</strong></ion-card-subtitle>
       </ion-card>
 
     </ion-slide>
 
-    <ion-slide *ngIf="categoria_select == 1">
-
-      <ion-card (click)="couvert()">
-        <img src="../../../../assets/img/couvert.jpg">
-        <ion-card-subtitle><strong>COUVERT</strong></ion-card-subtitle>
-      </ion-card>
-
-      <ion-card color="medium" (click)="show()">
-        <img src="../../../../assets/img/show.jpg">
-        <ion-card-subtitle><strong>SHOW</strong></ion-card-subtitle>
-      </ion-card>
-
-    </ion-slide>
   </ion-slides>
 
   <!-- couverts do dia-->

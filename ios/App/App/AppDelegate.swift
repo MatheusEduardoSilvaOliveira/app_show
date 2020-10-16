@@ -1,6 +1,7 @@
 import UIKit
 import Capacitor
 import Firebase
+import FirebaseMessaging
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		completionHandler: {_, _ in })
 		
 		application.registerForRemoteNotifications()
+    
+    Messaging.messaging().subscribe(toTopic: "campina")
 		
     return true
   }
@@ -83,4 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate:UNUserNotificationCenterDelegate{}
+extension AppDelegate:UNUserNotificationCenterDelegate{
+    
+}

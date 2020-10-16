@@ -65,7 +65,7 @@
                 <ion-item lines="none">
 
                   <div *ngFor="let array_img of img_cantores">
-                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id">
+                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.evento_data == array_data">
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>
@@ -102,7 +102,7 @@
                 <ion-item lines="none">
 
                   <div *ngFor="let array_img of img_cantores">
-                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id">
+                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.evento_data == array_data">
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>
@@ -138,7 +138,7 @@
                 <ion-item lines="none">
 
                   <div *ngFor="let array_img of img_cantores">
-                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id">
+                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.evento_data == array_data">
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>
@@ -175,7 +175,7 @@
                 <ion-item lines="none">
                   
                   <div *ngFor="let array_img of img_cantores">
-                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id">
+                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.evento_data == array_data">
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>

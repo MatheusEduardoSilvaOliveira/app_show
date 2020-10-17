@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		completionHandler: {_, _ in })
 		
 		application.registerForRemoteNotifications()
-    
-    Messaging.messaging().subscribe(toTopic: "campina")
 		
     return true
   }

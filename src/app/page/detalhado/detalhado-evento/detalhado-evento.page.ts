@@ -26,6 +26,7 @@ export class DetalhadoEventoPage implements OnInit {
   img_cantores = null
 
   segment = '0'
+  img_carregada = 0;
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
 
@@ -118,6 +119,7 @@ export class DetalhadoEventoPage implements OnInit {
             }
             console.log(this.img_cantores);
             this.agruparDataDeShow(); 
+            this.img_carregada = 1
           }
           resolve(true);
         });

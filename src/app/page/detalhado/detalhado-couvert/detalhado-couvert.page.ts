@@ -20,6 +20,7 @@ export class DetalhadoCouvertPage implements OnInit {
   maps;
   whats = null;
   img_cantores = null;
+  img_carregada = 0;
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
 
@@ -91,6 +92,7 @@ export class DetalhadoCouvertPage implements OnInit {
             this.img_cantores.push(i);
           }
           console.log(this.img_cantores);
+          this.img_carregada = 1;
         }
         resolve(true);
       });

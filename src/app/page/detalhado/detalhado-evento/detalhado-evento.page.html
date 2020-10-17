@@ -45,7 +45,7 @@
   </div>
 
   <div class="barra_consulta">
-    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)" [disabled] = "img_cantores.length != cantores.length"></ion-searchbar>
+    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)" [disabled] = "img_carregada == 0"></ion-searchbar>
   </div>
 
   <!--SHOWS DISPONÍVEIS-->
@@ -65,12 +65,12 @@
                 <ion-item lines="none">
 
                   <div *ngFor="let array_img of img_cantores">
-                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.evento_data == array_data">
+                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id">
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>
                   </div>  
-                  <div *ngIf="img_cantores.length != cantores.length">
+                  <div *ngIf="img_carregada == 0">
                     <ion-thumbnail slot="start">
                       <ion-skeleton-text animated></ion-skeleton-text>
                     </ion-thumbnail>
@@ -102,12 +102,12 @@
                 <ion-item lines="none">
 
                   <div *ngFor="let array_img of img_cantores">
-                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.evento_data == array_data">
+                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id">
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>
 
-                    <div *ngIf="img_cantores.length != cantores.length">
+                    <div *ngIf="img_carregada == 0">
                       <ion-thumbnail slot="start">
                         <ion-skeleton-text animated></ion-skeleton-text>
                       </ion-thumbnail>
@@ -138,12 +138,12 @@
                 <ion-item lines="none">
 
                   <div *ngFor="let array_img of img_cantores">
-                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.evento_data == array_data">
+                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id">
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>
                   </div>  
-                  <div *ngIf="img_cantores.length != cantores.length">
+                  <div *ngIf="img_carregada == 0">
                     <ion-thumbnail slot="start">
                       <ion-skeleton-text animated></ion-skeleton-text>
                     </ion-thumbnail>
@@ -175,13 +175,13 @@
                 <ion-item lines="none">
                   
                   <div *ngFor="let array_img of img_cantores">
-                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.evento_data == array_data">
+                    <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id">
                       <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
                       <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
                     </ion-thumbnail>
                   </div>  
 
-                  <div *ngIf="img_cantores.length != cantores.length">
+                  <div *ngIf="img_carregada == 0">
                     <ion-thumbnail slot="start">
                       <ion-skeleton-text animated></ion-skeleton-text>
                     </ion-thumbnail>

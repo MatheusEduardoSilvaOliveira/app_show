@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>505535459212-pb8apohdgel2acekqojfpvk14sjsun2p.apps.googleusercontent.com</string>
+	<string>505535459212-2k0nc8tlqlpgvnqakpd2p66clb4a0bbh.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.505535459212-pb8apohdgel2acekqojfpvk14sjsun2p</string>
+	<string>com.googleusercontent.apps.505535459212-2k0nc8tlqlpgvnqakpd2p66clb4a0bbh</string>
 	<key>API_KEY</key>
 	<string>AIzaSyArU7Um-E0WNsNHh116L6FDYFBU10nAUPM</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>app.capinamusic</string>
+	<string>app.campina</string>
 	<key>PROJECT_ID</key>
 	<string>campinamusic-65095</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:505535459212:ios:9bac80b82afc710046f0a9</string>
+	<string>1:505535459212:ios:324841eb4b5960b746f0a9</string>
 	<key>DATABASE_URL</key>
 	<string>https://campinamusic-65095.firebaseio.com</string>
 </dict>

@@ -22,7 +22,7 @@
     Show
   </h1>
 
-  <ion-card class="ion-card-palco">
+  <ion-card mode="ios" class="ion-card-palco">
     <div *ngFor="let array_palco of palco_dados">
       <img class="img_palco" src="{{array_palco.palco_img}}">
       
@@ -45,7 +45,7 @@
   </div>
 
   <div class="barra_consulta">
-    <ion-searchbar animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)" [disabled] = "img_carregada == 0"></ion-searchbar>
+    <ion-searchbar  mode="ios" animated placeholder="Artista" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)" [disabled] = "img_carregada == 0"></ion-searchbar>
   </div>
 
   <!--SHOWS DISPONÍVEIS-->
@@ -53,7 +53,7 @@
     <div *ngIf="vlr_digitado == ''">
       <div *ngFor="let array_data of data_show">
         <div *ngIf="array_data >= data_atual">
-          <ion-card>
+          <ion-card mode="ios">
             <div *ngIf="array_data == data_atual">
               <h2 class="sub-title"><strong>HOJE</strong></h2>
             </div>
@@ -90,7 +90,7 @@
     <div *ngIf="vlr_digitado != ''">
       <div *ngFor="let array_data of data_show">
         <div *ngIf="array_data >= data_atual">
-          <ion-card>
+          <ion-card mode="ios">
             <div *ngIf="array_data == data_atual">
               <h2 class="sub-title"><strong>HOJE</strong></h2>
             </div>
@@ -131,7 +131,7 @@
     <div *ngIf="vlr_digitado == ''">
       <div *ngFor="let array_data of data_show">
         <div *ngIf="array_data < data_atual">
-          <ion-card>
+          <ion-card mode="ios">
             <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
             <div *ngFor="let array_cantores of cantores_consulta">
               <div *ngIf="array_data == array_cantores.evento_data">
@@ -163,7 +163,7 @@
     <div *ngIf="vlr_digitado != ''">
       <div *ngFor="let array_data of data_show">
         <div *ngIf="array_data < data_atual">
-          <ion-card>
+          <ion-card mode="ios">
             <div *ngIf="array_data == data_atual">
               <h2 class="sub-title"><strong>HOJE</strong></h2>
             </div>

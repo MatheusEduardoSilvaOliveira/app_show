@@ -28,7 +28,7 @@
     Couvert
   </h1>
 
-  <ion-card class="ion-card-estabe">
+  <ion-card mode="ios" class="ion-card-estabe">
     <div *ngFor="let array_estabe of estabe_dados">
       <img class="img_estabe" src="{{array_estabe.estabe_img}}">
 
@@ -57,7 +57,7 @@
   </ion-card>
 
   <div *ngFor="let array_data of data_couvert">
-    <ion-card>
+    <ion-card mode="ios">
       <div *ngIf="array_data == data_atual">
         <h2 class="sub-title"><strong>HOJE</strong></h2>
       </div>

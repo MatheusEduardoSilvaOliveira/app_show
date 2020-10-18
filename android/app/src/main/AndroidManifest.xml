@@ -34,7 +34,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_baseline_music_note_24" />
+            android:resource="@drawable/ic_icone"/>
         <meta-data android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/defaultNotificationColor" />
     </application>

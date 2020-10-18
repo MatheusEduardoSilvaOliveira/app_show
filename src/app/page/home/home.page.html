@@ -18,22 +18,22 @@
     Categorias:
   </h2>
 
-  <ion-slides [options]="sliderConfigCategoria" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+  <ion-slides [options]="sliderConfigCategoria" #mySlider>
     <ion-slide>
 
-      <ion-card [class.ion_card_select]="segment == 0" (click)="couvert()">
+      <ion-card mode="ios" [class.ion_card_select]="segment == 0" (click)="couvert()">
         <img src="../../../../assets/img/couvert.jpg">
         <ion-card-subtitle><strong>COUVERT</strong></ion-card-subtitle>
       </ion-card>
 
-      <ion-card [class.ion_card_select]="segment == 1" (click)="show()">
+      <ion-card mode="ios" [class.ion_card_select]="segment == 1" (click)="show()">
         <img src="../../../../assets/img/show.jpg">
         <ion-card-subtitle><strong>SHOW</strong></ion-card-subtitle>
       </ion-card>
 
-      <ion-card [class.ion_card_select]="segment == 2" (click)="promocao()">
+      <ion-card mode="ios" [class.ion_card_select]="segment == 2" (click)="promocao()">
         <img src="../../../../assets/img/alto.jpg">
-        <ion-card-subtitle><strong>DIVULGA</strong></ion-card-subtitle>
+        <ion-card-subtitle><strong>DIVULGAÇÃO</strong></ion-card-subtitle>
       </ion-card>
 
     </ion-slide>
@@ -51,7 +51,7 @@
       <ion-slides [options]="sliderConfigCouvert" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
         <ion-slide *ngFor="let estabe_array of estabe_cods">
 
-          <ion-card (click)="couvertDetalhado(estabe_array)">
+          <ion-card mode="ios" (click)="couvertDetalhado(estabe_array)">
 
             <div *ngFor="let array_estabe of couverts"> 
               <div *ngIf="array_estabe.estabe_id == estabe_array">
@@ -88,7 +88,7 @@
       </h3>
       
       <div *ngFor="let array_estabe of couverts">
-        <ion-card class="ion-card-estabe" (click)="couvertDetalhado(array_estabe.estabe_id)">
+        <ion-card mode="ios" class="ion-card-estabe" (click)="couvertDetalhado(array_estabe.estabe_id)">
           <img class="img_estabe" src="{{array_estabe.estabe_img}}">
 
           <ion-card-header>
@@ -137,7 +137,7 @@
           <ion-slides [options]="sliderConfigCantor" #mySlider>
               
             <ion-slide *ngFor="let array_cantor of cantores_consulta">
-              <ion-card (click)="eventoDetalhado(array_palco_dia)">
+              <ion-card mode="ios" (click)="eventoDetalhado(array_palco_dia)">
                   <div *ngIf="array_cantor.cantor_img == null">
                     <img src="../../../assets/img/undefined.jpg">
                   </div>
@@ -163,7 +163,7 @@
     </div>
   
     <div *ngFor="let array_palcos of palcos">
-      <ion-card class="ion-card-palco" (click)="eventoDetalhado(array_palcos.palco_id)">
+      <ion-card mode="ios" class="ion-card-palco" (click)="eventoDetalhado(array_palcos.palco_id)">
         <img class="img_palco" src="{{array_palcos.palco_img}}">
       
         <ion-card-content>
@@ -185,7 +185,7 @@
   <div *ngIf="segment == 2">
 
     <h3 class="sub-title">Confira nossas <strong>divulgações:</strong></h3>
-    <ion-card>
+    <ion-card mode="ios">
       <img src="http://www.sedsoft.com.br/app_music/card1.jpg">
       
 
@@ -199,9 +199,7 @@
       </ion-card-content>
     </ion-card>
 
-    <br>
-
-    <ion-card>
+    <ion-card mode="ios">
       <img src="https://www.robertocrispim.com.br/wp-content/uploads/2018/06/ultima-noite-no-parque-do-povo-1-620x400.jpg">
 
       <ion-card-header>

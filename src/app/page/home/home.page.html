@@ -31,6 +31,11 @@
         <ion-card-subtitle><strong>SHOW</strong></ion-card-subtitle>
       </ion-card>
 
+      <ion-card [class.ion_card_select]="segment == 2" (click)="promocao()">
+        <img src="../../../../assets/img/alto.jpg">
+        <ion-card-subtitle><strong>DIVULGA</strong></ion-card-subtitle>
+      </ion-card>
+
     </ion-slide>
 
   </ion-slides>
@@ -175,5 +180,41 @@
     -->
   
   </div>
+
+  
+  <div *ngIf="segment == 2">
+
+    <h3 class="sub-title">Confira nossas <strong>divulgações:</strong></h3>
+    <ion-card>
+      <img src="http://www.sedsoft.com.br/app_music/card1.jpg">
+      
+
+      <ion-card-header>
+        <ion-card-subtitle>Aplicativo</ion-card-subtitle>
+        <ion-card-title>Campina Music</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Divulgações de couverts  e shows da cidade de Campina Grande - PB e municípios próximos. Baixe o app e seja o primeiro a ficar por dentro das novidades!
+      </ion-card-content>
+    </ion-card>
+
+    <br>
+
+    <ion-card>
+      <img src="https://www.robertocrispim.com.br/wp-content/uploads/2018/06/ultima-noite-no-parque-do-povo-1-620x400.jpg">
+
+      <ion-card-header>
+        <ion-card-subtitle>Festa</ion-card-subtitle>
+        <ion-card-title>São João Campina Grande - PB</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        São João de 2020 cancelado.
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
 
 </ion-content>

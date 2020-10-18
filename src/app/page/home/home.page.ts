@@ -22,7 +22,7 @@ export class HomePage {
   sliderConfigCategoria= {
     spaceBetween: -10,
     centeredSlides: false,
-    slidesPerView: 1.2,
+    slidesPerView: 0.8,
   }
 
   sliderConfigCantor= {
@@ -83,6 +83,11 @@ export class HomePage {
 
   show(){
     this.segment = 1;
+    //this.categoria_select = 1;
+  }
+
+  promocao(){
+    this.segment = 2;
     //this.categoria_select = 1;
   }
 

@@ -23,12 +23,16 @@
   <div class="opcao">
     <ion-segment mode="ios" [(ngModel)]="segment">
       <ion-segment-button value="0">
-        <ion-label>ATENDIMENTO</ion-label>
+        <ion-label>SUPORTE</ion-label>
       </ion-segment-button>
       <ion-segment-button value="1">
         <ion-label>SOBRE</ion-label>
       </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>NOTIFICAÇÃO</ion-label>
+      </ion-segment-button>
     </ion-segment>
+    
   </div>
 
     <div *ngIf="segment == 0">
@@ -69,6 +73,23 @@
         <ion-item>
           <ion-label><strong>Versão do Aplicativo:</strong> 1.0</ion-label>
         </ion-item>
+      </ion-card>
+    </div>
+
+    <div *ngIf="segment == 2">
+      <ion-card>
+        <ion-card-content>
+          <h5 class="título">EVENTO CANCELADO</h5>
+          <h5 class="texto">São João de 2020 cancelado.</h5>
+          <h5 class="data">Data de notificação 17/10/2020</h5>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-card-content>
+          <h5 class="título">FESTAS</h5>
+          <h5 class="texto">Confira a programação desse final de semana!</h5>
+          <h5 class="data">Data de notificação 15/10/2020</h5>
+        </ion-card-content>
       </ion-card>
     </div>
 

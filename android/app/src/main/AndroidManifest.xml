@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.capinamusic">
+    package="app.campina">
 
     <application
         android:usesCleartextTraffic="true"
@@ -13,7 +13,7 @@
 
         <activity
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
-            android:name="app.capinamusic.MainActivity"
+            android:name="app.campina.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBarLaunch"
             android:launchMode="singleTask">
@@ -37,6 +37,18 @@
             android:resource="@drawable/ic_icone"/>
         <meta-data android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/defaultNotificationColor" />
+
+        <!--
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+        -->
     </application>
 
     <!-- Permissions -->

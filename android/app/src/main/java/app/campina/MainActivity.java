@@ -1,4 +1,4 @@
-package app.capinamusic;
+package app.campina;
 
 import android.os.Bundle;
 

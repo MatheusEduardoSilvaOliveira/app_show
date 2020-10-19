@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "app.capinamusic"
+        applicationId "app.campina"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -17,6 +17,8 @@ android {
         }
     }
 }
+
+apply plugin: 'com.google.gms.google-services'
 
 repositories {
     flatDir{
@@ -32,6 +34,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation project(':capacitor-cordova-android-plugins')
+	implementation 'com.google.firebase:firebase-core:17.0.0'
 }
 
 apply from: 'capacitor.build.gradle'

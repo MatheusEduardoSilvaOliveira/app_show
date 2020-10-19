@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:505535459212:android:a9d32e779d7f34c946f0a9",
+        "mobilesdk_app_id": "1:505535459212:android:9e8143a72cf56cf746f0a9",
         "android_client_info": {
-          "package_name": "app.capinamusic"
+          "package_name": "app.campina"
         }
       },
       "oauth_client": [
@@ -30,6 +30,13 @@
             {
               "client_id": "505535459212-9qbhr5rtr84hkick43u5a18tisasccvr.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "505535459212-2k0nc8tlqlpgvnqakpd2p66clb4a0bbh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.campina"
+              }
             }
           ]
         }

@@ -24,8 +24,8 @@ export class DetalhadoCouvertPage implements OnInit {
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
 
-  home(){
-    this.router.navigate(['/home']);
+  couvertRota(){
+    this.router.navigate(['/tabs/couvert']);
   }
 
   

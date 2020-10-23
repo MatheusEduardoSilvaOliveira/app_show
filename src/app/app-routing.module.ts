@@ -4,26 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    loadChildren: () => import('../app/page/tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./page/home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: 'detalhado-evento',
-    loadChildren: () => import('./page/detalhado/detalhado-evento/detalhado-evento.module').then( m => m.DetalhadoEventoPageModule)
+    path: 'suporte',
+    loadChildren: () => import('../app/page/suporte/suporte.module').then( m => m.SuportePageModule)
   },
   {
     path: 'detalhado-couvert',
-    loadChildren: () => import('./page/detalhado/detalhado-couvert/detalhado-couvert.module').then( m => m.DetalhadoCouvertPageModule)
-  },  {
-    path: 'suporte',
-    loadChildren: () => import('./page/suporte/suporte.module').then( m => m.SuportePageModule)
+    loadChildren: () => import('../app/page/detalhado/detalhado-couvert/detalhado-couvert.module').then( m => m.DetalhadoCouvertPageModule)
+  },
+  {
+    path: 'detalhado-evento',
+    loadChildren: () => import('../app/page/detalhado/detalhado-evento/detalhado-evento.module').then( m => m.DetalhadoEventoPageModule)
   }
-
-
 ];
 
 @NgModule({

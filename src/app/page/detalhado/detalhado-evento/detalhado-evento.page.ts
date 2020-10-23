@@ -30,8 +30,8 @@ export class DetalhadoEventoPage implements OnInit {
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
 
-  home(){
-    this.router.navigate(['/home']);
+  showRota(){
+    this.router.navigate(['/tabs/show']);
   }
 
   buscar(ev: any) {

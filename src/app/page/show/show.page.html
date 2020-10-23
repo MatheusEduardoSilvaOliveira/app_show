@@ -1,0 +1,67 @@
+<ion-content>
+
+  <div class="title-bar">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="suporte()">
+          <ion-icon slot="icon-only" name="information-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <h1 class="title">
+    Campina Music
+  </h1>
+      
+  <div *ngIf="cantores.length != 0">
+
+    <h3 class="sub-title">Hoje tem <strong>show(s)</strong> em:</h3>
+
+    <div *ngFor="let array_palco_dia of palco_dia">
+      <div [hidden]="cantoresPorPalco(array_palco_dia)"></div> <!-- atualizar lista de cantores de acordo com palco | OBS: Pois não é aceito condição dentro do slide-->
+      
+        <div *ngFor="let array_palcos of palcos">
+          <div *ngIf="array_palco_dia == array_palcos.palco_id">
+            <h3 class="sub-title"><strong>{{array_palcos.palco_nome}}:</strong></h3>
+          </div>
+        </div>
+
+        <ion-slides [options]="sliderConfigCantor" #mySlider>
+            
+          <ion-slide *ngFor="let array_cantor of cantores_consulta">
+            <ion-card mode="ios" (click)="eventoDetalhado(array_palco_dia)">
+                <div *ngIf="array_cantor.cantor_img == null">
+                  <img src="../../../assets/img/undefined.jpg">
+                </div>
+                <div *ngIf="array_cantor.cantor_img != null">
+                  <img src="{{array_cantor.cantor_img}}">
+                </div>
+                <ion-card-header>
+
+                  <ion-card-title>
+                    <h3 class="cantor_nome"><strong>{{array_cantor.cantor_nome}}</strong></h3>
+                  </ion-card-title>
+                </ion-card-header>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+    </div>
+  </div>
+
+  <div *ngIf="palcos.length != 0">
+    <h3 class="sub-title">Confira <strong>toda</strong> a programação:</h3>
+  </div>
+
+  <div *ngFor="let array_palcos of palcos">
+    <ion-card mode="ios" class="ion-card-palco" (click)="eventoDetalhado(array_palcos.palco_id)">
+      <img class="img_palco" src="{{array_palcos.palco_img}}">
+    
+      <ion-card-content>
+        <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>
+        <ion-card-title><h3 class="palco_nome"><strong>{{array_palcos.palco_nome}}</strong></h3></ion-card-title>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

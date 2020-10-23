@@ -28,8 +28,8 @@ export class SuportePage implements OnInit {
     this.desc = '';
   }
 
-  home(){
-    this.router.navigate(['/home']);
+  couvert(){
+    this.router.navigate(['/tabs/couvert']);
   }
 
   validarCadastro(){
@@ -71,7 +71,7 @@ export class SuportePage implements OnInit {
       });
       this.zerarVariveis();
       resolve(true);
-      this.home();
+      this.couvert();
     });
 
   }

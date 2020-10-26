@@ -27,7 +27,7 @@ export class CouvertPage implements OnInit {
 
   couverts = []
   couvert_info_dia = []
-  estabe_cods = []
+  estabe_cods = [] 
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 

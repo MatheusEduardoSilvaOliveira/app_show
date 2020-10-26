@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/services/post';
 import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-detalhado-evento',
@@ -28,11 +29,43 @@ export class DetalhadoEventoPage implements OnInit {
   segment = '0'
   img_carregada = 0;
 
-  constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
+  data_br;
+
+  share_array_cantor: string
+
+  constructor(private provider: Post, private router: Router, private load: LoadComponent, private socialSharing: SocialSharing) { }
 
   showRota(){
     this.router.navigate(['/tabs/show']);
   }
+
+  formatDataBr(data){
+    this.data_br = []
+    var dia = data.substring(8,10)
+    console.log(dia)
+    var mes = data.substring(5,7)
+    console.log(mes)
+    var ano = data.substring(0,4)
+    console.log(ano)
+    this.data_br = dia + '/' + mes + '/' + ano
+  }
+
+
+  compartilhar(data){
+    this.share_array_cantor = ""
+   
+    for (let i = 0; i < this.cantores.length; i++) {
+      if(this.cantores[i]["evento_data"] == data){
+        this.share_array_cantor = this.share_array_cantor + this.cantores[i]["cantor_nome"] + "\n"
+      } 
+    }
+    this.formatDataBr(data)
+    console.log(this.share_array_cantor)
+    this.socialSharing.share("Dia " + this.data_br + "\n \n" + 
+                            "Cantores: " + "\n" + this.share_array_cantor + "\n" + 
+                            "Fonte: Aplicativo Campina Music", '', this.palco_dados[0]["palco_img"]);
+  }
+
 
   buscar(ev: any) {
     this.agruparDataDeShow();

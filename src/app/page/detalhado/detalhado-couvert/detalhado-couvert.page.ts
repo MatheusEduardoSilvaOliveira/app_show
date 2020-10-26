@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/services/post';
 import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-detalhado-couvert',
@@ -22,13 +23,43 @@ export class DetalhadoCouvertPage implements OnInit {
   img_cantores = null;
   img_carregada = 0;
 
-  constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
+  data_br;
+
+  share_array_cantor: string
+
+  constructor(private provider: Post, private router: Router, private load: LoadComponent, private socialSharing: SocialSharing) { }
 
   couvertRota(){
     this.router.navigate(['/tabs/couvert']);
   }
 
-  
+  formatDataBr(data){
+    this.data_br = []
+    var dia = data.substring(8,10)
+    console.log(dia)
+    var mes = data.substring(5,7)
+    console.log(mes)
+    var ano = data.substring(0,4)
+    console.log(ano)
+    this.data_br = dia + '/' + mes + '/' + ano
+  }
+
+  compartilhar(data){
+    this.share_array_cantor = ""
+   
+    for (let i = 0; i < this.couvert_consulta.length; i++) {
+      if(this.couvert_consulta[i]["couvert_data"] == data){
+        this.share_array_cantor = this.share_array_cantor + this.couvert_consulta[i]["cantor_nome"] + " - " + "Inícia ás " + this.couvert_consulta[i]["couvert_hora_ini"] + "\n"
+      } 
+    }
+    this.formatDataBr(data)
+    console.log(this.share_array_cantor)
+    this.socialSharing.share("Dia " + this.data_br + "\n \n" + 
+                            "Cantores: " + "\n" + this.share_array_cantor + "\n" + 
+                            "Fonte: Aplicativo Campina Music", '', this.estabe_dados[0]["estabe_img"]);
+  }
+
+  /*
   buscar(ev: any) {
     this.couvert_consulta = this.couvert;
 
@@ -42,6 +73,7 @@ export class DetalhadoCouvertPage implements OnInit {
       })
     }
   }
+  */
 
   //realizar consulta das informações do couvert
   carregarCouvert() {

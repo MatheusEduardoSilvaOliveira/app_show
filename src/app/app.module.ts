@@ -13,6 +13,8 @@ import { Post } from './services/post';
 import { LoadComponent } from './components/load/load.component';
 import { ToastComponent } from './components/toast/toast.component';
 
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
@@ -30,6 +32,7 @@ registerLocaleData(ptBr)
     Post,
     LoadComponent,
     ToastComponent,
+    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -55,10 +55,24 @@
         <div *ngIf="array_data >= data_atual">
           <ion-card mode="ios">
             <div *ngIf="array_data == data_atual">
-              <h2 class="sub-title"><strong>HOJE</strong></h2>
+              <ion-item lines="none">
+                <h2 class="sub-title"><strong>HOJE</strong></h2>
+                <ion-buttons slot="end" class="share_button">
+                  <ion-button class="share_button" (click)="compartilhar(array_data)">
+                    <ion-icon name="share-outline"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
             </div>
             <div *ngIf="array_data != data_atual">
-              <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+              <ion-item lines="none">
+                <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+                <ion-buttons slot="end" class="share_button">
+                  <ion-button class="share_button" (click)="compartilhar(array_data)">
+                    <ion-icon name="share-outline"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
             </div>
             <div *ngFor="let array_cantores of cantores_consulta">
               <div *ngIf="array_data == array_cantores.evento_data">
@@ -97,10 +111,24 @@
         <div *ngIf="array_data >= data_atual">
           <ion-card mode="ios">
             <div *ngIf="array_data == data_atual">
-              <h2 class="sub-title"><strong>HOJE</strong></h2>
+              <ion-item lines="none">
+                <h2 class="sub-title"><strong>HOJE</strong></h2>
+                <ion-buttons slot="end" class="share_button">
+                  <ion-button class="share_button" (click)="compartilhar(array_data)">
+                    <ion-icon name="share-outline"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
             </div>
             <div *ngIf="array_data != data_atual">
-              <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+              <ion-item lines="none">
+                <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+                <ion-buttons slot="end" class="share_button">
+                  <ion-button class="share_button" (click)="compartilhar(array_data)">
+                    <ion-icon name="share-outline"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
             </div>
             <div *ngFor="let array_cantores of cantores_consulta">
               <div *ngIf="array_data == array_cantores.evento_data">
@@ -137,7 +165,14 @@
       <div *ngFor="let array_data of data_show">
         <div *ngIf="array_data < data_atual">
           <ion-card mode="ios">
-            <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+            <ion-item lines="none">
+              <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+              <ion-buttons slot="end" class="share_button">
+                <ion-button class="share_button" (click)="compartilhar(array_data)">
+                  <ion-icon name="share-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
             <div *ngFor="let array_cantores of cantores_consulta">
               <div *ngIf="array_data == array_cantores.evento_data">
                 <ion-item lines="none">
@@ -170,10 +205,24 @@
         <div *ngIf="array_data < data_atual">
           <ion-card mode="ios">
             <div *ngIf="array_data == data_atual">
-              <h2 class="sub-title"><strong>HOJE</strong></h2>
+              <ion-item lines="none">
+                <h2 class="sub-title"><strong>HOJE</strong></h2>
+                <ion-buttons slot="end" class="share_button">
+                  <ion-button class="share_button" (click)="compartilhar(array_data)">
+                    <ion-icon name="share-outline"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
             </div>
             <div *ngIf="array_data != data_atual">
-              <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+              <ion-item lines="none">
+                <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+                <ion-buttons slot="end" class="share_button">
+                  <ion-button class="share_button" (click)="compartilhar(array_data)">
+                    <ion-icon name="share-outline"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
             </div>
             <div *ngFor="let array_cantores of cantores_consulta">
               <div *ngIf="array_data == array_cantores.evento_data">

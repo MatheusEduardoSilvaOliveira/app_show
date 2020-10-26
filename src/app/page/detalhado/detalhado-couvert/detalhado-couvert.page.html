@@ -59,10 +59,25 @@
   <div *ngFor="let array_data of data_couvert">
     <ion-card mode="ios">
       <div *ngIf="array_data == data_atual">
-        <h2 class="sub-title"><strong>HOJE</strong></h2>
+        <ion-item lines="none">
+          <h2 class="sub-title"><strong>HOJE</strong></h2>
+          <ion-buttons slot="end" class="share_button">
+            <ion-button class="share_button" (click)="compartilhar(array_data)">
+              <ion-icon name="share-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+        
       </div>
       <div *ngIf="array_data != data_atual">
-        <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+        <ion-item lines="none">
+          <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+          <ion-buttons slot="end" class="share_button">
+            <ion-button class="share_button" (click)="compartilhar(array_data)">
+              <ion-icon name="share-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
       </div>
       <div *ngFor="let array_couvert of couvert_consulta">
 
@@ -97,7 +112,7 @@
           </ion-item>
       </div>
     </div>
-    <br>
+    <br>  
     </ion-card>
   </div>
 

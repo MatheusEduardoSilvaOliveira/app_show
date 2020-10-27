@@ -54,7 +54,8 @@ export class DetalhadoCouvertPage implements OnInit {
     }
     this.formatDataBr(data)
     console.log(this.share_array_cantor)
-    this.socialSharing.share("Dia " + this.data_br + "\n \n" + 
+    this.socialSharing.share("Local: " + this.estabe_dados[0]["estabe_nome"] + "\n" + 
+                            "Dia " + this.data_br + "\n \n" + 
                             "Cantores: " + "\n" + this.share_array_cantor + "\n" + 
                             "Fonte: Aplicativo Campina Music", '', this.estabe_dados[0]["estabe_img"]);
   }

@@ -27,7 +27,7 @@ export class CouvertPage implements OnInit {
 
   couverts = []
   couvert_info_dia = []
-  estabe_cods = [] 
+  estabe_cods = []
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
@@ -111,6 +111,22 @@ export class CouvertPage implements OnInit {
     });
   }
 
+  verificaToken(token) { //verificar se já está cadastrado, caso não cadastra no db
+    return new Promise(resolve => {
+
+      let dados = {
+        requisicao: 'token',
+        token: token
+      };
+
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+        localStorage.setItem('token_id', data['result'][0]);
+        alert(data['result'][0])
+        resolve(true);
+      });
+    });
+  }
+
   estabeComApres(){ //palcos com apresentação do dia
     var aux = []
     for (let i = 0; i < this.couvert_info_dia.length; i++) {
@@ -143,7 +159,8 @@ export class CouvertPage implements OnInit {
     // On success, we should be able to receive notifications
     PushNotifications.addListener('registration',
       (token: PushNotificationToken) => {
-        token.value
+        //token.value;
+        this.verificaToken(token.value);
         //alert('Push registration success, token: ' + token.value);
       }
     );

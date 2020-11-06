@@ -121,7 +121,7 @@ export class CouvertPage implements OnInit {
 
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
         localStorage.setItem('token_id', data['result'][0]);
-        alert(data['result'][0])
+        //alert(data['result'][0])
         resolve(true);
       });
     });

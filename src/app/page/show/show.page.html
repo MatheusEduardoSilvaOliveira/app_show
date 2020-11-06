@@ -41,6 +41,7 @@
 
                   <ion-card-title>
                     <h3 class="cantor_nome"><strong>{{array_cantor.cantor_nome}}</strong></h3>
+                    <h3 class="cantor_hora"><strong>{{array_cantor.evento_hora_ini}}</strong></h3>
                   </ion-card-title>
                 </ion-card-header>
             </ion-card>
@@ -55,7 +56,7 @@
 
   <div *ngFor="let array_palcos of palcos">
     <ion-card mode="ios" class="ion-card-palco" (click)="eventoDetalhado(array_palcos.palco_id)">
-      <img class="img_palco" src="{{array_palcos.palco_img}}">
+      <ion-img class="img_palco" src="{{array_palcos.palco_img}}"></ion-img>
     
       <ion-card-content>
         <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>

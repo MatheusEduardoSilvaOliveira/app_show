@@ -16,8 +16,8 @@ const routes: Routes = [
         loadChildren: () => import('../show/show.module').then( m => m.ShowPageModule)
       },
       {
-        path: 'divulgacao',
-        loadChildren: () => import('../divulgacao/divulgacao.module').then( m => m.DivulgacaoPageModule)
+        path: 'favorito',
+        loadChildren: () => import('../favorito/favorito.module').then( m => m.FavoritoPageModule)
       },
       {
         path: 'notificacao',

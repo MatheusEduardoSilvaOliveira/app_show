@@ -30,6 +30,10 @@ export class DetalhadoEventoPage implements OnInit {
   img_carregada = 0;
 
   data_br;
+  favoritos = []
+
+  data_favorito = []
+  favorito_id = []
 
   share_array_cantor: string
 
@@ -104,106 +108,207 @@ export class DetalhadoEventoPage implements OnInit {
     }
   }
 
-    //realizar consulta das informações do cantor
-    carregarCantor() {
-      return new Promise(resolve => {
-        this.cantores = [];
-        let dados = {
-          requisicao: 'cantores_detalhados',
-          palco: this.palco,
-        };
-  
-        this.provider.dadosApi(dados, 'api.php').subscribe(data => {
-  
-          if (data['result'] == '0') {
-            console.log("Array retornou vazio");
-          } else {
-            for (let i of data['result']) {
-              this.cantores.push(i);
-            }
-            console.log(this.cantores);
-            //this.maps = this.cantores[0]['palco_maps']
-            this.agruparDataDeShow();
-            //this.nomeCantoresCadastrados();
-            this.cantores_consulta = this.cantores;
-            
-          }
-          resolve(true);
-        });
-      });
-  
-    }
+  //realizar consulta das informações do cantor
+  carregarCantor() {
+    return new Promise(resolve => {
+      this.cantores = [];
+      let dados = {
+        requisicao: 'cantores_detalhados',
+        palco: this.palco,
+      };
 
-    //realizar consulta das imagens dos cantores
-    carregarImgCantor() {
-      return new Promise(resolve => {
-        this.img_cantores = [];
-        let dados = {
-          requisicao: 'cantores_detalhados_img',
-          palco: this.palco,
-        };
-  
-        this.provider.dadosApi(dados, 'api.php').subscribe(data => {
-  
-          if (data['result'] == '0') {
-            console.log("Array retornou vazio");
-          } else {
-            for (let i of data['result']) {
-              this.img_cantores.push(i);
-            }
-            console.log(this.img_cantores);
-            this.agruparDataDeShow(); 
-            this.img_carregada = 1
-          }
-          resolve(true);
-        });
-      });
-  
-    }
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
 
-    //carregar dados do PALCO
-    carregarDadosPalco() {
-      this.load.present();
-      this.carregarImgCantor();
-      this.carregarCantor();
-      return new Promise(resolve => {
-        this.palco_dados = [];
-        let dados = {
-          requisicao: 'palco_dados',
-          palco_id: this.palco,
-        };
-  
-        this.provider.dadosApi(dados, 'api.php').subscribe(data => {
-  
-          if (data['result'] == '0') {
-            console.log("Array retornou vazio");
-          } else {
-            for (let i of data['result']) {
-              this.palco_dados.push(i);
-            }
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.cantores.push(i);
           }
-          console.log(this.palco_dados)
-          this.maps = this.palco_dados[0]["palco_maps"]
-          resolve(true);
-          this.load.dismiss();
-        });
-      });
-  
-    }
-  
-    agruparDataDeShow() {
-      const aux_data = []
-      for (let i = 0; i < this.cantores.length; i++) {
-        if (this.cantores[i]["palco_id"] == this.palco) {
-          aux_data.push(this.cantores[i]["evento_data"]);
+          console.log(this.cantores);
+          //this.maps = this.cantores[0]['palco_maps']
+          this.agruparDataDeShow();
+          //this.nomeCantoresCadastrados();
+          this.cantores_consulta = this.cantores;
+          
         }
-      }
-      this.data_show = [...new Set(aux_data)];
+        resolve(true);
+      });
+    });
+
+  }
+
+  //realizar consulta das imagens dos cantores
+  carregarImgCantor() {
+    return new Promise(resolve => {
+      this.img_cantores = [];
+      let dados = {
+        requisicao: 'cantores_detalhados_img',
+        palco: this.palco,
+      };
+
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.img_cantores.push(i);
+          }
+          console.log(this.img_cantores);
+          this.agruparDataDeShow(); 
+          this.img_carregada = 1
+        }
+        resolve(true);
+      });
+    });
+
+  }
+
+  //carregar dados do PALCO
+  carregarDadosPalco() {
+    this.load.present();
+    this.carregarImgCantor();
+    this.carregarCantor();
+    return new Promise(resolve => {
+      this.palco_dados = [];
+      let dados = {
+        requisicao: 'palco_dados',
+        palco_id: this.palco,
+      };
+
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.palco_dados.push(i);
+          }
+        }
+        console.log(this.palco_dados)
+        this.maps = this.palco_dados[0]["palco_maps"]
+        resolve(true);
+        this.load.dismiss();
+      });
+    });
+
+  }
   
-      console.log("data " + this.data_show);
+  agruparDataDeShow() {
+    const aux_data = []
+    for (let i = 0; i < this.cantores.length; i++) {
+      if (this.cantores[i]["palco_id"] == this.palco) {
+        aux_data.push(this.cantores[i]["evento_data"]);
+      }
+    }
+    this.data_show = [...new Set(aux_data)];
+
+    console.log("data " + this.data_show);
+  }
+
+  //saber lista de favoritos do usuário
+  favoritoConsulta() {
+    return new Promise(resolve => {
+      this.favoritos = [];
+      let dados = {
+        requisicao: 'favorito_consulta',
+        token_id: localStorage.getItem('token_id')
+      };
+
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.favoritos.push(i);
+          }
+          console.log(this.favoritos);
+        }
+
+        var aux = []
+        for (let i = 0; i < this.favoritos.length; i++) {
+          if(this.palco == this.favoritos[i]['palco_id']){
+            aux.push(this.favoritos[i])
+          }
+        }
+        this.favoritos = aux
+        console.log('favoritos ' + this.favoritos);
+        resolve(true);
+      });
+    });
+  }
+  
+  favoritosMarcados(data) {
+    this.data_favorito = [] 
+    for (let i = 0; i < this.favoritos.length; i++) {
+      if(data == this.favoritos[i]['evento_data']){
+        this.data_favorito = this.favoritos[i]['evento_data']
+        break 
+      }
+    }
+  }
+    
+  
+  adcFavorito(data) {
+    this.load.present();
+    return new Promise(resolve => {
+      let dados = {
+        requisicao: 'favorito_create',
+        data: data,
+        palco: localStorage.getItem('palco_id'),
+        token: localStorage.getItem("token_id")
+      };
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+        console.log(data["result"])
+        if(data['id'] != '0'){
+          this.favoritoConsulta();
+          this.load.dismiss();
+        }
+      });
+      resolve(true);
+    });
+  }
+  
+  removeFavorito(data) {
+    this.load.present();
+    console.log(this.favoritos)
+    console.log("DATA " + data)
+
+    var aux_favorito = []
+
+    for (let i = 0; i < this.favoritos.length; i++) {
+      console.log(this.favoritos[i]['evento_data'])
+      if(this.favoritos[i]["palco_id"] == this.palco && this.favoritos[i]["evento_data"] == data){
+      aux_favorito.push(this.favoritos[i]['favorito_id'])
+      break
+      }
+    } 
+
+    this.favorito_id = aux_favorito[0];
+    console.log(this.favorito_id);
+    
+    return new Promise(resolve => {
+      let dados = {
+        requisicao: 'favorito_delete',
+        id: this.favorito_id
+      };
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+        console.log(data["result"])
+        if(data["result"] == 'success'){
+          aux_favorito = null
+          this.favorito_id = null
+          this.favoritoConsulta();
+          this.load.dismiss();
+        }
+      });
+      resolve(true);
+      });
     }
 
   ngOnInit() {
+    this.favoritoConsulta()
     this.carregarDadosPalco();
   }
 

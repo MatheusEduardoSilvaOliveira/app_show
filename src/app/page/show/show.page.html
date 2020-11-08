@@ -30,7 +30,7 @@
         <ion-slides [options]="sliderConfigCantor" #mySlider>
             
           <ion-slide *ngFor="let array_cantor of cantores_consulta">
-            <ion-card mode="ios" (click)="eventoDetalhado(array_palco_dia)">
+            <ion-card class="cantores" mode="ios" (click)="eventoDetalhado(array_palco_dia)">
                 <div *ngIf="array_cantor.cantor_img == null">
                   <img src="../../../assets/img/undefined.jpg">
                 </div>
@@ -56,7 +56,7 @@
 
   <div *ngFor="let array_palcos of palcos">
     <ion-card mode="ios" class="ion-card-palco" (click)="eventoDetalhado(array_palcos.palco_id)">
-      <ion-img class="img_palco" src="{{array_palcos.palco_img}}"></ion-img>
+      <img class="img_palco" src="{{array_palcos.palco_img}}">
     
       <ion-card-content>
         <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>

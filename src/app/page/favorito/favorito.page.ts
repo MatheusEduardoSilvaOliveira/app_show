@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
 import { Post } from 'src/app/services/post';
@@ -8,7 +8,7 @@ import { Post } from 'src/app/services/post';
   templateUrl: './favorito.page.html',
   styleUrls: ['./favorito.page.scss'],
 })
-export class FavoritoPage{
+export class FavoritoPage implements OnInit{
 
   cantores = []
   cantores_consulta = []
@@ -34,7 +34,8 @@ export class FavoritoPage{
       this.cantores = [];
       let dados = {
         requisicao: 'favorito',
-        token_id: localStorage.getItem('token_id')
+        token_id: localStorage.getItem('token_id'),
+        data_atual: localStorage.getItem('data_atual')
       };
 
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
@@ -54,7 +55,6 @@ export class FavoritoPage{
         resolve(true);
       });
     });
-
   }
 
   carregarImgFavorito() {
@@ -64,7 +64,8 @@ export class FavoritoPage{
         this.img_cantores = [];
         let dados = {
           requisicao: 'favorito_img',
-          token_id: localStorage.getItem('token_id')
+          token_id: localStorage.getItem('token_id'),
+          data_atual: localStorage.getItem('data_atual')
         };
   
         this.provider.dadosApi(dados, 'api.php').subscribe(data => {
@@ -80,9 +81,7 @@ export class FavoritoPage{
           resolve(true);
         });
       });
-
-    }
-      
+    } 
   }
 
 
@@ -95,7 +94,6 @@ export class FavoritoPage{
     }
     this.data_show = [...new Set(aux_data)];
     this.data_show.sort();
-    //console.log("data " + this.data_show.sort());
   }
 
   agruparPalcoDeShow(){
@@ -105,7 +103,6 @@ export class FavoritoPage{
     }
     this.palco_show = [...new Set(aux_palco)];
     this.palco_show.sort();
-    //console.log("palco " + this.palco_show);
   }
 
   nomePalco(){
@@ -151,10 +148,21 @@ export class FavoritoPage{
       });
     }
     
+    ngOnInit(){
+      if(localStorage.getItem("favorito_add") == '0' || localStorage.getItem("favorito_add") == undefined){
+        this.carregarFavoritos();
+      }
+    }
 
-  ionViewWillEnter(){
-    this.img_carregada = 0
-    this.carregarFavoritos();
-  }
+    ionViewWillEnter(){
+      if(localStorage.getItem("favorito_add") == '1'){
+        this.img_carregada = 0
+        this.carregarFavoritos();
+      }
+    }
+
+    ionViewDidLeave(){
+      localStorage.setItem("favorito_add", '0')
+    }
 
 }

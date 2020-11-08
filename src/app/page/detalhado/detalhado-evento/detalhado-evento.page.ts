@@ -213,7 +213,8 @@ export class DetalhadoEventoPage implements OnInit {
       this.favoritos = [];
       let dados = {
         requisicao: 'favorito_consulta',
-        token_id: localStorage.getItem('token_id')
+        token_id: localStorage.getItem('token_id'),
+        data_atual: localStorage.getItem('data_atual')
       };
 
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
@@ -245,6 +246,7 @@ export class DetalhadoEventoPage implements OnInit {
     for (let i = 0; i < this.favoritos.length; i++) {
       if(data == this.favoritos[i]['evento_data']){
         this.data_favorito = this.favoritos[i]['evento_data']
+        localStorage.setItem("favorito_add", '1')
         break 
       }
     }
@@ -267,6 +269,7 @@ export class DetalhadoEventoPage implements OnInit {
           this.load.dismiss();
         }
       });
+      localStorage.setItem("favorito_add", '1')
       resolve(true);
     });
   }

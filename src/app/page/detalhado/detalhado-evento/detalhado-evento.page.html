@@ -162,7 +162,13 @@
                     </div>
                   </div>  
 
-                  <ion-label><strong>{{array_cantores.cantor_nome}}</strong></ion-label>
+                  <ion-label>
+                    <strong>{{array_cantores.cantor_nome}}</strong>
+                    <div *ngIf="array_cantores.evento_hora_ini != null">
+                      Inícia ás <strong>{{array_cantores.evento_hora_ini}}</strong><br>
+                    </div>
+                  </ion-label>
+                  
 
                 </ion-item>
               </div>
@@ -204,7 +210,12 @@
                     </ion-thumbnail>
                   </div>
 
-                  <ion-label><strong>{{array_cantores.cantor_nome}}</strong></ion-label>
+                  <ion-label>
+                    <strong>{{array_cantores.cantor_nome}}</strong>
+                    <div *ngIf="array_cantores.evento_hora_ini != null">
+                      Inícia ás <strong>{{array_cantores.evento_hora_ini}}</strong><br>
+                    </div>
+                  </ion-label>
 
                 </ion-item>
               </div>
@@ -245,7 +256,12 @@
                       <ion-skeleton-text animated></ion-skeleton-text>
                     </ion-thumbnail>
                   </div>
-                  <ion-label><strong>{{array_cantores.cantor_nome}}</strong></ion-label>
+                  <ion-label>
+                    <strong>{{array_cantores.cantor_nome}}</strong>
+                    <div *ngIf="array_cantores.evento_hora_ini != null">
+                      Inícia ás <strong>{{array_cantores.evento_hora_ini}}</strong><br>
+                    </div>
+                  </ion-label>
 
                 </ion-item>
               </div>

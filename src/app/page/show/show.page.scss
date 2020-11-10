@@ -1,3 +1,4 @@
+/*
 ion-button{
     --color: #3E3E3E;
   }
@@ -72,3 +73,92 @@ ion-button{
   ion-card.cantores ion-card-header{
     margin: -20px
   }
+
+  */
+
+  ion-button{
+    --color: #3E3E3E;
+  }
+  .title-bar {
+    margin: 0rem 0.625rem -0.625rem 0.625rem;
+    color: #3E3E3E;
+  }
+  
+  h1.title {
+    margin: 0.625rem 0.625rem 0.625rem 1.25rem;
+    color: #3E3E3E;
+    font-size: 2.25rem;
+  }
+  
+  h2.sub-title {
+    margin: 0.625rem 0.625rem -0.313rem 1.25rem;
+    color: #3E3E3E;
+    font-size: 1.125rem;
+  }
+  
+  div.slide{
+    margin: 0.625rem 0rem;
+  }
+  
+  h3.sub-title {
+    margin: 0.625rem 0.625rem -0.313rem 1.25rem;
+    color: #3E3E3E;
+    font-size: 1.125rem;
+  }
+  
+  ion-card-subtitle{
+    color: #3E3E3E;
+    font-size: 0.813rem;
+  }
+  
+  .item ion-thumbnail {
+    margin: 0.625rem 1.25rem 0.625rem 0rem;
+    margin-inline-end: 0.625rem;
+    min-width: 3.125rem;    
+    min-height: 3.125rem;
+    img {
+        max-width: 3.125rem;    
+        min-height: 3.125rem;
+        border-radius: 20%;
+    }
+  }
+  
+  ion-item ion-label.info_cantor {
+    color: #3E3E3E;
+    font-size: 0.99rem;
+  }
+  
+  h3.cantor_nome {
+    color: #3E3E3E;
+    font-size: 1.125rem;
+  }
+  
+  ion-card{
+    margin: 0.625rem 1.25rem 1.25rem 1.25rem;
+  }
+  
+  ion-card.ion-card-palco{
+    margin: 0.625rem 1.25rem 1.25rem;
+  }
+  
+  img.img_palco{
+    width: 100%;
+  }
+
+  //
+
+ion-item.palco_desc{
+    --padding-inline-start: 0px;
+    --padding-inline-end: 0px;
+    padding: 0px 0px 0px 0px;
+  }
+
+ion-label.palco_desc{
+  color: #3E3E3E;
+  font-size: 0.99rem;
+  font-weight: bold;
+}
+
+ion-button.calendar_button{
+  font-size: 1.2rem;
+}

@@ -24,30 +24,31 @@
 
         <ion-card mode="ios" (click)="couvertDetalhado(estabe_array)">
 
-          <div *ngFor="let array_estabe of couverts"> 
-            <div *ngIf="array_estabe.estabe_id == estabe_array">
-              <img src="{{array_estabe.estabe_img}}">
-            </div>    
-          </div>
-
-          <div *ngFor="let array_couvert of couvert_info_dia">
-            <div *ngIf="estabe_array == array_couvert.estabe_id">
-              <ion-item lines="none">
-                <ion-thumbnail slot="start">
-                  <img *ngIf="array_couvert.cantor_img != null" src="{{array_couvert.cantor_img}}">
-                  <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
-                </ion-thumbnail>
-
-                <ion-label class="info_cantor">
-                  <strong>{{array_couvert.cantor_nome}}<br></strong>
-      
-                  <div *ngIf="array_couvert.couvert_hora_ini != null">
-                    Inícia ás <strong>{{array_couvert.couvert_hora_ini}}</strong><br>
-                  </div>
-                </ion-label>  
-              </ion-item>
+            <div *ngFor="let array_estabe of couverts"> 
+              <div *ngIf="array_estabe.estabe_id == estabe_array">
+                <img src="{{array_estabe.estabe_img}}">
+              </div>    
             </div>
-          </div>
+
+            <div *ngFor="let array_couvert of couvert_info_dia">
+              <div *ngIf="estabe_array == array_couvert.estabe_id">
+                <ion-item lines="none">
+                  <ion-thumbnail slot="start">
+                    <img *ngIf="array_couvert.cantor_img != null" src="{{array_couvert.cantor_img}}">
+                    <img *ngIf="array_couvert.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+                  </ion-thumbnail>
+
+                  <ion-label class="info_cantor">
+                    <strong>{{array_couvert.cantor_nome}}<br></strong>
+        
+                    <div *ngIf="array_couvert.couvert_hora_ini != null">
+                      Inícia ás <strong>{{array_couvert.couvert_hora_ini}}</strong><br>
+                    </div>
+                  </ion-label>  
+                </ion-item>
+              </div>
+            </div>
+
         </ion-card>
       </ion-slide>
     </ion-slides>
@@ -59,24 +60,41 @@
     </h3>
     
     <div *ngFor="let array_estabe of couverts">
-      <ion-card mode="ios" class="ion-card-estabe" (click)="couvertDetalhado(array_estabe.estabe_id)">
-        <img class="img_estabe" src="{{array_estabe.estabe_img}}">
+      <ion-card mode="ios" class="ion-card-estabe">
 
-        <ion-card-header>
-          <ion-card-subtitle>
-            <ion-icon name="home-outline"></ion-icon> {{array_estabe.estabe_nome}}<br>
-            <ion-icon name="pin-outline"></ion-icon>{{array_estabe.estabe_logradouro}}, {{array_estabe.estabe_numero}}, {{array_estabe.estabe_bairro}}, {{array_estabe.estabe_cidade}}-{{array_estabe.estabe_estado}}<br>
-            <div *ngIf="array_estabe.estabe_tel != null">
-              <ion-icon name="call-outline"></ion-icon> {{array_estabe.estabe_tel}}<br>
-            </div>
-            <div *ngIf="array_estabe.estabe_cel != null">
-              <ion-icon name="logo-whatsapp"></ion-icon> {{array_estabe.estabe_cel}}<br>
-            </div>
-            <div *ngIf="array_estabe.estabe_insta != null">
-              <ion-icon name="logo-instagram"></ion-icon> {{array_estabe.estabe_insta}}<br>
-            </div>
-          </ion-card-subtitle>
-        </ion-card-header>
+          <img class="img_estabe" src="{{array_estabe.estabe_img}}">
+
+          <!--<ion-card-header>
+             
+            <ion-card-subtitle>
+              <ion-icon name="home-outline"></ion-icon> {{array_estabe.estabe_nome}}<br>
+              <ion-icon name="pin-outline"></ion-icon>{{array_estabe.estabe_logradouro}}, {{array_estabe.estabe_numero}}, {{array_estabe.estabe_bairro}}, {{array_estabe.estabe_cidade}}-{{array_estabe.estabe_estado}}<br>
+              <div *ngIf="array_estabe.estabe_tel != null">
+                <ion-icon name="call-outline"></ion-icon> {{array_estabe.estabe_tel}}<br>
+              </div>
+              <div *ngIf="array_estabe.estabe_cel != null">
+                <ion-icon name="logo-whatsapp"></ion-icon> {{array_estabe.estabe_cel}}<br>
+              </div>
+              <div *ngIf="array_estabe.estabe_insta != null">
+                <ion-icon name="logo-instagram"></ion-icon> {{array_estabe.estabe_insta}}<br>
+              </div>
+            </ion-card-subtitle>
+            -->
+            <ion-item class="estabe_desc" lines="none">
+              <ion-label class="estabe_desc">
+                <ion-icon name="pin-outline"></ion-icon>{{array_estabe.estabe_nome}}<br>Bairro: {{array_estabe.estabe_bairro}}
+              </ion-label>
+              
+              <ion-buttons slot="end">
+                <ion-button class="calendar_button" (click)="couvertDetalhado(array_estabe.estabe_id)">
+                  <ion-icon color="primary" name="calendar-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+              
+            </ion-item>
+
+          <!-- </ion-card-header> -->
+
       </ion-card>  
     </div>
   </div>

@@ -18,12 +18,49 @@
 
     <h3 class="sub-title">Hoje tem <strong>show(s)</strong> em:</h3>
 
+    <ion-slides [options]="sliderConfigShow" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+      <ion-slide *ngFor="let palco_id_array of palco_dia">
+
+        <ion-card mode="ios" (click)="eventoDetalhado(palco_id_array)">
+
+            <div *ngFor="let array_palco of palcos"> 
+              <div *ngIf="array_palco.palco_id == palco_id_array">
+                <img src="{{array_palco.palco_img}}">
+              </div>    
+            </div>
+
+            <div *ngFor="let array_cantor of cantores">
+              <div *ngIf="palco_id_array == array_cantor.palco_id">
+                <ion-item lines="none">
+                  <ion-thumbnail slot="start">
+                    <img *ngIf="array_cantor.cantor_img != null" src="{{array_cantor.cantor_img}}">
+                    <img *ngIf="array_cantor.cantor_img == null" src="../../../../assets/img/undefined.jpg"> 
+                  </ion-thumbnail>
+
+                  <ion-label class="info_cantor">
+                    <strong>{{array_cantor.cantor_nome}}<br></strong>
+        
+                    <div *ngIf="array_cantor.evento_hora_ini != null">
+                      Inícia ás <strong>{{array_cantor.evento_hora_ini}}</strong><br>
+                    </div>
+                  </ion-label>  
+                </ion-item>
+              </div>
+            </div>
+
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+
+<!--
     <div *ngFor="let array_palco_dia of palco_dia">
-      <div [hidden]="cantoresPorPalco(array_palco_dia)"></div> <!-- atualizar lista de cantores de acordo com palco | OBS: Pois não é aceito condição dentro do slide-->
+      <div [hidden]="cantoresPorPalco(array_palco_dia)"></div>  atualizar lista de cantores de acordo com palco | OBS: Pois não é aceito condição dentro do slide
       
         <div *ngFor="let array_palcos of palcos">
           <div *ngIf="array_palco_dia == array_palcos.palco_id">
-            <h3 class="sub-title"><strong>{{array_palcos.palco_nome}}:</strong></h3>
+            <h3 class="sub-title"><strong>{{array_palcos.palco_nome}}</strong><br>
+                                  {{array_palcos.palco_cidade}}
+            </h3>
           </div>
         </div>
 
@@ -31,23 +68,23 @@
             
           <ion-slide *ngFor="let array_cantor of cantores_consulta">
             <ion-card class="cantores" mode="ios" (click)="eventoDetalhado(array_palco_dia)">
-                <div *ngIf="array_cantor.cantor_img == null">
-                  <img src="../../../assets/img/undefined.jpg">
-                </div>
-                <div *ngIf="array_cantor.cantor_img != null">
-                  <img src="{{array_cantor.cantor_img}}">
-                </div>
-                <ion-card-header>
+              <div *ngIf="array_cantor.cantor_img == null">
+                <img src="../../../assets/img/undefined.jpg">
+              </div>
+              <div *ngIf="array_cantor.cantor_img != null">
+                <img src="{{array_cantor.cantor_img}}">
+              </div>
+              <ion-card-header>
 
-                  <ion-card-title>
-                    <h3 class="cantor_nome"><strong>{{array_cantor.cantor_nome}}</strong></h3>
-                    <h3 class="cantor_hora"><strong>{{array_cantor.evento_hora_ini}}</strong></h3>
-                  </ion-card-title>
-                </ion-card-header>
+                <ion-card-title>
+                  <h3 class="cantor_nome"><strong>{{array_cantor.cantor_nome}}</strong></h3>
+                  <h3 class="cantor_hora"><strong>{{array_cantor.evento_hora_ini}}</strong></h3>
+                </ion-card-title>
+              </ion-card-header>
             </ion-card>
           </ion-slide>
         </ion-slides>
-    </div>
+    </div>-->
   </div>
 
   <div *ngIf="palcos.length != 0">
@@ -55,13 +92,29 @@
   </div>
 
   <div *ngFor="let array_palcos of palcos">
-    <ion-card mode="ios" class="ion-card-palco" (click)="eventoDetalhado(array_palcos.palco_id)">
-      <img class="img_palco" src="{{array_palcos.palco_img}}">
-    
-      <ion-card-content>
-        <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>
-        <ion-card-title><h3 class="palco_nome"><strong>{{array_palcos.palco_nome}}</strong></h3></ion-card-title>
-      </ion-card-content>
+    <ion-card mode="ios" class="ion-card-palco">
+
+        <img class="img_palco" src="{{array_palcos.palco_img}}">
+      
+        
+          <!--<ion-card-content>
+          <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>
+          <ion-card-title><h3 class="palco_nome"><strong>{{array_palcos.palco_nome}}</strong></h3></ion-card-title>
+           </ion-card-content> -->
+          <ion-item class="palco_desc" lines="none">
+            <ion-label class="palco_desc">
+              <ion-icon name="pin-outline"></ion-icon> {{array_palcos.palco_nome}} <br> {{array_palcos.palco_cidade}}
+            </ion-label>
+            
+            <ion-buttons slot="end">
+              <ion-button class="calendar_button" (click)="eventoDetalhado(array_palcos.palco_id)">
+                <ion-icon color="primary" name="calendar-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            
+          </ion-item>
+        
+
     </ion-card>
   </div>
 

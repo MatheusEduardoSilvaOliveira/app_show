@@ -68,19 +68,19 @@ ion-button{
   }
 
   //
-  ion-buttons.share_button{
-    position: relative;
-    margin-bottom: -32px;
+
+ion-item.estabe_desc{
+    --padding-inline-start: 0px;
+    --padding-inline-end: 0px;
+    padding: 0px 0px 0px 0px;
   }
 
-  ion-button.share_button{
-    max-width: 3.125rem;
-    max-height: 3.125rem;
-    border-radius: 50%;
-    //background: #9e9e9e;
-    font-size: 18px;
-    position: relative;
-    top: 5px;
-    left: 3px;
-  }
+ion-label.estabe_desc{
+  color: #3E3E3E;
+  font-size: 0.99rem;
+  font-weight: bold;
+}
 
+ion-button.calendar_button{
+  font-size: 1.2rem;
+}

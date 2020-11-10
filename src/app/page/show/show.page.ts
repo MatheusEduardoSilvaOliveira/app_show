@@ -12,18 +12,24 @@ import { LoadComponent } from 'src/app/components/load/load.component';
 export class ShowPage implements OnInit {
   @ViewChild('mySlider') slider: IonSlides;
 
-  sliderConfigCantor= {
+  sliderConfigShow= {
     spaceBetween: -10,
     centeredSlides: false,
-    slidesPerView: 1.6
+    slidesPerView: 1.2
   }
 
   palco_dia = [] //palcos com apresentação do dia
   cantores = [] //cantores com apresentação no dia
   palcos = [] //palcos com shows
-  cantores_consulta = []
+  //cantores_consulta = []
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
+
+  slidesDidLoad(slides: IonSlides) { // iniciar o play automatico do slide apenas quando preenchida tabela
+    if (this.palco_dia.length > 1) {
+      slides.startAutoplay();
+    }
+  }
 
   suporte(){
     this.router.navigate(['/suporte']);
@@ -35,7 +41,6 @@ export class ShowPage implements OnInit {
   }
 
   carregarPalco() { // palcos que terá shows (maior que a data atual)
-    this.load.present();
     return new Promise(resolve => {
       this.palcos = [];
       let dados = {
@@ -53,13 +58,15 @@ export class ShowPage implements OnInit {
           }
           console.log(this.palcos);
         }
-        this.carregarCantoresDoDia();
+        //this.carregarCantoresDoDia();
         resolve(true);
+        this.load.dismiss();
       });
     });
   }
 
   carregarCantoresDoDia() { //CANTORES do dia para carregar preview (cards)
+    this.load.present();
     return new Promise(resolve => {
       this.cantores = [];
       let dados = {
@@ -93,9 +100,8 @@ export class ShowPage implements OnInit {
 
     this.palco_dia = [ ...new Set( aux ) ];
     console.log("palcos " + this.palco_dia);
-    this.load.dismiss();
   }
-
+/*
   cantoresPorPalco(palco){
     this.cantores_consulta = []
     var aux = []
@@ -108,9 +114,10 @@ export class ShowPage implements OnInit {
     this.cantores_consulta = aux;
     console.log("cantores_con " + this.cantores_consulta);
     
-  }
+  } */
 
   ngOnInit() {
+    this.carregarCantoresDoDia()
     this.carregarPalco();
   }
 

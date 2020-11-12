@@ -3,6 +3,7 @@ import { Post } from 'src/app/services/post';
 import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-detalhado-couvert',
@@ -18,7 +19,8 @@ export class DetalhadoCouvertPage implements OnInit {
   data_atual = localStorage.getItem('data_atual');
 
   estabe_dados;
-  maps;
+  maps = null;
+  telefone = null
   whats = null;
   img_cantores = null;
   img_carregada = 0;
@@ -27,10 +29,20 @@ export class DetalhadoCouvertPage implements OnInit {
 
   share_array_cantor: string
 
-  constructor(private provider: Post, private router: Router, private load: LoadComponent, private socialSharing: SocialSharing) { }
+  constructor(private provider: Post, private router: Router, private load: LoadComponent, private socialSharing: SocialSharing, private callNumber: CallNumber) { } //
 
   couvertRota(){
+    this.maps = null;
+    this.telefone = null
+    this.whats = null;
     this.router.navigate(['/tabs/couvert']);
+  }
+
+
+  ligarFixo(){
+    this.callNumber.callNumber(this.telefone, true)
+  .then(res => console.log('Launched dialer!', res))
+  .catch(err => console.log('Error launching dialer', err));
   }
 
   formatDataBr(data){
@@ -158,6 +170,10 @@ export class DetalhadoCouvertPage implements OnInit {
         if(this.estabe_dados[0]["estabe_cel"] != null){
           this.whats = "https://api.whatsapp.com/send?1=pt_BR&phone=55" + this.estabe_dados[0]["estabe_cel"].replace(/[\s-()]/g, '');
         }
+        if(this.estabe_dados[0]["estabe_tel"] != null){
+          this.telefone = this.estabe_dados[0]["estabe_tel"].replace(/[\s-()]/g, '');
+        }
+        
         //console.log(this.whats)
         resolve(true);
         this.load.dismiss();

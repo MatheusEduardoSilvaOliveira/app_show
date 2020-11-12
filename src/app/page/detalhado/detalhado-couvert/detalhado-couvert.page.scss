@@ -68,3 +68,8 @@ ion-card.ion-card-estabe{
 img.img_estabe{
     width: 100%;
 }
+
+ion-card ion-item.item_btns{
+    --padding-inline-start: 0px;
+    --padding-inline-end: 0px;
+}

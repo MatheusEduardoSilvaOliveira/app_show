@@ -7,14 +7,14 @@
           <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
-      
+      <!-- 
       <ion-buttons slot="end">
         <div *ngIf="maps != null">
           <ion-button href="{{maps}}">
             <ion-icon name="pin-outline"></ion-icon>
           </ion-button>
         </div>
-      </ion-buttons>
+      </ion-buttons>-->
     </ion-toolbar>
   </div>
 
@@ -272,4 +272,17 @@
       </div>
     </div>
   </div>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark">
+      <ion-icon name="caret-up-outline"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top">
+      <div *ngIf="maps != null">
+        <ion-fab-button href="{{maps}}"><ion-icon name="pin-outline"></ion-icon></ion-fab-button>
+      </div>
+    </ion-fab-list>
+  </ion-fab>  
 </ion-content>

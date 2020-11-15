@@ -48,6 +48,14 @@ ion-button{
   h5.data{
     font-size: 10px;
     font-style: oblique;
-    position: relative;
-    top: 10px;
+    //position: relative;
+    //top: 10px;
   }
+
+ion-card ion-item{
+    --inner-padding-start: 0px;
+    --inner-padding-end: 0px;
+  }
+ion-card ion-card-content{
+  padding-top: 5px
+}

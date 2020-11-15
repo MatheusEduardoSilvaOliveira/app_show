@@ -88,19 +88,23 @@
   </div>
 
   <div *ngIf="palcos.length != 0">
+
+    <div class="barra_consulta">
+      <ion-searchbar  mode="ios" animated placeholder="Palco" [(ngModel)]="vlr_digitado" (ionChange)="buscar($event)"></ion-searchbar>
+    </div>
+
     <h3 class="sub-title">Confira <strong>toda</strong> a programação:</h3>
-  </div>
 
-  <div *ngFor="let array_palcos of palcos">
-    <ion-card mode="ios" class="ion-card-palco">
+    <div *ngIf="vlr_digitado == ''">
 
-        <img class="img_palco" src="{{array_palcos.palco_img}}">
-      
-        
-          <!--<ion-card-content>
-          <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>
-          <ion-card-title><h3 class="palco_nome"><strong>{{array_palcos.palco_nome}}</strong></h3></ion-card-title>
-           </ion-card-content> -->
+      <div *ngFor="let array_palcos of palcos">
+        <ion-card mode="ios" class="ion-card-palco">
+          <img class="img_palco" src="{{array_palcos.palco_img}}">
+    
+              <!--<ion-card-content>
+              <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>
+              <ion-card-title><h3 class="palco_nome"><strong>{{array_palcos.palco_nome}}</strong></h3></ion-card-title>
+               </ion-card-content> -->
           <ion-item class="palco_desc" lines="none">
             <ion-label class="palco_desc">
               <ion-icon name="pin-outline"></ion-icon> {{array_palcos.palco_nome}} <br> {{array_palcos.palco_cidade}}
@@ -113,9 +117,40 @@
             </ion-buttons>
             
           </ion-item>
-        
+        </ion-card>
+      </div>
+    </div>
 
-    </ion-card>
+    <div *ngIf="vlr_digitado != ''">
+
+      <div *ngIf="palcos_consulta.length == 0">
+        <h1 class="title">
+          Ops! Nada encontrado...
+        </h1>
+      </div>
+
+      <div *ngFor="let array_palcos of palcos_consulta">
+        <ion-card mode="ios" class="ion-card-palco">
+          <img class="img_palco" src="{{array_palcos.palco_img}}">
+  
+            <!--<ion-card-content>
+            <ion-card-subtitle>{{array_palcos.palco_cidade}}</ion-card-subtitle>
+            <ion-card-title><h3 class="palco_nome"><strong>{{array_palcos.palco_nome}}</strong></h3></ion-card-title>
+              </ion-card-content> -->
+          <ion-item class="palco_desc" lines="none">
+            <ion-label class="palco_desc">
+              <ion-icon name="pin-outline"></ion-icon> {{array_palcos.palco_nome}} <br> {{array_palcos.palco_cidade}}
+            </ion-label>
+            
+            <ion-buttons slot="end">
+              <ion-button class="calendar_button" (click)="eventoDetalhado(array_palcos.palco_id)">
+                <ion-icon color="primary" name="calendar-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            
+          </ion-item>
+        </ion-card>
+      </div>
+    </div>
   </div>
-
 </ion-content>

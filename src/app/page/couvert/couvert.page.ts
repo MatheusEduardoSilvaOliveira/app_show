@@ -26,8 +26,11 @@ export class CouvertPage implements OnInit {
   }
 
   couverts = []
+  couverts_consulta = []
   couvert_info_dia = []
   estabe_cods = []
+
+  vlr_digitado = ""; //valor digitado na searchbar
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
@@ -42,6 +45,21 @@ export class CouvertPage implements OnInit {
     //this.data_atual = data_servidor;
     localStorage.setItem('data_atual', data_servidor)
     //console.log("data_cell" + data_servidor)
+  }
+
+
+  buscar(ev: any) {
+    this.couverts_consulta = this.couverts;
+
+    const val = ev.target.value;
+    console.log(val);
+    if (val.trim() != '') {
+      this.couverts_consulta = this.couverts.filter((item) => {
+        console.log("item" + item);
+        return (item.estabe_nome.toString().toLowerCase().indexOf(val.toString().toLowerCase()) > -1);
+        //return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
   slidesDidLoad(slides: IonSlides) { // iniciar o play automatico do slide apenas quando preenchida tabela
@@ -103,6 +121,7 @@ export class CouvertPage implements OnInit {
           for (let i of data['result']) {
             this.couverts.push(i);
           }
+          this.couverts_consulta = this.couverts
           console.log(this.couverts);
         }
         resolve(true);

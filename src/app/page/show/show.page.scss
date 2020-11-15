@@ -162,3 +162,14 @@ ion-label.palco_desc{
 ion-button.calendar_button{
   font-size: 1.2rem;
 }
+
+div.barra_consulta{
+  margin: 0.625rem 0.625rem -0.625rem 0.625rem;
+}
+
+ion-searchbar{
+  padding-left: unset;
+  padding-right: unset;
+  padding-inline-start: 0.625rem;
+  padding-inline-end: 0.625rem;
+}

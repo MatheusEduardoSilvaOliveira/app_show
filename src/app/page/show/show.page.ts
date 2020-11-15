@@ -21,7 +21,9 @@ export class ShowPage implements OnInit {
   palco_dia = [] //palcos com apresentação do dia
   cantores = [] //cantores com apresentação no dia
   palcos = [] //palcos com shows
-  //cantores_consulta = []
+  palcos_consulta = []
+
+  vlr_digitado = ""; //valor digitado na searchbar
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
@@ -40,6 +42,20 @@ export class ShowPage implements OnInit {
     this.router.navigate(['/detalhado-evento']);
   }
 
+  buscar(ev: any) {
+    this.palcos_consulta = this.palcos;
+
+    const val = ev.target.value;
+    console.log(val);
+    if (val.trim() != '') {
+      this.palcos_consulta = this.palcos.filter((item) => {
+        console.log("item" + item);
+        return (item.palco_nome.toString().toLowerCase().indexOf(val.toString().toLowerCase()) > -1);
+        //return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+
   carregarPalco() { // palcos que terá shows (maior que a data atual)
     return new Promise(resolve => {
       this.palcos = [];
@@ -56,6 +72,7 @@ export class ShowPage implements OnInit {
           for (let i of data['result']) {
             this.palcos.push(i);
           }
+          this.palcos_consulta = this.palcos
           console.log(this.palcos);
         }
         //this.carregarCantoresDoDia();

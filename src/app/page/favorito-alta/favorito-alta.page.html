@@ -1,0 +1,79 @@
+<ion-content>
+  <div class="title-bar">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="favoritoRota()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <h1 class="title">
+    Shows Favoritos
+  </h1>
+
+  <h3 class="sub-title">Confira os shows <strong>favoritos</strong> pela galera!:</h3>
+
+  <br>
+  
+  <div *ngFor="let palco_id of favorito_qtd"> favorito_array
+
+    <div [hidden]="agruparDataDeShow(favorito_array.palco_id)"></div>
+
+    <div *ngFor="let palco_array of palcos">
+      <div *ngIf="palco_array.palco_id == favorito_array.palco_id">
+        <h3 class="sub-title"><strong>{{palco_array.palco_nome}}</strong></h3>
+      </div>
+    </div>
+
+    <div *ngFor="let array_data of data_show">
+    <ion-card mode="ios" (click)="eventoDetalhado(favorito_array.palco_id)">
+      <ion-item lines="none">
+        <div *ngIf="array_data == data_atual">
+          <h2 class="sub-title"><strong>HOJE</strong></h2>
+        </div>
+        <div *ngIf="array_data != data_atual">
+          <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+        </div>
+        
+        <ion-buttons slot="end">
+          <h2 class="sub-title"><strong>{{palco_id.favorito_qtd}}</strong></h2>
+          <ion-buttons>
+            <ion-icon class="person" name="people-outline"></ion-icon>
+          </ion-buttons>
+        </ion-buttons>
+      </ion-item>
+      
+      <div *ngFor="let array_cantores of cantores">
+        <div *ngIf="array_data == array_cantores.evento_data && array_cantores.palco_id == favorito_array.palco_id">
+          <ion-item lines="none">
+
+            <div *ngFor="let array_img of cantores_img">
+              <ion-thumbnail slot="start" *ngIf="array_img.cantor_id == array_cantores.cantor_id && array_img.palco_id == favorito_array.palco_id">
+                <img *ngIf="array_img.cantor_img != null" src="{{array_img.cantor_img}}">
+                <img *ngIf="array_img.cantor_img == null" src="../../../../assets/img/undefined.jpg">
+              </ion-thumbnail>
+            </div>  
+            <div *ngIf="img_carregada == 0">
+              <ion-thumbnail slot="start">
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-thumbnail>
+            </div>
+
+            <ion-label>
+              <strong>{{array_cantores.cantor_nome}}</strong>
+              <div *ngIf="array_cantores.evento_hora_ini != null">
+                Inícia ás <strong>{{array_cantores.evento_hora_ini}}</strong><br>
+              </div>
+            </ion-label>
+
+          </ion-item>
+        </div>
+      </div>
+      <br>
+    </ion-card>
+  </div>
+  </div>
+
+</ion-content>

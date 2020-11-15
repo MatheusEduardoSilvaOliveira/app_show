@@ -26,6 +26,10 @@ export class FavoritoPage implements OnInit{
     this.router.navigate(['/suporte']);
   }
 
+  favoritoAltaRota(){
+    this.router.navigate(['/favorito-alta']);
+  }
+
   carregarFavoritos() {
     this.carregarImgFavorito();
     this.load.present();

@@ -17,7 +17,11 @@ const routes: Routes = [
   {
     path: 'detalhado-evento',
     loadChildren: () => import('../app/page/detalhado/detalhado-evento/detalhado-evento.module').then( m => m.DetalhadoEventoPageModule)
+  },  {
+    path: 'favorito-alta',
+    loadChildren: () => import('./page/favorito-alta/favorito-alta.module').then( m => m.FavoritoAltaPageModule)
   }
+
 
 ];
 

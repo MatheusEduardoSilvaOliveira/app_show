@@ -14,6 +14,9 @@
   </h1>
 
   <h3 class="sub-title">Lista de <strong>favoritos:</strong></h3>
+  <ion-button class="btn_favoritos" (click)="favoritoAltaRota()" color="warning" expand="block">
+    Favoritos da galera!
+  </ion-button>
 
   <div *ngIf="this.cantores_consulta.length == 0">
     <img class="favorito_msg" src='../../../assets/img/favorito_msg.jpg'>

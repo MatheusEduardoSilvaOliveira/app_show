@@ -22,13 +22,11 @@ export class FavoritoAltaPage implements OnInit {
 
   favoritoRota(){
     this.router.navigate(['/tabs/favorito']);
-    this.img_carregada = 0
   }
 
   eventoDetalhado(palco_id) { // clicar sobre o cantor do ion-card EVENTO e abrir programação
     localStorage.setItem("palco_id", palco_id);
     this.router.navigate(['/detalhado-evento']);
-    this.img_carregada = 0
   }
 
   carregarFavoritoQtd(){ //carrgar shows "favoritados pelos usuários"

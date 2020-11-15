@@ -17,7 +17,7 @@
 
   <br>
   
-  <div *ngFor="let palco_id of favorito_qtd"> favorito_array
+  <div *ngFor="let favorito_array of favorito_qtd">
 
     <div [hidden]="agruparDataDeShow(favorito_array.palco_id)"></div>
 
@@ -38,7 +38,7 @@
         </div>
         
         <ion-buttons slot="end">
-          <h2 class="sub-title"><strong>{{palco_id.favorito_qtd}}</strong></h2>
+          <h2 class="sub-title"><strong>{{favorito_array.favorito_qtd}}</strong></h2>
           <ion-buttons>
             <ion-icon class="person" name="people-outline"></ion-icon>
           </ion-buttons>

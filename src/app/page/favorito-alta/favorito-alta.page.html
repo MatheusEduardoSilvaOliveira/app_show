@@ -14,27 +14,19 @@
   </h1>
 
   <h3 class="sub-title">Confira os shows <strong>favoritos</strong> pela galera!:</h3>
-
-  <br>
   
   <div *ngFor="let favorito_array of favorito_qtd">
 
-    <div [hidden]="agruparDataDeShow(favorito_array.palco_id)"></div>
+    <h3 class="sub-title"><strong>{{favorito_array.palco_nome}}</strong></h3>
 
-    <div *ngFor="let palco_array of palcos">
-      <div *ngIf="palco_array.palco_id == favorito_array.palco_id">
-        <h3 class="sub-title"><strong>{{palco_array.palco_nome}}</strong></h3>
-      </div>
-    </div>
-
-    <div *ngFor="let array_data of data_show">
     <ion-card mode="ios" (click)="eventoDetalhado(favorito_array.palco_id)">
+
       <ion-item lines="none">
-        <div *ngIf="array_data == data_atual">
+        <div *ngIf="favorito_array.favorito_data == data_atual">
           <h2 class="sub-title"><strong>HOJE</strong></h2>
         </div>
-        <div *ngIf="array_data != data_atual">
-          <h2 class="sub-title"><strong>{{array_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
+        <div *ngIf="favorito_array.favorito_data != data_atual">
+          <h2 class="sub-title"><strong>{{favorito_array.favorito_data | date:'EEEE, d MMMM' | uppercase}}</strong></h2>
         </div>
         
         <ion-buttons slot="end">
@@ -46,7 +38,7 @@
       </ion-item>
       
       <div *ngFor="let array_cantores of cantores">
-        <div *ngIf="array_data == array_cantores.evento_data && array_cantores.palco_id == favorito_array.palco_id">
+        <div *ngIf="favorito_array.favorito_data == array_cantores.evento_data && array_cantores.palco_id == favorito_array.palco_id">
           <ion-item lines="none">
 
             <div *ngFor="let array_img of cantores_img">
@@ -69,11 +61,10 @@
             </ion-label>
 
           </ion-item>
-        </div>
       </div>
+    </div>
       <br>
     </ion-card>
-  </div>
   </div>
 
 </ion-content>

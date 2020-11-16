@@ -13,10 +13,11 @@ export class FavoritoAltaPage implements OnInit {
   favorito_qtd = []
   cantores = []
   cantores_img = []
-  palcos = []
   data_show = []
   palco_show = []
+
   img_carregada = 0
+  data_atual = localStorage.getItem('data_atual');
 
   constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
 
@@ -30,12 +31,36 @@ export class FavoritoAltaPage implements OnInit {
   }
 
   carregarFavoritoQtd(){ //carrgar shows "favoritados pelos usuários"
-  this.favorito_qtd = [];
-  this.load.present()
+    this.favorito_qtd = [];
+    this.load.present()
+      return new Promise(resolve => {
+        let dados = {
+          requisicao: 'favorito_qtd',
+          data_atual: localStorage.getItem('data_atual')
+        };
+
+        this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+
+          if (data['result'] == '0') {
+            console.log("Array retornou vazio");
+          } else {
+            for (let i of data['result']) {
+              this.favorito_qtd.push(i);
+            }
+          }
+          this.agruparPalcoDeShow();
+          this.carregarFavoritoQtdCantor();
+          resolve(true);
+        });
+      });
+  }
+
+  carregarFavoritoQtdCantor(){ //carrgar cantores
+    this.cantores = [];
     return new Promise(resolve => {
       let dados = {
-        requisicao: 'favorito_qtd',
-        data_atual: localStorage.getItem('data_atual')
+        requisicao: 'favorito_qtd_cantor',
+        data_atual: this.data_atual
       };
 
       this.provider.dadosApi(dados, 'api.php').subscribe(data => {
@@ -44,111 +69,51 @@ export class FavoritoAltaPage implements OnInit {
           console.log("Array retornou vazio");
         } else {
           for (let i of data['result']) {
-            this.favorito_qtd.push(i);
+            this.cantores.push(i);
           }
         }
-        this.agruparPalcoDeShow();
-        this.carregarFavoritoQtdCantorImg();
+        this.load.dismiss();
+        this.carregarFavoritoQtdCantorImg()
         resolve(true);
       });
     });
   }
 
-  carregarFavoritoQtdCantor(){ //carrgar cantores
-  this.cantores = [];
-  return new Promise(resolve => {
-    let dados = {
-      requisicao: 'favorito_qtd_cantor',
-      data_atual: localStorage.getItem('data_atual')
-    };
+  carregarFavoritoQtdCantorImg(){ //carrgar shows "favoritados pelos usuários"
+    this.cantores_img = [];
+    return new Promise(resolve => {
+      let dados = {
+        requisicao: 'favorito_qtd_cantor_img',
+        data_atual: this.data_atual
+      };
 
-    this.provider.dadosApi(dados, 'api.php').subscribe(data => {
+      this.provider.dadosApi(dados, 'api.php').subscribe(data => {
 
-      if (data['result'] == '0') {
-        console.log("Array retornou vazio");
-      } else {
-        for (let i of data['result']) {
-          this.cantores.push(i);
+        if (data['result'] == '0') {
+          console.log("Array retornou vazio");
+        } else {
+          for (let i of data['result']) {
+            this.cantores_img.push(i);
+          }
         }
-      }
-      resolve(true);
+        this.img_carregada = 1
+        console.log(this.cantores_img);
+        resolve(true);
+      });
     });
-  });
-}
-
-carregarFavoritoQtdCantorImg(){ //carrgar shows "favoritados pelos usuários"
-this.cantores_img = [];
-return new Promise(resolve => {
-  let dados = {
-    requisicao: 'favorito_qtd_cantor_img',
-    data_atual: localStorage.getItem('data_atual')
-  };
-
-  this.provider.dadosApi(dados, 'api.php').subscribe(data => {
-
-    if (data['result'] == '0') {
-      console.log("Array retornou vazio");
-    } else {
-      for (let i of data['result']) {
-        this.cantores_img.push(i);
-      }
-    }
-    this.img_carregada = 1
-    resolve(true);
-  });
-});
-}
-
-carregarPalco() { // palcos que terá shows (maior que a data atual)
-  this.palcos = [];
-  return new Promise(resolve => {
-    let dados = {
-      requisicao: 'palcos',
-      data: localStorage.getItem('data_atual')
-    };
-
-    this.provider.dadosApi(dados, 'api.php').subscribe(data => {
-
-      if (data['result'] == '0') {
-        console.log("Array retornou vazio");
-      } else {
-        for (let i of data['result']) {
-          this.palcos.push(i);
-        }
-        this.palcos
-        console.log(this.palcos);
-        this.carregarFavoritoQtdCantor();
-        this.load.dismiss();
-      }
-
-      resolve(true);
-    });
-  });
-}
-
-agruparDataDeShow(palco_id) {
-  const aux_data = []
-  for (let i = 0; i < this.favorito_qtd.length; i++) {
-    if(this.favorito_qtd[i]["palco_id"] == palco_id){
-      aux_data.push(this.favorito_qtd[i]["favorito_data"]);
-    }
   }
-  this.data_show = [...new Set(aux_data)];
-  this.data_show.sort();
-}
 
-agruparPalcoDeShow(){
-  const aux_palco = []
-  for (let i = 0; i < this.favorito_qtd.length; i++) {
-    aux_palco.push(this.favorito_qtd[i]["palco_id"]);
+  agruparPalcoDeShow(){
+    const aux_palco = []
+    for (let i = 0; i < this.favorito_qtd.length; i++) {
+      aux_palco.push(this.favorito_qtd[i]["palco_id"]);
+    }
+    this.palco_show = [...new Set(aux_palco)];
+    this.palco_show.sort();
   }
-  this.palco_show = [...new Set(aux_palco)];
-  this.palco_show.sort();
-}
 
   ngOnInit() {
     this.carregarFavoritoQtd();
-    this.carregarPalco();
   }
 
 }

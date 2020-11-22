@@ -14,9 +14,6 @@
   </h1>
 
   <h3 class="sub-title">Lista de <strong>favoritos:</strong></h3>
-  <ion-button class="btn_favoritos" (click)="favoritoAltaRota()" color="warning" expand="block">
-    Favoritos da galera!
-  </ion-button>
 
   <div *ngIf="this.cantores_consulta.length == 0">
     <img class="favorito_msg" src='../../../assets/img/favorito_msg.jpg'>
@@ -79,5 +76,11 @@
     </ion-card>
   </div>
   </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="favoritoAltaRota()" color="dark">
+      <ion-icon src="../../../assets/img/rank.svg"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
 
 </ion-content>

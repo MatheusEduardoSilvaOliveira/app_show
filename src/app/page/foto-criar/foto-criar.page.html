@@ -1,0 +1,56 @@
+<ion-content>
+
+  <div class="title-bar">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="fotoRota()">
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <h1 class="title">
+    Criar Postagem
+  </h1>
+
+  <h3 class="sub-title">Publique uma foto sua! É necessário que esteja claro em qual <strong>evento</strong> esteja presenciando:</h3>
+
+  <ion-button class="btn_foto" expand="block" color="dark" (click)="takePicture()">
+    ABRIR CÂMERA <ion-icon name="camera-outline"></ion-icon>
+  </ion-button>
+
+  <ion-card mode="ios">
+    <div *ngIf="photo == ''">
+      <img src="../../../assets/img/undefined.jpg">
+    </div>
+    <div *ngIf="photo != ''">
+      <img width=100% src="{{photo}}">
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Legenda</ion-label>
+      <ion-input maxlength="140" [(ngModel)]="descricao"></ion-input>
+    </ion-item>
+
+      <ion-segment mode="ios" (ionChange)="segmentChanged($event)" [(ngModel)]="segment">
+        <ion-segment-button value="0">
+          <ion-label>Couvert</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="1">
+          <ion-label>Show</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+    <ion-item>
+      <ion-label>Local</ion-label>
+      <ion-select placeholder="Seleciona um" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" [(ngModel)]="local_nome">
+        <ion-select-option *ngFor="let json of segment_array">{{json.local_nome}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button (click)="enviarFoto()" expand="block" color="primary" [disabled]="local_nome == '' || photo == '' || descricao == ''">Enviar</ion-button>
+  </ion-card>
+
+  <h5 class="ion-text-center">Após aprovada a foto ficará disponível até o final do dia postado.</h5>
+
+</ion-content>

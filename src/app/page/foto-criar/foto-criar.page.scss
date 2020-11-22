@@ -1,0 +1,75 @@
+ion-button{
+    --color: #3E3E3E;
+  }
+.title-bar {
+  margin: 0rem 0.625rem -0.625rem 0.625rem;
+  color: #3E3E3E;
+}
+  
+h1.title {
+  margin: 0.625rem 0.625rem 0.625rem 1.25rem;
+  color: #3E3E3E;
+  font-size: 2.25rem;
+}
+  
+h2.sub-title {
+  //margin: 0.625rem 0.625rem -0.313rem 1.25rem;
+  color: #3E3E3E;
+  font-size: 1.125rem;
+}
+  
+h3.sub-title {
+  margin: 0.625rem 0.625rem -0.313rem 1.25rem;
+  color: #3E3E3E;
+  font-size: 1.125rem;
+}
+
+ion-button{
+  --color: #3E3E3E;
+}
+.title-bar {
+    margin: 0rem 0.625rem -0.625rem 0.625rem;
+    color: #3E3E3E;
+}
+
+h1.title {
+    margin: 0.625rem 0.625rem 0.625rem 1.25rem;
+    color: #3E3E3E;
+    font-size: 2.25rem;
+}
+
+ion-item ion-label {
+    margin: 0.625rem 0.625rem 0.625rem 0rem;
+    color: #3E3E3E;
+    font-size: 1.125rem;
+}
+
+ion-card{
+    margin: 0.6rem 1.25rem 1.25rem 1.25rem;
+    font-size: 0.75rem;
+}
+
+img.favorito_msg{
+  max-width: 70%;
+  border: 0;
+  position: relative;
+  top: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ion-button.btn_foto{
+  margin: 1.25rem 1.25rem 1.25rem 1.25rem;
+}
+
+ion-label.foto_desc{
+    color: #3E3E3E;
+    font-size: 0.99rem;
+    font-weight: bold;
+  }
+h5.ion-text-center{
+   color: #3E3E3E;
+   font-size: 0.75rem;
+   margin: 0.625rem 1.25rem 0.625rem 0.625rem
+}

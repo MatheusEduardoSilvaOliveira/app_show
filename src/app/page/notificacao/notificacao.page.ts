@@ -8,7 +8,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
   styleUrls: ['./notificacao.page.scss'],
 })
 export class NotificacaoPage implements OnInit {
-
+  
   constructor(private router: Router, private photoViewer: PhotoViewer) { }
 
   visualizarImagem(){

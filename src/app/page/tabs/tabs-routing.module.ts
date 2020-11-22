@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../favorito/favorito.module').then( m => m.FavoritoPageModule)
       },
       {
+        path: 'foto',
+        loadChildren: () => import('../foto/foto.module').then( m => m.FotoPageModule)
+      },
+      {
         path: 'notificacao',
         loadChildren: () => import('../notificacao/notificacao.module').then( m => m.NotificacaoPageModule)
       },

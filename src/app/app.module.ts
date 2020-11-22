@@ -16,6 +16,7 @@ import { ToastComponent } from './components/toast/toast.component';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { AlertComponent } from './components/alert/alert.component';
 
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
@@ -37,6 +38,7 @@ registerLocaleData(ptBr)
     SocialSharing,
     CallNumber,
     PhotoViewer,
+    AlertComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

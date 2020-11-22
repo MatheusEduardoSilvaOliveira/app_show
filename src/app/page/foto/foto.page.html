@@ -1,0 +1,46 @@
+<ion-content>
+
+  <div class="title-bar">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="suporte()">
+          <ion-icon slot="icon-only" name="information-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <h1 class="title">
+    Campina Music
+  </h1>
+
+  <h3 class="sub-title">Fotos postadas por pessoas que estão curtindo algum <strong>evento</strong> hoje:</h3>
+
+  <div *ngIf="this.fotos.length == 0">
+    <img class="foto_msg" src='../../../assets/img/foto_msg.jpg'>
+  </div>
+
+  <div *ngIf="this.fotos.length != 0">
+    <ion-slides pager="true" [options]="sliderConfigFotos" #mySlider (ionSlidesDidLoad)="slidesDidLoad(mySlider)">
+      <ion-slide *ngFor="let fotos of fotos">
+        <ion-card mode="ios">
+          <img src="{{fotos.foto_img}}">
+
+            <ion-item class="palco_desc" lines="none">
+              <ion-label class="foto_desc">
+                <ion-icon name="pin-outline"></ion-icon>{{fotos.local_nome}}<br>
+               {{fotos.foto_legenda}}
+              </ion-label>
+            </ion-item>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" (click)="fotoCriar()">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
+
+</ion-content>

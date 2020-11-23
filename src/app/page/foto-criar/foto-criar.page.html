@@ -25,7 +25,7 @@
       <img src="../../../assets/img/undefined.jpg">
     </div>
     <div *ngIf="photo != ''">
-      <img width=100% src="{{photo}}">
+      <img src="{{photo}}">
     </div>
 
     <ion-item>
@@ -44,7 +44,7 @@
 
     <ion-item>
       <ion-label>Local</ion-label>
-      <ion-select placeholder="Seleciona um" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" [(ngModel)]="local_nome">
+      <ion-select placeholder="Seleciona um" [interfaceOptions]="customActionSheetOptions" interface="action-sheet" [(ngModel)]="local_nome" [disabled]="segment == undefined">
         <ion-select-option *ngFor="let json of segment_array">{{json.local_nome}}</ion-select-option>
       </ion-select>
     </ion-item>

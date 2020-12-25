@@ -6,7 +6,7 @@
   --background: #F5F3F4 no-repeat center center / cover;
   --color: #3E3E3E;
   --border-color: #F5F3F4;
-  //margin-top: 30px; //retirar margem de pixel ao copilar para android
+  margin-top: 30px; //retirar margem de pixel ao copilar para android
 }
 
 :host ::ng-deep ion-item{
@@ -24,7 +24,7 @@
 
 :host ::ng-deep ion-segment{
   color: #000000;
-  --background: #E4E2E3;
+  --background: #FFFFFF;
 }
 
 :host ::ng-deep ion-fab ion-fab-button{
@@ -33,4 +33,5 @@
 
 :host ::ng-deep ion-fab ion-fab-list ion-fab-button{
   --background:#E4E2E3;
+  color: #000000;
 }

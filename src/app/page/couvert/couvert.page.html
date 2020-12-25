@@ -69,7 +69,7 @@
     <div *ngIf="vlr_digitado == ''">
 
       <div *ngFor="let array_estabe of couverts">
-        <ion-card mode="ios" class="ion-card-estabe">
+        <ion-card mode="ios" class="ion-card-estabe" (click)="couvertDetalhado(array_estabe.estabe_id)">
           <img class="img_estabe" src="{{array_estabe.estabe_img}}">
 
       <!--<ion-card-header>
@@ -93,12 +93,6 @@
               <ion-icon src="../../../assets/img/storefront-outline.svg"></ion-icon>{{array_estabe.estabe_nome}}<br>
               <ion-icon name="pin-outline"></ion-icon>Bairro:  {{array_estabe.estabe_bairro}}
             </ion-label>
-            
-            <ion-buttons slot="end">
-              <ion-button class="calendar_button" (click)="couvertDetalhado(array_estabe.estabe_id)">
-                <ion-icon color="primary" name="calendar-outline"></ion-icon>
-              </ion-button>
-            </ion-buttons>
           </ion-item>
           <!-- </ion-card-header> -->
         </ion-card>  
@@ -115,23 +109,15 @@
       </div>
 
       <div *ngFor="let array_estabe of couverts_consulta">
-        <ion-card mode="ios" class="ion-card-estabe">
+        <ion-card mode="ios" class="ion-card-estabe" (click)="couvertDetalhado(array_estabe.estabe_id)">
   
             <img class="img_estabe" src="{{array_estabe.estabe_img}}">
   
-
               <ion-item class="estabe_desc" lines="none">
                 <ion-label class="estabe_desc">
                   <ion-icon src="../../../assets/img/storefront-outline.svg"></ion-icon>{{array_estabe.estabe_nome}}<br>
                   <ion-icon name="pin-outline"></ion-icon>Bairro:  {{array_estabe.estabe_bairro}}
-                </ion-label>
-                
-                <ion-buttons slot="end">
-                  <ion-button class="calendar_button" (click)="couvertDetalhado(array_estabe.estabe_id)">
-                    <ion-icon color="primary" name="calendar-outline"></ion-icon>
-                  </ion-button>
-                </ion-buttons>
-                
+                </ion-label>               
               </ion-item>
   
         </ion-card>  

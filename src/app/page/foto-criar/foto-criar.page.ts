@@ -155,7 +155,6 @@ export class FotoCriarPage implements OnInit{
           }
         }
         console.log(this.couvert)
-        this.verificaEvento();
         resolve(true);
       });
     });

@@ -24,10 +24,6 @@ const routes: Routes = [
         loadChildren: () => import('../foto/foto.module').then( m => m.FotoPageModule)
       },
       {
-        path: 'notificacao',
-        loadChildren: () => import('../notificacao/notificacao.module').then( m => m.NotificacaoPageModule)
-      },
-      {
         path: '',
         redirectTo: '/tabs/couvert',
         pathMatch: 'full'

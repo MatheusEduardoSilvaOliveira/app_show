@@ -8,3 +8,29 @@
   --border-color: #F5F3F4;
   //margin-top: 30px; //retirar margem de pixel ao copilar para android
 }
+
+:host ::ng-deep ion-item{
+  --background: #FFFFFF;
+}
+
+:host ::ng-deep ion-card{
+  background: #FFFFFF;
+}
+
+:host ::ng-deep ion-searchbar{
+  color: #000000;
+  --background: #E4E2E3;
+}
+
+:host ::ng-deep ion-segment{
+  color: #000000;
+  --background: #E4E2E3;
+}
+
+:host ::ng-deep ion-fab ion-fab-button{
+  --background: #000000;
+}
+
+:host ::ng-deep ion-fab ion-fab-list ion-fab-button{
+  --background:#E4E2E3;
+}

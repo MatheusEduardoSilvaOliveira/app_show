@@ -65,7 +65,7 @@
               
               <ion-buttons slot="end" class="share_button">
                 <ion-button class="share_button" (click)="compartilhar(array_data)">
-                  <ion-icon name="share-outline"></ion-icon>
+                  <ion-icon class="share" name="share-outline"></ion-icon>
                 </ion-button>
                 
                 <div [hidden]="favoritosMarcados(array_data)"></div>
@@ -130,7 +130,7 @@
               
               <ion-buttons slot="end" class="share_button">
                 <ion-button class="share_button" (click)="compartilhar(array_data)">
-                  <ion-icon name="share-outline"></ion-icon>
+                  <ion-icon class="share" name="share-outline"></ion-icon>
                 </ion-button>
                 <div [hidden]="favoritosMarcados(array_data)"></div>
                   <div *ngIf="data_favorito == array_data">
@@ -275,7 +275,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="dark">
+    <ion-fab-button>
       <ion-icon name="caret-up-outline"></ion-icon>
     </ion-fab-button>
 

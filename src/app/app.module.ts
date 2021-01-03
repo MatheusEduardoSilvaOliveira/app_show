@@ -13,9 +13,10 @@ import { Post } from './services/post';
 import { LoadComponent } from './components/load/load.component';
 import { ToastComponent } from './components/toast/toast.component';
 
-import { CallNumber } from '@ionic-native/call-number/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx'; //não está em uso ios
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx'; //retirar
+import { Device } from '@ionic-native/device/ngx'; 
 import { AlertComponent } from './components/alert/alert.component';
 
 import { LOCALE_ID } from '@angular/core';
@@ -38,6 +39,7 @@ registerLocaleData(ptBr)
     SocialSharing,
     CallNumber,
     PhotoViewer,
+    Device,
     AlertComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

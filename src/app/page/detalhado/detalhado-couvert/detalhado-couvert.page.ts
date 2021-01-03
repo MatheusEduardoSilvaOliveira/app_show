@@ -38,6 +38,10 @@ export class DetalhadoCouvertPage implements OnInit {
     this.router.navigate(['/tabs/couvert']);
   }
 
+  suporte(){
+    this.router.navigate(['/suporte']);
+  }
+
 
   ligarFixo(){
     this.callNumber.callNumber(this.telefone, true)

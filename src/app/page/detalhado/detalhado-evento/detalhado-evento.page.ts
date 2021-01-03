@@ -43,6 +43,10 @@ export class DetalhadoEventoPage implements OnInit {
     this.router.navigate(['/tabs/show']);
   }
 
+  suporte(){
+    this.router.navigate(['/suporte']);
+  }
+
   formatDataBr(data){
     this.data_br = []
     var dia = data.substring(8,10)

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import { Post } from 'src/app/services/post';
 import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+
+import { Plugins } from '@capacitor/core';
+const { Share } = Plugins
 
 @Component({
   selector: 'app-detalhado-couvert',
@@ -29,7 +33,8 @@ export class DetalhadoCouvertPage implements OnInit {
 
   share_array_cantor: string
 
-  constructor(private provider: Post, private router: Router, private load: LoadComponent, private socialSharing: SocialSharing, private callNumber: CallNumber) { } //
+  constructor(private provider: Post, private router: Router, private load: LoadComponent, 
+    private socialSharing: SocialSharing, private callNumber: CallNumber, private http: HttpClient) { } //
 
   couvertRota(){
     this.maps = null;
@@ -60,7 +65,13 @@ export class DetalhadoCouvertPage implements OnInit {
     this.data_br = dia + '/' + mes + '/' + ano
   }
 
-  compartilhar(data){
+  async compartilhar(data){
+    await Share.share({
+      title: "TESTE TITULO",
+      text: "TESTE DESC",
+      url: 'http'
+    })
+    /*
     this.share_array_cantor = ""
    
     for (let i = 0; i < this.couvert_consulta.length; i++) {
@@ -73,7 +84,7 @@ export class DetalhadoCouvertPage implements OnInit {
     this.socialSharing.share("Local: " + this.estabe_dados[0]["estabe_nome"] + "\n" + 
                             "Dia " + this.data_br + "\n \n" + 
                             "Cantores: " + "\n" + this.share_array_cantor + "\n" + 
-                            "Fonte: Aplicativo Campina Music", '', this.estabe_dados[0]["estabe_img"]);
+                            "Fonte: Aplicativo Campina Music", '', this.estabe_dados[0]["estabe_img"]); */
   }
 
   /*

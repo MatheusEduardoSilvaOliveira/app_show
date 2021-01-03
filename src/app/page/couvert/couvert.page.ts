@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Post } from 'src/app/services/post';
 import { LoadComponent } from 'src/app/components/load/load.component';
-import { Device } from '@ionic-native/device/ngx'; 
+import { Device } from '@ionic-native/device/ngx';
+
+
 import {
   Plugins,
   PushNotification,
@@ -163,7 +165,7 @@ export class CouvertPage implements OnInit {
     this.carregarCouvert();
     this.verificaToken(this.device.uuid);
 
-    /*
+    
     //funções para o push notification
     console.log('Initializing HomePage');
     // Request permission to use push notifications
@@ -181,8 +183,8 @@ export class CouvertPage implements OnInit {
     // On success, we should be able to receive notifications
     PushNotifications.addListener('registration',
       (token: PushNotificationToken) => {
-        //token.value;
-        this.verificaToken(token.value);
+        token.value;
+        //this.verificaToken(token.value);
         //alert('Push registration success, token: ' + token.value);
       }
     );
@@ -209,7 +211,7 @@ export class CouvertPage implements OnInit {
         JSON.stringify(notification)
         //alert('Push action performed: ' + JSON.stringify(notification));
       }
-    );*/
+    );
   }
   
 

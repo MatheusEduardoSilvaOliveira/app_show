@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/services/post';
 import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 import { Plugins } from '@capacitor/core';
 const { Share } = Plugins
@@ -40,7 +39,7 @@ export class DetalhadoEventoPage implements OnInit {
 
   share_array_cantor: string
 
-  constructor(private provider: Post, private router: Router, private load: LoadComponent, private socialSharing: SocialSharing) { }
+  constructor(private provider: Post, private router: Router, private load: LoadComponent) { }
 
   showRota(){
     this.router.navigate(['/tabs/show']);
@@ -75,11 +74,10 @@ export class DetalhadoEventoPage implements OnInit {
     console.log(this.share_array_cantor)
 
     await Share.share({
-      title: "Local: " + this.palco_dados[0]["palco_nome"] + "\n" +
+      title: "Programação: ",
+      text: "Local: " + this.palco_dados[0]["palco_nome"] + "\n" +
       "Dia " + this.data_br + "\n \n" + 
-      "Cantores: " + "\n" + this.share_array_cantor,
-      text: "Fonte: Aplicativo Campina Music"
-
+      "Cantores: " + "\n" + this.share_array_cantor + "\n" + "Fonte: Aplicativo Campina Music",
     /*
     this.share_array_cantor = ""
    

@@ -9,10 +9,10 @@ android {
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
+    implementation project(':byteowls-capacitor-filesharer')
 
-    implementation "androidx.legacy:legacy-support-v4:1.0.0"
 }
-apply from: "../../node_modules/com-sarriaroman-photoviewer/src/android/photoviewer.gradle"
+
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

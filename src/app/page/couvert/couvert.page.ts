@@ -5,7 +5,6 @@ import { Post } from 'src/app/services/post';
 import { LoadComponent } from 'src/app/components/load/load.component';
 import { Device } from '@ionic-native/device/ngx';
 
-
 import {
   Plugins,
   PushNotification,
@@ -13,7 +12,6 @@ import {
   PushNotificationActionPerformed } from '@capacitor/core';
   const { PushNotifications } = Plugins;
   
-
 @Component({
   selector: 'app-couvert',
   templateUrl: './couvert.page.html',

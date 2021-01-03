@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/services/post';
 import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 
 import { Plugins } from '@capacitor/core';
@@ -32,8 +31,8 @@ export class DetalhadoCouvertPage implements OnInit {
 
   share_array_cantor: string
 
-  constructor(private provider: Post, private router: Router, private load: LoadComponent, 
-    private socialSharing: SocialSharing, private callNumber: CallNumber) { } //
+  constructor(private provider: Post, private router: Router, private load: LoadComponent,
+    private callNumber: CallNumber) { } //
 
   couvertRota(){
     this.maps = null;
@@ -76,10 +75,10 @@ export class DetalhadoCouvertPage implements OnInit {
     this.formatDataBr(data)
     console.log(this.share_array_cantor)
     await Share.share({
-      title: "Local: " + this.estabe_dados[0]["estabe_nome"] + "\n" + 
+      title: "Programação: ",
+      text: "Local: " + this.estabe_dados[0]["estabe_nome"] + "\n" + 
       "Dia " + this.data_br + "\n \n" + 
-      "Cantor(es): " + "\n" + this.share_array_cantor,
-      text: "Fonte: Aplicativo Campina Music"
+      "Cantor(es): " + "\n" + this.share_array_cantor + "\n" + "Fonte: Aplicativo Campina Music"
     })
     /*
     this.share_array_cantor = ""

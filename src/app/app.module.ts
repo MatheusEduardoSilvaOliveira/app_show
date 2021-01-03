@@ -14,9 +14,7 @@ import { LoadComponent } from './components/load/load.component';
 import { ToastComponent } from './components/toast/toast.component';
 
 import { CallNumber } from '@ionic-native/call-number/ngx'; //não está em uso ios
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx'; //retirar
-import { Device } from '@ionic-native/device/ngx'; 
+import { Device } from '@ionic-native/device/ngx'; //captura o UUID do celular, utilizando como token
 import { AlertComponent } from './components/alert/alert.component';
 
 import { LOCALE_ID } from '@angular/core';
@@ -36,9 +34,7 @@ registerLocaleData(ptBr)
     Post,
     LoadComponent,
     ToastComponent,
-    SocialSharing,
     CallNumber,
-    PhotoViewer,
     Device,
     AlertComponent,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

@@ -23,8 +23,6 @@
 }
 
 :host ::ng-deep ion-segment ion-segment-button{
-  color: #000000;
-  --color-checked: #000000;
+  --color-checked:#3E3E3E;
   --indicator-color:#FFFFFF;
-  --background: #E4E2E3;
 }

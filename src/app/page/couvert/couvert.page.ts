@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
 import { Post } from 'src/app/services/post';
 import { LoadComponent } from 'src/app/components/load/load.component';
-
+import { Device } from '@ionic-native/device/ngx'; 
 import {
   Plugins,
   PushNotification,
   PushNotificationToken,
   PushNotificationActionPerformed } from '@capacitor/core';
   const { PushNotifications } = Plugins;
+  
 
 @Component({
   selector: 'app-couvert',
@@ -32,7 +33,7 @@ export class CouvertPage implements OnInit {
 
   vlr_digitado = ""; //valor digitado na searchbar
 
-  constructor(private router: Router, private provider: Post, private load: LoadComponent) { }
+  constructor(private router: Router, private provider: Post, private load: LoadComponent, private device: Device) { }
 
   capturarDataHora() { //capturar data do celular do usuário
     var data = new Date();
@@ -160,7 +161,9 @@ export class CouvertPage implements OnInit {
   ngOnInit() {
     this.carregarCouvertDoDiaInfo();
     this.carregarCouvert();
+    this.verificaToken(this.device.uuid);
 
+    /*
     //funções para o push notification
     console.log('Initializing HomePage');
     // Request permission to use push notifications
@@ -206,7 +209,8 @@ export class CouvertPage implements OnInit {
         JSON.stringify(notification)
         //alert('Push action performed: ' + JSON.stringify(notification));
       }
-    );
+    );*/
   }
+  
 
 }

@@ -2,6 +2,14 @@ ion-icon{
     font-weight: bold;
 }
 
-ion-tab-bar, ion-tab-button{
+ion-tab-button{
     background-color: #ffffff;
+    
+}
+
+ion-tab-bar{
+    background-color: #ffffff;
+    border: #FFFFFF;
+    --ripple-color: #F9F9F9F9;
+    --color-selected: #000000;
 }

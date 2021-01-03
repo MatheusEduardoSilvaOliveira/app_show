@@ -1,5 +1,17 @@
-<ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="showRota()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Show</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
+<!--
   <div class="title-bar">
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -7,20 +19,20 @@
           <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <!-- 
+       
       <ion-buttons slot="end">
         <div *ngIf="maps != null">
           <ion-button href="{{maps}}">
             <ion-icon name="pin-outline"></ion-icon>
           </ion-button>
         </div>
-      </ion-buttons>-->
+      </ion-buttons>
     </ion-toolbar>
   </div>
 
   <h1 class="title">
     Show
-  </h1>
+  </h1>-->
 
   <ion-card mode="ios" class="ion-card-palco">
     <div *ngFor="let array_palco of palco_dados">
@@ -275,7 +287,7 @@
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button color="dark">
       <ion-icon name="caret-up-outline"></ion-icon>
     </ion-fab-button>
 

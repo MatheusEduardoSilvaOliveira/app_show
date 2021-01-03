@@ -1,5 +1,5 @@
 {
-  "name": "Campina Music",
+  "name": "campinamusic",
   "version": "0.0.1",
   "author": "Matheus Eduardo",
   "homepage": "",
@@ -24,6 +24,7 @@
     "@capacitor/ios": "^2.4.2",
     "@ionic-native/call-number": "^5.29.0",
     "@ionic-native/core": "^5.29.0",
+    "@ionic-native/device": "^5.30.0",
     "@ionic-native/photo-viewer": "^5.29.0",
     "@ionic-native/social-sharing": "^5.29.0",
     "@ionic-native/splash-screen": "^5.29.0",
@@ -32,6 +33,7 @@
     "@ionic/pwa-elements": "^3.0.1",
     "call-number": "^1.0.1",
     "com-sarriaroman-photoviewer": "^1.2.5",
+    "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-x-socialsharing": "^6.0.2",
     "es6-promise-plugin": "^4.2.2",
     "rxjs": "~6.5.1",
@@ -63,5 +65,5 @@
     "tslint": "^6.1.3",
     "typescript": "~3.8.3"
   },
-  "description": "An Ionic project"
+  "description": "Agenda de Shows"
 }

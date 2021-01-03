@@ -1,5 +1,21 @@
-<ion-content>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="couvert()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Informação</ion-title>
+    <ion-buttons slot="end">
+      <ion-button href="{{insta}}">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
+<!--
   <div class="title-bar">
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -18,7 +34,7 @@
 
   <h1 class="title">
     Informação
-  </h1>
+  </h1>-->
 
   <div class="opcao">
     <ion-segment mode="ios" [(ngModel)]="segment">

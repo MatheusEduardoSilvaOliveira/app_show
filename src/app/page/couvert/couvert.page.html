@@ -1,18 +1,16 @@
-<ion-content>
- 
-  <div class="title-bar">
-    <ion-toolbar>
-      <ion-buttons slot="end">
-        <ion-button (click)="suporte()">
-          <ion-icon slot="icon-only" name="information-outline"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </div>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title size="large">Campina Music</ion-title>
+    <!--
+    <ion-buttons slot="end">
+      <ion-button (click)="suporte()">
+        <ion-icon slot="icon-only" name="information-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>-->
+  </ion-toolbar>
+</ion-header>
 
-  <h1 class="title">
-    Campina Music
-  </h1>
+<ion-content>
 
   <div *ngIf="couvert_info_dia.length != 0">
     <h3 class="sub-title">

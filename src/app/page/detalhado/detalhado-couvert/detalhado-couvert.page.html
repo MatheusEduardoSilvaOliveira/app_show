@@ -1,5 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="couvertRota()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Couvert</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
 
+  <!--
   <div class="title-bar">
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -7,7 +18,7 @@
           <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <!-- 
+       
       <ion-buttons slot="end">
         <div *ngIf="maps != null">
           <ion-button href="{{maps}}">
@@ -28,13 +39,13 @@
             <ion-icon name="logo-whatsapp"></ion-icon>
           </ion-button>
         </div>
-      </ion-buttons>-->
+      </ion-buttons>
     </ion-toolbar>
   </div>
 
   <h1 class="title">
     Couvert
-  </h1>
+  </h1>-->
 
   <ion-card mode="ios" class="ion-card-estabe">
     <div *ngFor="let array_estabe of estabe_dados">
@@ -120,7 +131,7 @@
   </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button color="dark">
       <ion-icon name="caret-up-outline"></ion-icon>
     </ion-fab-button>
 
@@ -129,9 +140,10 @@
         <ion-fab-button href="{{maps}}"><ion-icon name="pin-outline"></ion-icon></ion-fab-button>
       </div>
 
+      <!--
       <div *ngIf="telefone != null">
         <ion-fab-button (click)="ligarFixo()"><ion-icon name="call-outline"></ion-icon></ion-fab-button>
-      </div>
+      </div>-->
 
       <div *ngIf="whats != null">
         <ion-fab-button href="{{whats}}"><ion-icon name="logo-whatsapp"></ion-icon></ion-fab-button>

@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
+import { Plugins } from '@capacitor/core';
+const { Share } = Plugins
+
 @Component({
   selector: 'app-detalhado-evento',
   templateUrl: './detalhado-evento.page.html',
@@ -59,7 +62,25 @@ export class DetalhadoEventoPage implements OnInit {
   }
 
 
-  compartilhar(data){
+  async compartilhar(data){
+    this.share_array_cantor = ""
+   
+    for (let i = 0; i < this.cantores.length; i++) {
+      if(this.cantores[i]["evento_data"] == data){
+        this.share_array_cantor = this.share_array_cantor + this.cantores[i]["cantor_nome"] + "\n"
+      } 
+    }
+
+    this.formatDataBr(data)
+    console.log(this.share_array_cantor)
+
+    await Share.share({
+      title: "Local: " + this.palco_dados[0]["palco_nome"] + "\n" +
+      "Dia " + this.data_br + "\n \n" + 
+      "Cantores: " + "\n" + this.share_array_cantor,
+      text: "Fonte: Aplicativo Campina Music"
+
+    /*
     this.share_array_cantor = ""
    
     for (let i = 0; i < this.cantores.length; i++) {
@@ -73,6 +94,9 @@ export class DetalhadoEventoPage implements OnInit {
                             "Dia " + this.data_br + "\n \n" + 
                             "Cantores: " + "\n" + this.share_array_cantor + "\n" + 
                             "Fonte: Aplicativo Campina Music", '', this.palco_dados[0]["palco_img"]);
+                            */
+
+    })
   }
 
 

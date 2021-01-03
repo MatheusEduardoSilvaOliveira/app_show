@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import { Post } from 'src/app/services/post';
 import { Router } from '@angular/router';
 import { LoadComponent } from 'src/app/components/load/load.component';
@@ -34,7 +33,7 @@ export class DetalhadoCouvertPage implements OnInit {
   share_array_cantor: string
 
   constructor(private provider: Post, private router: Router, private load: LoadComponent, 
-    private socialSharing: SocialSharing, private callNumber: CallNumber, private http: HttpClient) { } //
+    private socialSharing: SocialSharing, private callNumber: CallNumber) { } //
 
   couvertRota(){
     this.maps = null;
@@ -66,10 +65,21 @@ export class DetalhadoCouvertPage implements OnInit {
   }
 
   async compartilhar(data){
+    this.share_array_cantor = ""
+   
+    for (let i = 0; i < this.couvert_consulta.length; i++) {
+      if(this.couvert_consulta[i]["couvert_data"] == data){
+        this.share_array_cantor = this.share_array_cantor + this.couvert_consulta[i]["cantor_nome"] + " - " + "Inícia ás " + this.couvert_consulta[i]["couvert_hora_ini"] + "\n"
+      } 
+    }
+
+    this.formatDataBr(data)
+    console.log(this.share_array_cantor)
     await Share.share({
-      title: "TESTE TITULO",
-      text: "TESTE DESC",
-      url: 'http'
+      title: "Local: " + this.estabe_dados[0]["estabe_nome"] + "\n" + 
+      "Dia " + this.data_br + "\n \n" + 
+      "Cantor(es): " + "\n" + this.share_array_cantor,
+      text: "Fonte: Aplicativo Campina Music"
     })
     /*
     this.share_array_cantor = ""
@@ -83,7 +93,7 @@ export class DetalhadoCouvertPage implements OnInit {
     console.log(this.share_array_cantor)
     this.socialSharing.share("Local: " + this.estabe_dados[0]["estabe_nome"] + "\n" + 
                             "Dia " + this.data_br + "\n \n" + 
-                            "Cantores: " + "\n" + this.share_array_cantor + "\n" + 
+                            "Cantor(es): " + "\n" + this.share_array_cantor + "\n" + 
                             "Fonte: Aplicativo Campina Music", '', this.estabe_dados[0]["estabe_img"]); */
   }
 
